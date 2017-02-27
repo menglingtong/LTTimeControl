@@ -10,13 +10,30 @@
 
 @interface LTHomePageViewController ()
 
+@property (nonatomic, strong) UIButton *addBtn;
+
 @end
 
 @implementation LTHomePageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    _addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    _addBtn.frame = CGRectMake(30, 100, 270, 30);
+    
+    [_addBtn setTitle:@"选择每日计划" forState:UIControlStateNormal];
+    
+    [_addBtn setBackgroundColor:[UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:1.00]];
+    
+    [_addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    _addBtn.layer.cornerRadius = 5.0f;
+    
+    [self.view addSubview:_addBtn];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
