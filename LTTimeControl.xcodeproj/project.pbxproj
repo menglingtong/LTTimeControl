@@ -1,0 +1,488 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4061E5FC68F00F0EDD7 /* main.m */; };
+		8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4091E5FC68F00F0EDD7 /* AppDelegate.m */; };
+		8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA40C1E5FC68F00F0EDD7 /* ViewController.m */; };
+		8D1FA4101E5FC68F00F0EDD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1FA40E1E5FC68F00F0EDD7 /* Main.storyboard */; };
+		8D1FA4131E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4111E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld */; };
+		8D1FA4151E5FC68F00F0EDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D1FA4141E5FC68F00F0EDD7 /* Assets.xcassets */; };
+		8D1FA4181E5FC68F00F0EDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1FA4161E5FC68F00F0EDD7 /* LaunchScreen.storyboard */; };
+		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
+		8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */; };
+		DABAF300B481B900CBCE6A39 /* libPods-LTTimeControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5CC9F0B98A1985BD187C36 /* libPods-LTTimeControl.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1AD8AE88B49AB1B234778076 /* Pods-LTTimeControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTTimeControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl.debug.xcconfig"; sourceTree = "<group>"; };
+		4E12815B1BA5537BED02770C /* Pods-LTTimeControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTTimeControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl.release.xcconfig"; sourceTree = "<group>"; };
+		8D1FA4021E5FC68F00F0EDD7 /* LTTimeControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LTTimeControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1FA4061E5FC68F00F0EDD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8D1FA4081E5FC68F00F0EDD7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8D1FA4091E5FC68F00F0EDD7 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8D1FA40B1E5FC68F00F0EDD7 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8D1FA40C1E5FC68F00F0EDD7 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8D1FA40F1E5FC68F00F0EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8D1FA4121E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LTTimeControl.xcdatamodel; sourceTree = "<group>"; };
+		8D1FA4141E5FC68F00F0EDD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8D1FA4171E5FC68F00F0EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8D1FA4191E5FC68F00F0EDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DE3DF611E647AA70007BAA5 /* LTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseViewController.h; sourceTree = "<group>"; };
+		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
+		8DE3DF681E647B740007BAA5 /* LTHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHomePageViewController.h; sourceTree = "<group>"; };
+		8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHomePageViewController.m; sourceTree = "<group>"; };
+		BD5CC9F0B98A1985BD187C36 /* libPods-LTTimeControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LTTimeControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8D1FA3FF1E5FC68F00F0EDD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DABAF300B481B900CBCE6A39 /* libPods-LTTimeControl.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		37805DAB3961D037D14AA482 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD5CC9F0B98A1985BD187C36 /* libPods-LTTimeControl.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5FBC49B3BB6864A5FBF9344E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1AD8AE88B49AB1B234778076 /* Pods-LTTimeControl.debug.xcconfig */,
+				4E12815B1BA5537BED02770C /* Pods-LTTimeControl.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		8D1FA3F91E5FC68F00F0EDD7 = {
+			isa = PBXGroup;
+			children = (
+				8D1FA4041E5FC68F00F0EDD7 /* LTTimeControl */,
+				8D1FA4031E5FC68F00F0EDD7 /* Products */,
+				5FBC49B3BB6864A5FBF9344E /* Pods */,
+				37805DAB3961D037D14AA482 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		8D1FA4031E5FC68F00F0EDD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8D1FA4021E5FC68F00F0EDD7 /* LTTimeControl.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8D1FA4041E5FC68F00F0EDD7 /* LTTimeControl */ = {
+			isa = PBXGroup;
+			children = (
+				8DE3DF5C1E647A290007BAA5 /* Classes */,
+				8D1FA4081E5FC68F00F0EDD7 /* AppDelegate.h */,
+				8D1FA4091E5FC68F00F0EDD7 /* AppDelegate.m */,
+				8D1FA40B1E5FC68F00F0EDD7 /* ViewController.h */,
+				8D1FA40C1E5FC68F00F0EDD7 /* ViewController.m */,
+				8D1FA40E1E5FC68F00F0EDD7 /* Main.storyboard */,
+				8D1FA4141E5FC68F00F0EDD7 /* Assets.xcassets */,
+				8D1FA4161E5FC68F00F0EDD7 /* LaunchScreen.storyboard */,
+				8D1FA4191E5FC68F00F0EDD7 /* Info.plist */,
+				8D1FA4111E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld */,
+				8D1FA4051E5FC68F00F0EDD7 /* Supporting Files */,
+			);
+			path = LTTimeControl;
+			sourceTree = "<group>";
+		};
+		8D1FA4051E5FC68F00F0EDD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8D1FA4061E5FC68F00F0EDD7 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8DE3DF5C1E647A290007BAA5 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8DE3DF641E647B530007BAA5 /* HomePage */,
+				8DE3DF5D1E647A290007BAA5 /* Base */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8DE3DF5D1E647A290007BAA5 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8DE3DF5E1E647A5F0007BAA5 /* Model */,
+				8DE3DF5F1E647A5F0007BAA5 /* View */,
+				8DE3DF601E647A5F0007BAA5 /* ViewController */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8DE3DF5E1E647A5F0007BAA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DE3DF5F1E647A5F0007BAA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8DE3DF601E647A5F0007BAA5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8DE3DF611E647AA70007BAA5 /* LTBaseViewController.h */,
+				8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8DE3DF641E647B530007BAA5 /* HomePage */ = {
+			isa = PBXGroup;
+			children = (
+				8DE3DF651E647B530007BAA5 /* Model */,
+				8DE3DF661E647B530007BAA5 /* View */,
+				8DE3DF671E647B530007BAA5 /* ViewController */,
+			);
+			path = HomePage;
+			sourceTree = "<group>";
+		};
+		8DE3DF651E647B530007BAA5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DE3DF661E647B530007BAA5 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8DE3DF671E647B530007BAA5 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8DE3DF681E647B740007BAA5 /* LTHomePageViewController.h */,
+				8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8D1FA4011E5FC68F00F0EDD7 /* LTTimeControl */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8D1FA41C1E5FC68F00F0EDD7 /* Build configuration list for PBXNativeTarget "LTTimeControl" */;
+			buildPhases = (
+				2D262119262570EBC6D7B587 /* [CP] Check Pods Manifest.lock */,
+				8D1FA3FE1E5FC68F00F0EDD7 /* Sources */,
+				8D1FA3FF1E5FC68F00F0EDD7 /* Frameworks */,
+				8D1FA4001E5FC68F00F0EDD7 /* Resources */,
+				C91DA19D62C104D0FE3C1C7C /* [CP] Embed Pods Frameworks */,
+				E4D639C4143E8A6817722A40 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LTTimeControl;
+			productName = LTTimeControl;
+			productReference = 8D1FA4021E5FC68F00F0EDD7 /* LTTimeControl.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8D1FA3FA1E5FC68F00F0EDD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = LT;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = LryMlt;
+				TargetAttributes = {
+					8D1FA4011E5FC68F00F0EDD7 = {
+						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 69M2LTLWFX;
+					};
+				};
+			};
+			buildConfigurationList = 8D1FA3FD1E5FC68F00F0EDD7 /* Build configuration list for PBXProject "LTTimeControl" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8D1FA3F91E5FC68F00F0EDD7;
+			productRefGroup = 8D1FA4031E5FC68F00F0EDD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8D1FA4011E5FC68F00F0EDD7 /* LTTimeControl */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8D1FA4001E5FC68F00F0EDD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8D1FA4181E5FC68F00F0EDD7 /* LaunchScreen.storyboard in Resources */,
+				8D1FA4151E5FC68F00F0EDD7 /* Assets.xcassets in Resources */,
+				8D1FA4101E5FC68F00F0EDD7 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2D262119262570EBC6D7B587 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C91DA19D62C104D0FE3C1C7C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E4D639C4143E8A6817722A40 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8D1FA3FE1E5FC68F00F0EDD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */,
+				8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */,
+				8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */,
+				8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */,
+				8D1FA4131E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld in Sources */,
+				8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		8D1FA40E1E5FC68F00F0EDD7 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D1FA40F1E5FC68F00F0EDD7 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8D1FA4161E5FC68F00F0EDD7 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8D1FA4171E5FC68F00F0EDD7 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8D1FA41A1E5FC68F00F0EDD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8D1FA41B1E5FC68F00F0EDD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8D1FA41D1E5FC68F00F0EDD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1AD8AE88B49AB1B234778076 /* Pods-LTTimeControl.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LTTimeControl/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.lrymlt.LTTimeControl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8D1FA41E1E5FC68F00F0EDD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4E12815B1BA5537BED02770C /* Pods-LTTimeControl.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = LTTimeControl/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = cn.lrymlt.LTTimeControl;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8D1FA3FD1E5FC68F00F0EDD7 /* Build configuration list for PBXProject "LTTimeControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D1FA41A1E5FC68F00F0EDD7 /* Debug */,
+				8D1FA41B1E5FC68F00F0EDD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8D1FA41C1E5FC68F00F0EDD7 /* Build configuration list for PBXNativeTarget "LTTimeControl" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8D1FA41D1E5FC68F00F0EDD7 /* Debug */,
+				8D1FA41E1E5FC68F00F0EDD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8D1FA4111E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8D1FA4121E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodel */,
+			);
+			currentVersion = 8D1FA4121E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodel */;
+			path = LTTimeControl.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8D1FA3FA1E5FC68F00F0EDD7 /* Project object */;
+}

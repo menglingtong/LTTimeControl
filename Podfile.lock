@@ -1,0 +1,21 @@
+PODS:
+  - DZNEmptyDataSet (1.8.1)
+  - Masonry (1.0.2)
+  - MMTweenAnimation (1.1):
+    - pop
+  - pop (1.0.9)
+
+DEPENDENCIES:
+  - DZNEmptyDataSet
+  - Masonry
+  - MMTweenAnimation
+
+SPEC CHECKSUMS:
+  DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Masonry: 7c429b56da9d4ee0bbb3ed77a5ea710d6a5df39e
+  MMTweenAnimation: a095d3203731fcb32a9b8039c4776cef0dbd2a58
+  pop: f667631a5108a2e60d9e8797c9b32ddaf2080bce
+
+PODFILE CHECKSUM: f5b1e743c607628cd7f5990f98c016229f2c4010
+
+COCOAPODS: 1.2.0
