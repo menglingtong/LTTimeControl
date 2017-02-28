@@ -31,7 +31,7 @@
     
     self.navigationController.interactivePopGestureRecognizer.delegate = (id)self; // 自定义返回按钮后，边缘返回手势失效，使边缘手势生效
     
-    self.view.backgroundColor = [UIColor colorWithRed:0.94 green:0.94 blue:0.94 alpha:1.00];
+    self.view.backgroundColor = kBACKGROUNDCOLOR;
     
     [self.navigationItem setTitle:@"Time Control"];
     

@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D0B80C41E6510D7006B0315 /* LTPlanListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C31E6510D7006B0315 /* LTPlanListViewController.m */; };
+		8D0B80C71E6518BB006B0315 /* LTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C61E6518BB006B0315 /* LTBaseModel.m */; };
+		8D0B80CA1E6518DB006B0315 /* LTPlanListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C91E6518DB006B0315 /* LTPlanListModel.m */; };
+		8D0B80CD1E65301E006B0315 /* LTPlanListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80CC1E65301E006B0315 /* LTPlanListTableViewCell.m */; };
 		8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4061E5FC68F00F0EDD7 /* main.m */; };
 		8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4091E5FC68F00F0EDD7 /* AppDelegate.m */; };
 		8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA40C1E5FC68F00F0EDD7 /* ViewController.m */; };
@@ -22,6 +26,14 @@
 /* Begin PBXFileReference section */
 		1AD8AE88B49AB1B234778076 /* Pods-LTTimeControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTTimeControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl.debug.xcconfig"; sourceTree = "<group>"; };
 		4E12815B1BA5537BED02770C /* Pods-LTTimeControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTTimeControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl.release.xcconfig"; sourceTree = "<group>"; };
+		8D0B80C21E6510D7006B0315 /* LTPlanListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPlanListViewController.h; sourceTree = "<group>"; };
+		8D0B80C31E6510D7006B0315 /* LTPlanListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPlanListViewController.m; sourceTree = "<group>"; };
+		8D0B80C51E6518BB006B0315 /* LTBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseModel.h; sourceTree = "<group>"; };
+		8D0B80C61E6518BB006B0315 /* LTBaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseModel.m; sourceTree = "<group>"; };
+		8D0B80C81E6518DB006B0315 /* LTPlanListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPlanListModel.h; sourceTree = "<group>"; };
+		8D0B80C91E6518DB006B0315 /* LTPlanListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPlanListModel.m; sourceTree = "<group>"; };
+		8D0B80CB1E65301E006B0315 /* LTPlanListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPlanListTableViewCell.h; sourceTree = "<group>"; };
+		8D0B80CC1E65301E006B0315 /* LTPlanListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPlanListTableViewCell.m; sourceTree = "<group>"; };
 		8D1FA4021E5FC68F00F0EDD7 /* LTTimeControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LTTimeControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1FA4061E5FC68F00F0EDD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1FA4081E5FC68F00F0EDD7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -70,6 +82,43 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8D0B80BE1E6510C2006B0315 /* PlanList */ = {
+			isa = PBXGroup;
+			children = (
+				8D0B80BF1E6510C2006B0315 /* Model */,
+				8D0B80C01E6510C2006B0315 /* View */,
+				8D0B80C11E6510C2006B0315 /* ViewController */,
+			);
+			path = PlanList;
+			sourceTree = "<group>";
+		};
+		8D0B80BF1E6510C2006B0315 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D0B80C81E6518DB006B0315 /* LTPlanListModel.h */,
+				8D0B80C91E6518DB006B0315 /* LTPlanListModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8D0B80C01E6510C2006B0315 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8D0B80CB1E65301E006B0315 /* LTPlanListTableViewCell.h */,
+				8D0B80CC1E65301E006B0315 /* LTPlanListTableViewCell.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8D0B80C11E6510C2006B0315 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8D0B80C21E6510D7006B0315 /* LTPlanListViewController.h */,
+				8D0B80C31E6510D7006B0315 /* LTPlanListViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		8D1FA3F91E5FC68F00F0EDD7 = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +143,7 @@
 				8DE3DF5C1E647A290007BAA5 /* Classes */,
 				8D1FA4081E5FC68F00F0EDD7 /* AppDelegate.h */,
 				8D1FA4091E5FC68F00F0EDD7 /* AppDelegate.m */,
+				8D43F1E51E64809D00A01FCA /* LTPrefixHeader.pch */,
 				8D1FA40B1E5FC68F00F0EDD7 /* ViewController.h */,
 				8D1FA40C1E5FC68F00F0EDD7 /* ViewController.m */,
 				8D1FA40E1E5FC68F00F0EDD7 /* Main.storyboard */,
@@ -102,7 +152,6 @@
 				8D1FA4191E5FC68F00F0EDD7 /* Info.plist */,
 				8D1FA4111E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld */,
 				8D1FA4051E5FC68F00F0EDD7 /* Supporting Files */,
-				8D43F1E51E64809D00A01FCA /* LTPrefixHeader.pch */,
 			);
 			path = LTTimeControl;
 			sourceTree = "<group>";
@@ -118,6 +167,7 @@
 		8DE3DF5C1E647A290007BAA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8D0B80BE1E6510C2006B0315 /* PlanList */,
 				8DE3DF641E647B530007BAA5 /* HomePage */,
 				8DE3DF5D1E647A290007BAA5 /* Base */,
 			);
@@ -137,6 +187,8 @@
 		8DE3DF5E1E647A5F0007BAA5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8D0B80C51E6518BB006B0315 /* LTBaseModel.h */,
+				8D0B80C61E6518BB006B0315 /* LTBaseModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -317,6 +369,10 @@
 				8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */,
 				8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */,
 				8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */,
+				8D0B80CD1E65301E006B0315 /* LTPlanListTableViewCell.m in Sources */,
+				8D0B80C71E6518BB006B0315 /* LTBaseModel.m in Sources */,
+				8D0B80C41E6510D7006B0315 /* LTPlanListViewController.m in Sources */,
+				8D0B80CA1E6518DB006B0315 /* LTPlanListModel.m in Sources */,
 				8D1FA4131E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld in Sources */,
 				8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */,
 			);
