@@ -26,6 +26,8 @@
 #define kTITLEFONTCOLOR [UIColor colorWithRed:0.58 green:0.60 blue:0.60 alpha:1.00]
 // Time字色
 #define kTIMEFONTCOLOR [UIColor colorWithRed:0.86 green:0.86 blue:0.86 alpha:1.00]
+// 警告色
+#define kWARNING [UIColor colorWithRed:0.95 green:0.33 blue:0.33 alpha:1.00]
 
 // 屏幕宽
 #define kSCREENWIDTH [UIScreen mainScreen].bounds.size.width
