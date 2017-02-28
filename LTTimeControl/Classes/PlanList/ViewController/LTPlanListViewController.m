@@ -12,6 +12,8 @@
 
 #import "LTPlanListTableViewCell.h"
 
+#import "LTAddPlanViewController.h"
+
 @interface LTPlanListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *mainTableView;
@@ -29,7 +31,9 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedAddPlan)];
+    
+    self.navigationItem.title = @"Plan List";
     
     _dataSourceArr = [NSMutableArray array];
     
@@ -69,9 +73,16 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)didClickedAddPlan{
+    
+    LTAddPlanViewController *addPlanVC = [LTAddPlanViewController new];
+    
+    [self.navigationController pushViewController:addPlanVC animated:YES];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 54.0f;
+    return 60.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
