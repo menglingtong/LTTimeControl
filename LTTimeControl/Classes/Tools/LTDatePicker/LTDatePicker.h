@@ -10,12 +10,16 @@
 
 typedef NS_ENUM(NSUInteger, LTDatePickerMode) {
     LTDatePickerModeTimeTwentyFour,
-    LTDatePickerModeTimeTwelve,
-    LTDatePickerModeDate,
-    LTDatePickerModeDateAndTimeTwentyFour,
-    LTDatePickerModeDateAndTimeTwelve,
+//    LTDatePickerModeTimeTwelve,
+//    LTDatePickerModeDate,
+//    LTDatePickerModeDateAndTimeTwentyFour,
+//    LTDatePickerModeDateAndTimeTwelve,
 };
 
 @interface LTDatePicker : UIView
+
+@property (nonatomic, assign) LTDatePickerMode datePickerMode;
+
+- (instancetype)initWithFrame:(CGRect)frame;
 
 @end

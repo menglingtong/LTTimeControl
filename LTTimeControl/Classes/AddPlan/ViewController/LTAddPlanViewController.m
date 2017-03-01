@@ -16,11 +16,13 @@
 
 #import "LTTimePickerTableViewCell.h"
 
-@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
+#import "LTDatePicker.h"
+
+@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *mainTableView;
 
-@property (nonatomic, strong) UIPickerView *timePiker;
+@property (nonatomic, strong) LTDatePicker *timePiker;
 
 @end
 
@@ -66,11 +68,7 @@
 //    
 //    [self.view addSubview:toolBar];
     
-    _timePiker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 200 * kHEIGHTFIT - 64, kSCREENWIDTH, 200 * kHEIGHTFIT)];
-    
-    _timePiker.delegate = self;
-    
-    _timePiker.dataSource = self;
+    _timePiker = [[LTDatePicker alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 200 * kHEIGHTFIT - 64, kSCREENWIDTH, 200 * kHEIGHTFIT)];
     
     _timePiker.backgroundColor = [UIColor redColor];
     
@@ -177,41 +175,6 @@
         }
         
     }
-}
-
-#pragma mark UIPickerView 代理方法
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return 2;
-}
-
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    if (component == 0) {
-        
-        return 24;
-    }
-    else
-    {
-        return 60;
-    }
-}
-
--(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
-    if (component == 0) {
-        
-        return [NSString stringWithFormat:@"%ld", row + 1];
-    }
-    else
-    {
-        return [NSString stringWithFormat:@"%ld", row + 1];
-    }
-}
-
--(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    NSLog(@"%ld - %ld", component, row);
 }
 
 - (void)didClickedGoBack{
