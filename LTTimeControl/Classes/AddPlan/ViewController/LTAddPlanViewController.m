@@ -16,9 +16,11 @@
 
 #import "LTTimePickerTableViewCell.h"
 
-@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) UITableView *mainTableView;
+
+@property (nonatomic, strong) UIPickerView *timePiker;
 
 @end
 
@@ -28,6 +30,8 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Add Plan";
+    
+    
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
@@ -49,6 +53,28 @@
     [_mainTableView registerClass:[LTAddPlanSectionFooterView class] forHeaderFooterViewReuseIdentifier:@"footerView"];
     
     [self.view addSubview:_mainTableView];
+    
+    [self putPickerView];
+    
+}
+
+- (void)putPickerView {
+    
+//    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 20, kSCREENWIDTH, 44)];
+//    
+//    toolBar.backgroundColor = [UIColor blueColor];
+//    
+//    [self.view addSubview:toolBar];
+    
+    _timePiker = [[UIPickerView alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 200 * kHEIGHTFIT - 64, kSCREENWIDTH, 200 * kHEIGHTFIT)];
+    
+    _timePiker.delegate = self;
+    
+    _timePiker.dataSource = self;
+    
+    _timePiker.backgroundColor = [UIColor redColor];
+    
+    [self.view addSubview:_timePiker];
     
 }
 
@@ -138,6 +164,54 @@
     
     return nil;
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section != 0) {
+        
+        if (indexPath.row == 1 || indexPath.row == 2) {
+            
+            NSLog(@"%ld - %ld", indexPath.section, indexPath.row);
+            
+        }
+        
+    }
+}
+
+#pragma mark UIPickerView 代理方法
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 2;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    if (component == 0) {
+        
+        return 24;
+    }
+    else
+    {
+        return 60;
+    }
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    if (component == 0) {
+        
+        return [NSString stringWithFormat:@"%ld", row + 1];
+    }
+    else
+    {
+        return [NSString stringWithFormat:@"%ld", row + 1];
+    }
+}
+
+-(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSLog(@"%ld - %ld", component, row);
 }
 
 - (void)didClickedGoBack{

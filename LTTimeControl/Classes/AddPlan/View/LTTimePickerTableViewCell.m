@@ -16,11 +16,13 @@
     
     if (self) {
         
-        _topLine            = [UIView new];
-        _planTitleLabel     = [UILabel new];
+        _topLine        = [UIView new];
+        _planTitleLabel = [UILabel new];
+        _timeLabel      = [UILabel new];
         
         [self.contentView addSubview:_topLine];
         [self.contentView addSubview:_planTitleLabel];
+        [self.contentView addSubview:_timeLabel];
         
     }
     
@@ -61,6 +63,17 @@
     
     _planTitleLabel.textColor = kTITLEFONTCOLOR;
     
+    [_timeLabel makeConstraints:^(MASConstraintMaker *make) {
+            
+        make.top.equalTo(_topLine).offset(0);
+        
+        make.bottom.equalTo(self).offset(0);
+        
+        make.left.equalTo(_planTitleLabel.right).offset(12 * kWIDTHFIT);
+        
+        make.right.equalTo(self).offset(-12 * kWIDTHFIT);
+        
+    }];
     
 
 }

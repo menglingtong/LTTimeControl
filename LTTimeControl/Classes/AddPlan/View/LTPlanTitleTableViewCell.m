@@ -76,8 +76,6 @@
         
     }];
     
-    _planTitleTextField.placeholder = @"请输入计划名称";
-    
     _planTitleTextField.font = [UIFont systemFontOfSize:kTITLEFONTSIZE];
     
     _planTitleTextField.textAlignment = 2;

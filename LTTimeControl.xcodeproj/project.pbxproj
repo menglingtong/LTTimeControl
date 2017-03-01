@@ -23,6 +23,7 @@
 		8D1FA4131E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4111E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld */; };
 		8D1FA4151E5FC68F00F0EDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D1FA4141E5FC68F00F0EDD7 /* Assets.xcassets */; };
 		8D1FA4181E5FC68F00F0EDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1FA4161E5FC68F00F0EDD7 /* LaunchScreen.storyboard */; };
+		8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D72CDF31E671A5000EA56AF /* LTDatePicker.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
 		8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */; };
 		DABAF300B481B900CBCE6A39 /* libPods-LTTimeControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5CC9F0B98A1985BD187C36 /* libPods-LTTimeControl.a */; };
@@ -61,6 +62,8 @@
 		8D1FA4171E5FC68F00F0EDD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D1FA4191E5FC68F00F0EDD7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D43F1E51E64809D00A01FCA /* LTPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTPrefixHeader.pch; sourceTree = "<group>"; };
+		8D72CDF21E671A5000EA56AF /* LTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTDatePicker.h; sourceTree = "<group>"; };
+		8D72CDF31E671A5000EA56AF /* LTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTDatePicker.m; sourceTree = "<group>"; };
 		8DE3DF611E647AA70007BAA5 /* LTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseViewController.h; sourceTree = "<group>"; };
 		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
 		8DE3DF681E647B740007BAA5 /* LTHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHomePageViewController.h; sourceTree = "<group>"; };
@@ -220,9 +223,27 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		8D72CDF01E671A3200EA56AF /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				8D72CDF11E671A3200EA56AF /* LTDatePicker */,
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		8D72CDF11E671A3200EA56AF /* LTDatePicker */ = {
+			isa = PBXGroup;
+			children = (
+				8D72CDF21E671A5000EA56AF /* LTDatePicker.h */,
+				8D72CDF31E671A5000EA56AF /* LTDatePicker.m */,
+			);
+			path = LTDatePicker;
+			sourceTree = "<group>";
+		};
 		8DE3DF5C1E647A290007BAA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8D72CDF01E671A3200EA56AF /* Tools */,
 				8D0B80CE1E658055006B0315 /* AddPlan */,
 				8D0B80BE1E6510C2006B0315 /* PlanList */,
 				8DE3DF641E647B530007BAA5 /* HomePage */,
@@ -427,6 +448,7 @@
 				8D0DBEA91E65D4AA00ACB812 /* LTTimePickerTableViewCell.m in Sources */,
 				8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */,
 				8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */,
+				8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */,
 				8D0DBEA61E65D05D00ACB812 /* LTTaskButtonTableViewCell.m in Sources */,
 				8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */,
 				8D0B80D41E65807F006B0315 /* LTAddPlanViewController.m in Sources */,

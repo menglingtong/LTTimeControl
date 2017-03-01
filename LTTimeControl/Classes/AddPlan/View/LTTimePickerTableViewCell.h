@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) UILabel *planTitleLabel;
 
+@property (nonatomic, strong) UILabel *timeLabel;
+
 @end
