@@ -11,7 +11,7 @@
 @interface NSDate (LTCategory)
 
 // 获取当前小时
-- (NSDate *)lt_hour;
+- (NSInteger)lt_hour;
 
 // 获取当前年-月-日 时-分-秒
 - (NSDate *)lt_currentTime;

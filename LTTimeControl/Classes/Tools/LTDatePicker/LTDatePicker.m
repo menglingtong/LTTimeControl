@@ -30,9 +30,9 @@
     
     if (self) {
         
-        NSDate *now = [[NSDate date] lt_currentTime];
+        NSInteger hour = [[NSDate date] lt_hour];
         
-        NSLog(@"%@", now);
+        NSLog(@"%ld", hour);
         
         // 默认为时间模式 h : m
         _componentNum = 2;

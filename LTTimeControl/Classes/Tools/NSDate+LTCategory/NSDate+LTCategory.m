@@ -10,9 +10,17 @@
 
 @implementation NSDate (LTCategory)
 
--(NSDate *)lt_hour
+-(NSInteger)lt_hour
 {
-    return [NSDate new];
+    NSDate *now = [NSDate date];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *dateComponents = [calendar components:NSCalendarUnitHour fromDate:now];
+    
+    NSInteger hour = [dateComponents hour];
+    
+    return hour;
 }
 
 -(NSDate *)lt_currentTime
