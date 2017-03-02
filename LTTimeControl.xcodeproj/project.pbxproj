@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2EA8BD9218EC3AA9F6351FD7 /* libPods-LTTimeControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 218F1E3BF0A86E1F8142F838 /* libPods-LTTimeControl.a */; };
+		8D0AC5831E67B81B003E2D81 /* NSDate+LTCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AC5821E67B81B003E2D81 /* NSDate+LTCategory.m */; };
 		8D0B80C41E6510D7006B0315 /* LTPlanListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C31E6510D7006B0315 /* LTPlanListViewController.m */; };
 		8D0B80C71E6518BB006B0315 /* LTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C61E6518BB006B0315 /* LTBaseModel.m */; };
 		8D0B80CA1E6518DB006B0315 /* LTPlanListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C91E6518DB006B0315 /* LTPlanListModel.m */; };
@@ -26,12 +28,14 @@
 		8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D72CDF31E671A5000EA56AF /* LTDatePicker.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
 		8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */; };
-		DABAF300B481B900CBCE6A39 /* libPods-LTTimeControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD5CC9F0B98A1985BD187C36 /* libPods-LTTimeControl.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1AD8AE88B49AB1B234778076 /* Pods-LTTimeControl.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTTimeControl.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl.debug.xcconfig"; sourceTree = "<group>"; };
+		218F1E3BF0A86E1F8142F838 /* libPods-LTTimeControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LTTimeControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E12815B1BA5537BED02770C /* Pods-LTTimeControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTTimeControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl.release.xcconfig"; sourceTree = "<group>"; };
+		8D0AC5811E67B81B003E2D81 /* NSDate+LTCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LTCategory.h"; sourceTree = "<group>"; };
+		8D0AC5821E67B81B003E2D81 /* NSDate+LTCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LTCategory.m"; sourceTree = "<group>"; };
 		8D0B80C21E6510D7006B0315 /* LTPlanListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPlanListViewController.h; sourceTree = "<group>"; };
 		8D0B80C31E6510D7006B0315 /* LTPlanListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPlanListViewController.m; sourceTree = "<group>"; };
 		8D0B80C51E6518BB006B0315 /* LTBaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseModel.h; sourceTree = "<group>"; };
@@ -68,7 +72,6 @@
 		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
 		8DE3DF681E647B740007BAA5 /* LTHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHomePageViewController.h; sourceTree = "<group>"; };
 		8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHomePageViewController.m; sourceTree = "<group>"; };
-		BD5CC9F0B98A1985BD187C36 /* libPods-LTTimeControl.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LTTimeControl.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DABAF300B481B900CBCE6A39 /* libPods-LTTimeControl.a in Frameworks */,
+				2EA8BD9218EC3AA9F6351FD7 /* libPods-LTTimeControl.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +89,7 @@
 		37805DAB3961D037D14AA482 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BD5CC9F0B98A1985BD187C36 /* libPods-LTTimeControl.a */,
+				218F1E3BF0A86E1F8142F838 /* libPods-LTTimeControl.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -98,6 +101,15 @@
 				4E12815B1BA5537BED02770C /* Pods-LTTimeControl.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8D0AC5801E67B81B003E2D81 /* NSDate+LTCategory */ = {
+			isa = PBXGroup;
+			children = (
+				8D0AC5811E67B81B003E2D81 /* NSDate+LTCategory.h */,
+				8D0AC5821E67B81B003E2D81 /* NSDate+LTCategory.m */,
+			);
+			path = "NSDate+LTCategory";
 			sourceTree = "<group>";
 		};
 		8D0B80BE1E6510C2006B0315 /* PlanList */ = {
@@ -226,6 +238,7 @@
 		8D72CDF01E671A3200EA56AF /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				8D0AC5801E67B81B003E2D81 /* NSDate+LTCategory */,
 				8D72CDF11E671A3200EA56AF /* LTDatePicker */,
 			);
 			path = Tools;
@@ -448,6 +461,7 @@
 				8D0DBEA91E65D4AA00ACB812 /* LTTimePickerTableViewCell.m in Sources */,
 				8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */,
 				8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */,
+				8D0AC5831E67B81B003E2D81 /* NSDate+LTCategory.m in Sources */,
 				8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */,
 				8D0DBEA61E65D05D00ACB812 /* LTTaskButtonTableViewCell.m in Sources */,
 				8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */,

@@ -62,12 +62,6 @@
 
 - (void)putPickerView {
     
-//    UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 20, kSCREENWIDTH, 44)];
-//    
-//    toolBar.backgroundColor = [UIColor blueColor];
-//    
-//    [self.view addSubview:toolBar];
-    
     _timePiker = [[LTDatePicker alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 200 * kHEIGHTFIT - 64, kSCREENWIDTH, 200 * kHEIGHTFIT)];
     
     _timePiker.backgroundColor = [UIColor redColor];

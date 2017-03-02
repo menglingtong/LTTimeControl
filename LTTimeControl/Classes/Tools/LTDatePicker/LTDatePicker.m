@@ -8,6 +8,8 @@
 
 #import "LTDatePicker.h"
 
+#import "NSDate+LTCategory.h"
+
 @interface LTDatePicker ()<UIPickerViewDataSource, UIPickerViewDelegate>
 
 @property (nonatomic, strong) UIPickerView *mainPickerView;
@@ -27,6 +29,10 @@
     self = [super initWithFrame:frame];
     
     if (self) {
+        
+        NSDate *now = [[NSDate date] lt_currentTime];
+        
+        NSLog(@"%@", now);
         
         // 默认为时间模式 h : m
         _componentNum = 2;

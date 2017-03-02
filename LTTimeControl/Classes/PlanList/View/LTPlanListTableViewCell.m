@@ -8,7 +8,6 @@
 
 #import "LTPlanListTableViewCell.h"
 
-#import <Masonry.h>
 
 @implementation LTPlanListTableViewCell
 
