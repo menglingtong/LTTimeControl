@@ -19,6 +19,8 @@
 // 根据模式不同，创建不同列数
 @property (nonatomic, assign) NSInteger componentNum;
 
+// 提示框
+@property (nonatomic, strong) UILabel *hintLabel;
 
 @end
 
@@ -32,7 +34,7 @@
         
         NSInteger hour = [[NSDate date] lt_hour];
         
-        NSLog(@"%ld", hour);
+        NSInteger minute = [[NSDate date] lt_minute];
         
         // 默认为时间模式 h : m
         _componentNum = 2;
@@ -43,11 +45,38 @@
         
         [self addSubview:_toolBar];
         
+        // 初始化提示框
+        _hintLabel = [[UILabel alloc] initWithFrame:CGRectMake((kSCREENWIDTH - 200 * kWIDTHFIT) / 2.0, 0, 200 * kWIDTHFIT, 30 * kHEIGHTFIT)];
+        
+        _hintLabel.textAlignment = NSTextAlignmentCenter;
+        
+        _hintLabel.text = [NSString stringWithFormat:@"%ld : %ld", hour, minute];
+        
+        [_toolBar addSubview:_hintLabel];
+        
+        // 确定按钮
+        UIButton *confirm = [UIButton buttonWithType:UIButtonTypeCustom];
+        
+        confirm.frame = CGRectMake(CGRectGetMaxX(_hintLabel.frame), 0, (kSCREENWIDTH - 200 * kWIDTHFIT) / 2.0, 30 * kHEIGHTFIT);
+        
+        [confirm setTitle:@"确定" forState:UIControlStateNormal];
+        
+        [confirm setTitleColor:[UIColor colorWithRed:0.04 green:0.22 blue:0.33 alpha:1.00] forState:UIControlStateNormal];
+        
+        [_toolBar addSubview:confirm];
+        
         _mainPickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 30 * kHEIGHTFIT, kSCREENWIDTH, self.bounds.size.height - 30* kHEIGHTFIT)];
         
         _mainPickerView.delegate = self;
         
         _mainPickerView.dataSource = self;
+        
+        [_mainPickerView setShowsSelectionIndicator:YES];
+        
+        // 选中当前的小时
+        [_mainPickerView selectRow:hour-1 inComponent:0 animated:YES];
+        // 选中当前分钟
+        [_mainPickerView selectRow:minute-1 inComponent:1 animated:YES];
         
         _mainPickerView.backgroundColor = [UIColor whiteColor];
         
@@ -114,6 +143,25 @@
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     NSLog(@"%ld - %ld", component, row);
+}
+
+- (void)didClickedConfirmActor:(id)sender
+{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmActionWithDatePicker:)]) {
+        
+        [self.delegate confirmActionWithDatePicker:self];
+        
+    }
+    
+    
+    [self removeFromSuperview];
+}
+
+- (void)removeFromSuperview
+{
+    
+    self.delegate = nil;
+    [super removeFromSuperview];
 }
 
 /*

@@ -16,10 +16,22 @@ typedef NS_ENUM(NSUInteger, LTDatePickerMode) {
 //    LTDatePickerModeDateAndTimeTwelve,
 };
 
+@protocol LTNSDatePickerDelegate;
+
 @interface LTDatePicker : UIView
 
 @property (nonatomic, assign) LTDatePickerMode datePickerMode;
 
+@property (nonatomic, assign) id<LTNSDatePickerDelegate> delegate;
+
 - (instancetype)initWithFrame:(CGRect)frame;
+
+@end
+
+// 代理方法
+@protocol LTNSDatePickerDelegate <NSObject>
+
+@optional
+- (void)confirmActionWithDatePicker:(LTDatePicker *)datePicker;
 
 @end

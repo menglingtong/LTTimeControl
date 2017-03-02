@@ -23,6 +23,19 @@
     return hour;
 }
 
+-(NSInteger)lt_minute
+{
+    NSDate *now = [NSDate date];
+    
+    NSCalendar *calendar = [NSCalendar currentCalendar];
+    
+    NSDateComponents *dateComponents = [calendar components:NSCalendarUnitMinute fromDate:now];
+    
+    NSInteger minute = [dateComponents minute];
+    
+    return minute;
+}
+
 -(NSDate *)lt_currentTime
 {
     NSDate *date        = [NSDate date];                        // 获得时间对象
