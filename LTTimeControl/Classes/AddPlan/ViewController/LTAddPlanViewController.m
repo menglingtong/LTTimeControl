@@ -18,7 +18,7 @@
 
 #import "LTDatePicker.h"
 
-@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, LTNSDatePickerDelegate>
 
 @property (nonatomic, strong) UITableView *mainTableView;
 
@@ -56,17 +56,42 @@
     
     [self.view addSubview:_mainTableView];
     
-    [self putPickerView];
+//    [self putPickerView];
     
 }
 
-- (void)putPickerView {
+- (void)putPickerViewWithSectionNum:(NSInteger)sectionNum RowNum:(NSInteger)rowNum {
     
-    _timePiker = [[LTDatePicker alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 200 * kHEIGHTFIT - 64, kSCREENWIDTH, 200 * kHEIGHTFIT)];
+    _timePiker = [[LTDatePicker alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT, kSCREENWIDTH, 200 * kHEIGHTFIT)];
     
-    _timePiker.backgroundColor = [UIColor redColor];
+    _timePiker.delegate = self;
+    
+    _timePiker.sectionNum = sectionNum;
+    
+    _timePiker.rowNum = rowNum;
     
     [self.view addSubview:_timePiker];
+    
+//    __weak LTAddPlanViewController *weakSelf = self;
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        _timePiker.frame = CGRectMake(0, kSCREENHEIGHT - 200 * kHEIGHTFIT - 64, kSCREENWIDTH, 200 * kHEIGHTFIT);
+        
+    }];
+    
+    
+    
+}
+
+
+- (void)confirmActionWithDatePicker:(LTDatePicker *)datePicker WithHintStr:(NSString *)hintStr WithSection:(NSInteger)section WithRow:(NSInteger)row
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
+    
+    LTTimePickerTableViewCell *cell = [_mainTableView cellForRowAtIndexPath:indexPath];
+    
+    cell.timeLabel.text = hintStr;
     
 }
 
@@ -102,7 +127,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 4;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -142,12 +167,16 @@
             
             cell.planTitleLabel.text = @"开始时间：";
             
+            cell.timeLabel.text = @"15:29";
+            
             return cell;
         }else if (indexPath.row == 2)
         {
             LTTimePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell"];
             
             cell.planTitleLabel.text = @"结束时间：";
+            
+            cell.timeLabel.text = @"16:29";
             
             return cell;
         }
@@ -160,11 +189,19 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     if (indexPath.section != 0) {
         
         if (indexPath.row == 1 || indexPath.row == 2) {
             
-            NSLog(@"%ld - %ld", indexPath.section, indexPath.row);
+            if (_timePiker) {
+                
+                [_timePiker removeFromSuperview];
+                
+                NSLog(@"%@", _timePiker);
+            }
+            
+            [self putPickerViewWithSectionNum:indexPath.section RowNum:indexPath.row];
             
         }
         

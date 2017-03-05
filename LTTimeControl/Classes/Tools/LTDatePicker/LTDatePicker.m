@@ -26,6 +26,8 @@
 // 提示框
 @property (nonatomic, strong) UILabel *hintLabel;
 
+@property (nonatomic, strong) NSString *hintStr;
+
 @end
 
 @implementation LTDatePicker
@@ -89,7 +91,10 @@
     
     _hintLabel.textAlignment = NSTextAlignmentCenter;
     
-    _hintLabel.text = [NSString stringWithFormat:@"%ld : %ld", _hourValue, _minuteValue];
+    // 获取当前时间格式
+    _hintStr = [self getCurrentMomentTimeHourValue:_hourValue MinuteValue:_minuteValue];
+    
+    _hintLabel.text = _hintStr;
     
     [_toolBar addSubview:_hintLabel];
     
@@ -102,7 +107,7 @@
     
     [confirm setTitleColor:[UIColor colorWithRed:0.04 green:0.22 blue:0.33 alpha:1.00] forState:UIControlStateNormal];
     
-    
+    [confirm addTarget:self action:@selector(didClickedConfirmActor:) forControlEvents:UIControlEventTouchUpInside];
     
     [_toolBar addSubview:confirm];
     
@@ -190,41 +195,56 @@
         _minuteValue = row + 1;
         
     }
+    
+    _hintStr = [self getCurrentMomentTimeHourValue:_hourValue MinuteValue:_minuteValue];
+    
+    _hintLabel.text = _hintStr;
+    
+    
+}
+
+- (NSString *)getCurrentMomentTimeHourValue:(NSInteger)hourValue MinuteValue:(NSInteger)minuteValue
+{
+    NSString *currentTime = [NSString string];
+    
     if (_hourValue < 10) {
         
         if (_minuteValue < 10) {
             
-            _hintLabel.text = [NSString stringWithFormat:@"0%ld : 0%ld", _hourValue, _minuteValue];
+            currentTime = [NSString stringWithFormat:@"0%ld : 0%ld", _hourValue, _minuteValue];
+            
         }
         else
         {
-            _hintLabel.text = [NSString stringWithFormat:@"0%ld : %ld", _hourValue, _minuteValue];
+            currentTime = [NSString stringWithFormat:@"0%ld : %ld", _hourValue, _minuteValue];
+            
         }
-        
         
     }
     else
     {
         if (_minuteValue < 10) {
             
-            _hintLabel.text = [NSString stringWithFormat:@"%ld : 0%ld", _hourValue, _minuteValue];
+            currentTime = [NSString stringWithFormat:@"%ld : 0%ld", _hourValue, _minuteValue];
+            
         }
         else
         {
-            _hintLabel.text = [NSString stringWithFormat:@"%ld : %ld", _hourValue, _minuteValue];
+            currentTime = [NSString stringWithFormat:@"%ld : %ld", _hourValue, _minuteValue];
+            
         }
     }
     
+    return currentTime;
 }
 
 - (void)didClickedConfirmActor:(id)sender
 {
-    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmActionWithDatePicker:)]) {
+    if (self.delegate && [self.delegate respondsToSelector:@selector(confirmActionWithDatePicker:WithHintStr:WithSection:WithRow:)]) {
         
-        [self.delegate confirmActionWithDatePicker:self];
+        [self.delegate confirmActionWithDatePicker:self WithHintStr:_hintStr WithSection:_sectionNum WithRow:_rowNum];
         
     }
-    
     
     [self removeFromSuperview];
 }
@@ -232,8 +252,19 @@
 - (void)removeFromSuperview
 {
     
-    self.delegate = nil;
-    [super removeFromSuperview];
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        self.frame = CGRectMake(0, kSCREENHEIGHT, kSCREENWIDTH, 200 * kHEIGHTFIT);
+        
+    } completion:^(BOOL finished) {
+        
+        self.delegate = nil;
+        
+        [super removeFromSuperview];
+        
+    }];
+    
+    
 }
 
 /*

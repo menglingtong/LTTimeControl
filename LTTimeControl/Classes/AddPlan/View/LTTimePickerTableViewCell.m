@@ -19,10 +19,12 @@
         _topLine        = [UIView new];
         _planTitleLabel = [UILabel new];
         _timeLabel      = [UILabel new];
+        _timeHintLabel  = [UILabel new];
         
         [self.contentView addSubview:_topLine];
         [self.contentView addSubview:_planTitleLabel];
         [self.contentView addSubview:_timeLabel];
+        [self.contentView addSubview:_timeHintLabel];
         
     }
     
@@ -65,7 +67,7 @@
     
     [_timeLabel makeConstraints:^(MASConstraintMaker *make) {
             
-        make.top.equalTo(_topLine).offset(0);
+        make.top.equalTo(_topLine.bottom).offset(0);
         
         make.bottom.equalTo(self).offset(0);
         
@@ -74,6 +76,12 @@
         make.right.equalTo(self).offset(-12 * kWIDTHFIT);
         
     }];
+    
+    _timeLabel.font = [UIFont systemFontOfSize:kTITLEFONTSIZE];
+    
+    _timeLabel.textColor = kTITLEFONTCOLOR;
+    
+    _timeLabel.textAlignment = 2;
     
 
 }

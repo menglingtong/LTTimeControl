@@ -16,4 +16,10 @@
 
 @property (nonatomic, strong) UILabel *timeLabel;
 
+@property (nonatomic, strong) UILabel *timeHintLabel;
+
+@property (nonatomic, assign) NSInteger sectionNum;
+
+@property (nonatomic, assign) NSInteger rowNum;
+
 @end

@@ -24,7 +24,14 @@ typedef NS_ENUM(NSUInteger, LTDatePickerMode) {
 
 @property (nonatomic, assign) id<LTNSDatePickerDelegate> delegate;
 
+@property (nonatomic, assign) NSInteger sectionNum;
+
+@property (nonatomic, assign) NSInteger rowNum;
+
+
 - (instancetype)initWithFrame:(CGRect)frame;
+
+- (void)removeFromSuperview;
 
 @end
 
@@ -32,6 +39,6 @@ typedef NS_ENUM(NSUInteger, LTDatePickerMode) {
 @protocol LTNSDatePickerDelegate <NSObject>
 
 @optional
-- (void)confirmActionWithDatePicker:(LTDatePicker *)datePicker;
+- (void)confirmActionWithDatePicker:(LTDatePicker *)datePicker WithHintStr:(NSString *)hintStr WithSection:(NSInteger)section WithRow:(NSInteger)row;
 
 @end
