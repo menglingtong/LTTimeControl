@@ -18,6 +18,8 @@
 
 #import "LTDatePicker.h"
 
+#import "UIView+LTKeyboardOffsetView.h"
+
 @interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, LTNSDatePickerDelegate>
 
 @property (nonatomic, strong) UITableView *mainTableView;
@@ -27,6 +29,20 @@
 @end
 
 @implementation LTAddPlanViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.view openKeyboardOffsetView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    
+    [self.view closeKeyboardOffsetView];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];

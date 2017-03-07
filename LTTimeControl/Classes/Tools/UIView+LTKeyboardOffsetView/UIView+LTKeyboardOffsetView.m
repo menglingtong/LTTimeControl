@@ -69,8 +69,72 @@ static char kltKeyboardOffsetViewDelegate;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
+/* 获得键盘高度 */
+/**
+ *  convertRect
+ *
+ *  [A convertRect:B.frame  toView:C];   // 计算A上的B视图在C中的位置CGRect
+ *  [A convertRect:B.frame  fromView:C]; // 计算C上的B视图在A中的位置CGRect
+ *
+ *  convertPoint
+ *
+ *  [A convertPoint:B.center toView:C];  // 计算A上的B视图在C中的位置CGPoint
+ *  [A convertPoint:B.center fromView:C];// 计算C上的B视图在A中的位置CGPoint
+ *
+ */
+- (CGFloat)keyboardFrameHeight:(NSDictionary *)userInfo
+{
+    CGRect keyboardUncorrectedFrame = [[userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    CGRect keyboardFrame = [self convertRect:keyboardUncorrectedFrame fromView:nil];
+    return keyboardFrame.size.height;
+}
+
+- (UIView *)firstResponder
+{
+    if ([self isKindOfClass:[UITextField class]] || [self isKindOfClass:[UITextView class]]) {
+        
+        if (self.isFirstResponder) {
+            
+            return self;
+        }
+        else
+        {
+            return nil;
+        }
+        
+    }
+    
+    NSArray *subView = [self subviews];
+    
+    if (subView.count == 0) {
+        return nil;
+    }
+    
+    for (UIView *responder in subView) {
+        
+        UIView *firstResponder = [responder firstResponder];
+        
+        if (firstResponder.isFirstResponder) {
+            
+            return firstResponder;
+        }
+        
+    }
+    
+    return nil;
+}
+
 - (void)keyboardWillAppear:(NSNotification *)notification
 {
+    NSLog(@"%@", [notification userInfo]);
+    
+    // 获取键盘高度
+    CGFloat keyboardHeight = [self keyboardFrameHeight:[notification userInfo]];
+    
+    // 获取键盘弹出持续时间
+    CGFloat duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
+    
+    
     
 }
 
