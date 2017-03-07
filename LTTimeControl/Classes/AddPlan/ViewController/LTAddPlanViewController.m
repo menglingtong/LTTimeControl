@@ -20,7 +20,7 @@
 
 #import "UIView+LTKeyboardOffsetView.h"
 
-@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, LTNSDatePickerDelegate>
+@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, LTNSDatePickerDelegate, LTKeyboardOffsetViewDelegate>
 
 @property (nonatomic, strong) UITableView *mainTableView;
 
@@ -35,6 +35,8 @@
     [super viewWillAppear:animated];
     
     [self.view openKeyboardOffsetView];
+    
+    self.view.ltKeyboardOffsetViewDelegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -42,6 +44,24 @@
     [super viewWillDisappear:animated];
     
     [self.view closeKeyboardOffsetView];
+}
+
+/**
+ *  弹出键盘时，自定义视图向上移动的高度
+ *
+ *  @param firstResponder 第一响应者
+ *  @param keyboardHeight 当前弹出键盘的高度
+ *  @param offsetHeight   默认偏移高度
+ *
+ *  @return 视图向上移动的高度
+ */
+- (CGFloat)offsetHeightWithFirstResponder:(UIView *)firstResponder keyboardHeight:(CGFloat)keyboardHeight offsetHeight:(CGFloat)offsetHeight
+{
+//    if ([firstResponder isEqual:_testTextField])
+//    {
+//        return keyboardHeight;
+//    }
+    return offsetHeight;
 }
 
 - (void)viewDidLoad {
@@ -143,7 +163,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 2;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

@@ -134,13 +134,59 @@ static char kltKeyboardOffsetViewDelegate;
     // 获取键盘弹出持续时间
     CGFloat duration = [[[notification userInfo] objectForKey:UIKeyboardAnimationDurationUserInfoKey] floatValue];
     
+    // 键盘弹出动画的时间曲线
+    UIViewAnimationOptions options = [[[notification userInfo] objectForKey:UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16;
     
+    // 获取第一响应者的位置
+    UIView *firstResponder = [self firstResponder];
+    CGRect rect = [firstResponder.superview convertRect:firstResponder.frame toView:self];
     
+    // 计算向上偏移的高度，根据当前的第一响应者计算视图偏移高度，当键盘没有遮挡输入框时，弹出键盘时不需要移动视图
+    CGFloat offsetViewHeight = self.frame.size.height - rect.origin.y - rect.size.height - self.keyboardGap;
+    if (keyboardHeight < offsetViewHeight)
+        offsetViewHeight = 0;
+    else
+        offsetViewHeight = keyboardHeight - offsetViewHeight;
+    
+    // 通过代理获取视图偏移的高度
+    if([self.ltKeyboardOffsetViewDelegate respondsToSelector:@selector(offsetHeightWithFirstResponder:keyboardHeight:offsetHeight:)])
+    {
+        offsetViewHeight  = [self.ltKeyboardOffsetViewDelegate offsetHeightWithFirstResponder:firstResponder
+                                                                               keyboardHeight:keyboardHeight
+                                                                                 offsetHeight:offsetViewHeight];
+    }
+    
+    // 避免循环引用
+    __weak typeof(self) weakSelf = self;
+    
+    // 执行向上移动视图的动画
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:options
+                     animations:^{
+                         // 动画执行代码
+                         weakSelf.transform = CGAffineTransformMakeTranslation(0, -offsetViewHeight);
+                     }
+                     completion:^(BOOL completed) {
+                         // 动画结束后执行的代码
+                     }];
 }
 
 - (void)keyboardWillDisappear:(NSNotification *)notification
 {
+    CGFloat duration = [[notification userInfo][UIKeyboardAnimationDurationUserInfoKey] floatValue];    // 动画持续时间
+    UIViewAnimationOptions options = [[notification userInfo][UIKeyboardAnimationCurveUserInfoKey] integerValue] << 16; // 动画时间曲线
     
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:options
+                     animations:^{
+                         // 动画执行代码
+                         self.transform = CGAffineTransformIdentity;
+                     }
+                     completion:^(BOOL completed) {
+                         // 动画结束后执行的代码
+                     }];
 }
 
 @end
