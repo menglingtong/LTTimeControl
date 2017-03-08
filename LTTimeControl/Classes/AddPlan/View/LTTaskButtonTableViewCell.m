@@ -64,9 +64,20 @@
     
     [_deleteBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     
-    _deleteBtn.layer.cornerRadius = 5;
+    _deleteBtn.layer.cornerRadius = kCORNERRADIUS;
+    
+    [_deleteBtn addTarget:self action:@selector(didClickedDeleteBtn) forControlEvents:UIControlEventTouchUpInside];
     
     _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:kTITLEFONTSIZE];
+}
+
+- (void)didClickedDeleteBtn
+{
+    if (_deleteBtn) {
+        
+        _deleteBlock(_sectionNum);
+        
+    }
 }
 
 - (void)awakeFromNib {

@@ -8,11 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+// 删除按钮block
+typedef void(^deleteBlock)(NSInteger);
+
 @interface LTTaskButtonTableViewCell : UITableViewCell
 
 @property (nonatomic, strong) UIView *topLine;
 
 @property (nonatomic, strong) UIButton *deleteBtn;
+
+@property (nonatomic, assign) NSInteger sectionNum;
+
+@property (nonatomic, copy) deleteBlock deleteBlock;
 
 //@property (nonatomic, strong) UIButton *saveBtn;
 

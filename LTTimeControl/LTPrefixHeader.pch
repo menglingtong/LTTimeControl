@@ -40,6 +40,14 @@
 
 #define kHEIGHTFIT ([UIScreen mainScreen].bounds.size.height / 667.0f)
 
+// 圆角
+#define kCORNERRADIUS 5
+
+#define kBUTTONTITLECOLOR [UIColor whiteColor]
+
+// 大按钮背景色
+#define kBUTTONBGCOLOR [UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:1.00]
+
 #define MAS_SHORTHAND // 1.对于约束参数可以省去 "mas_"
 #define MAS_SHORTHAND_GLOBALS // 2.对于默认的约束参数自动装箱
 #import "Masonry.h" // 3.宏必须添加在头文件前面

@@ -26,6 +26,8 @@
 
 @property (nonatomic, strong) LTDatePicker *timePiker;
 
+@property (nonatomic, assign) NSInteger sectionCount;
+
 @end
 
 @implementation LTAddPlanViewController
@@ -69,7 +71,8 @@
     
     self.navigationItem.title = @"Add Plan";
     
-    
+    // 默认两个分区，一个题头，一个空任务
+    _sectionCount = 2;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
@@ -89,6 +92,26 @@
     [_mainTableView registerClass:[LTTimePickerTableViewCell class] forCellReuseIdentifier:@"pickerCell"];
     // footerView
     [_mainTableView registerClass:[LTAddPlanSectionFooterView class] forHeaderFooterViewReuseIdentifier:@"footerView"];
+    
+    UIView *footerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kSCREENWIDTH, 130 * kHEIGHTFIT)];
+    
+    UIButton *addSectionBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    addSectionBtn.frame = CGRectMake(50 * kWIDTHFIT, 50 * kHEIGHTFIT, 275 * kWIDTHFIT, 30 * kHEIGHTFIT);
+    
+    [addSectionBtn setTitle:@"添加任务" forState:UIControlStateNormal];
+    
+    addSectionBtn.layer.cornerRadius = kCORNERRADIUS;
+    
+    [addSectionBtn setBackgroundColor:kBUTTONBGCOLOR];
+    
+    [addSectionBtn setTitleColor:kBUTTONTITLECOLOR forState:UIControlStateNormal];
+    
+    [addSectionBtn addTarget:self action:@selector(didClickedAddSection) forControlEvents:UIControlEventTouchUpInside];
+    
+    [footerView addSubview:addSectionBtn];
+    
+    _mainTableView.tableFooterView = footerView;
     
     [self.view addSubview:_mainTableView];
     
@@ -120,7 +143,14 @@
     
 }
 
-
+/**
+ *  datePicker确认按钮代理方法
+ *
+ *  @param datePicker datePicker对象
+ *  @param hintStr    时间字符串
+ *  @param section    分区号
+ *  @param row        行号
+ */
 - (void)confirmActionWithDatePicker:(LTDatePicker *)datePicker WithHintStr:(NSString *)hintStr WithSection:(NSInteger)section WithRow:(NSInteger)row
 {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:row inSection:section];
@@ -131,6 +161,7 @@
     
 }
 
+#pragma mark tableView 代理方法
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 60.0f;
@@ -163,7 +194,15 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 6;
+    if (_sectionCount >= 2) {
+        
+        return _sectionCount;
+    }
+    else
+    {
+        return 2;
+    }
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -194,6 +233,29 @@
         else if(indexPath.row == 3)
         {
             LTTaskButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buttonCell"];
+            
+            cell.sectionNum = indexPath.section;
+            
+            cell.deleteBlock = ^(NSInteger sectionNum){
+                
+                NSIndexSet *set = [NSIndexSet indexSetWithIndex:sectionNum];
+                
+                if (_sectionCount > 2) {
+                    
+                    _sectionCount -= 1;
+                    
+                    [_mainTableView deleteSections:set withRowAnimation:UITableViewRowAnimationFade];
+                    
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        
+                        [_mainTableView reloadData];
+                        
+                    });
+                    
+                    NSLog(@"%ld", sectionNum);
+                }
+                
+            };
             
             return cell;
             
@@ -243,6 +305,17 @@
     }
 }
 
+#pragma mark 添加分区按钮点击方法 - 添加任务
+- (void)didClickedAddSection
+{
+    _sectionCount += 1;
+    
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:_sectionCount-1];
+    
+    [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+}
+
+// 返回上一页
 - (void)didClickedGoBack{
     
     [self.navigationController popViewControllerAnimated:YES];

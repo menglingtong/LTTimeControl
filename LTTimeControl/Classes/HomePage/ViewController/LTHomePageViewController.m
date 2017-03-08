@@ -27,9 +27,9 @@
     
     [_addBtn setTitle:@"选择每日计划" forState:UIControlStateNormal];
     
-    [_addBtn setBackgroundColor:[UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:1.00]];
+    [_addBtn setBackgroundColor:kBUTTONBGCOLOR];
     
-    [_addBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [_addBtn setTitleColor:kBUTTONTITLECOLOR forState:UIControlStateNormal];
     
     _addBtn.layer.cornerRadius = 5.0f;
     
