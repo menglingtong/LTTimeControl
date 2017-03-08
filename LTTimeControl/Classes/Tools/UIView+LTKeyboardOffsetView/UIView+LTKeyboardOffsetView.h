@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+#define kLTDatePickerShow @"LTDatePickerShow"
+
+#define kLTDatePickerHide @"LTDatePickerHide"
+
 @protocol LTKeyboardOffsetViewDelegate <NSObject>
 
 @required

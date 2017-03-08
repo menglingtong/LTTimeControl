@@ -17,6 +17,7 @@ static char kkeyboardGap;
 static char kltKeyboardOffsetViewDelegate;
 
 
+
 // 由于类目不可以直接添加属性，我们可以通过 runtime 的 objc_setAssociatedObject 为 UIView 动态添加属性，和类进行关联
 - (void)setKeyboardGap:(CGFloat)keyboardGap
 {
@@ -58,6 +59,15 @@ static char kltKeyboardOffsetViewDelegate;
                                                  name:UIKeyboardWillHideNotification
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(datePickerWillAppear:)
+                                                 name:kLTDatePickerShow
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(datePickerWillDisappear:)
+                                                 name:kLTDatePickerHide
+                                               object:nil];
     
 }
 
@@ -67,6 +77,10 @@ static char kltKeyboardOffsetViewDelegate;
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
     
     [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kLTDatePickerShow object:nil];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:kLTDatePickerHide object:nil];
 }
 
 /* 获得键盘高度 */
@@ -188,5 +202,17 @@ static char kltKeyboardOffsetViewDelegate;
                          // 动画结束后执行的代码
                      }];
 }
+
+- (void)datePickerWillAppear:(NSNotification *)notification
+{
+    NSLog(@"%@", [[notification userInfo] objectForKey:@"datePickerHeight"]);
+}
+
+- (void)datePickerWillDisappear:(NSNotification *)notification
+{
+    
+}
+
+
 
 @end

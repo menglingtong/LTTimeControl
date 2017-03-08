@@ -234,7 +234,6 @@
                 
                 [_timePiker removeFromSuperview];
                 
-                NSLog(@"%@", _timePiker);
             }
             
             [self putPickerViewWithSectionNum:indexPath.section RowNum:indexPath.row];
