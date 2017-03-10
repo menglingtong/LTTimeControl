@@ -246,13 +246,13 @@
                     
                     [_mainTableView deleteSections:set withRowAnimation:UITableViewRowAnimationFade];
                     
+                    // 延迟0.3秒执行刷新tableview，实现动画完整性
                     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                         
                         [_mainTableView reloadData];
                         
                     });
                     
-                    NSLog(@"%ld", sectionNum);
                 }
                 
             };

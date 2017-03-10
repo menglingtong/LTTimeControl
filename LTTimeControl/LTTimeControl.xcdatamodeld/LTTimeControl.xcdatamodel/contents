@@ -1,4 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="Test1.xcdatamodel" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1" systemVersion="11A491" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
-    <elements/>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Automatic">
+    <entity name="Plan" syncable="YES">
+        <attribute name="planName" optional="YES" attributeType="String" defaultValueString="我的计划" syncable="YES"/>
+        <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="plan" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="Task" syncable="YES">
+        <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="startTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plan" inverseName="task" inverseEntity="Plan" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Task" positionX="-54" positionY="-9" width="128" height="105"/>
+        <element name="Plan" positionX="-36" positionY="36" width="128" height="75"/>
+    </elements>
 </model>
