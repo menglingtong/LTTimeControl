@@ -140,7 +140,7 @@ static char kltKeyboardOffsetViewDelegate;
 
 - (void)keyboardWillAppear:(NSNotification *)notification
 {
-    NSLog(@"%@", [notification userInfo]);
+//    NSLog(@"%@", [notification userInfo]);
     
     // 获取键盘高度
     CGFloat keyboardHeight = [self keyboardFrameHeight:[notification userInfo]];
@@ -205,7 +205,7 @@ static char kltKeyboardOffsetViewDelegate;
 
 - (void)datePickerWillAppear:(NSNotification *)notification
 {
-    NSLog(@"%@", [[notification userInfo] objectForKey:@"datePickerHeight"]);
+//    NSLog(@"%@", [[notification userInfo] objectForKey:@"datePickerHeight"]);
 }
 
 - (void)datePickerWillDisappear:(NSNotification *)notification

@@ -34,6 +34,8 @@
 
 @property (nonatomic, assign) NSInteger sectionCount;
 
+@property (nonatomic, strong) LTCoreDataManager *ltCoreDataManager;
+
 @end
 
 @implementation LTAddPlanViewController
@@ -76,6 +78,13 @@
     [super viewDidLoad];
     
     self.navigationItem.title = @"Add Plan";
+    
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
+    
+//    [self.view addGestureRecognizer:tapGesture];
+    
+    // 初始化CoreData管理器
+    _ltCoreDataManager = [LTCoreDataManager shareLTCoreDataManager];
     
     // 默认两个分区，一个题头，一个空任务
     _sectionCount = 2;
@@ -122,6 +131,13 @@
     [self.view addSubview:_mainTableView];
     
 //    [self putPickerView];
+    
+}
+
+// 点击屏幕收起键盘
+- (void)tapGesture{
+    
+    [self.view endEditing:YES];
     
 }
 
@@ -304,6 +320,8 @@
                 
             }
             
+            [self.view endEditing:YES];
+            
             [self putPickerViewWithSectionNum:indexPath.section RowNum:indexPath.row];
             
         }
@@ -326,6 +344,10 @@
         [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
         
     }
+    else
+    {
+        NSLog(@"保存失败");
+    }
     
     
 }
@@ -337,7 +359,59 @@
  */
 - (BOOL)saveSectionWithSectionNum:(NSInteger)sectionNum
 {
+    NSIndexPath *titleIndexPath = [NSIndexPath indexPathForRow:0 inSection:sectionNum];
+    
+    NSIndexPath *startTimeIndexPath = [NSIndexPath indexPathForRow:1 inSection:sectionNum];
+    
+    NSIndexPath *endTimeIndexPath = [NSIndexPath indexPathForRow:2 inSection:sectionNum];
+    
+    LTPlanTitleTableViewCell *titleCell = [_mainTableView cellForRowAtIndexPath:titleIndexPath];
+    
+    LTTimePickerTableViewCell *startCell = [_mainTableView cellForRowAtIndexPath:startTimeIndexPath];
+    
+    LTTimePickerTableViewCell *endCell = [_mainTableView cellForRowAtIndexPath:endTimeIndexPath];
+    
+    Task *task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    
+    task.taskName = titleCell.planTitleTextField.text;
+    
+    task.startTime = startCell.timeLabel.text;
+    
+    task.endTime = endCell.timeLabel.text;
+    
+    [_ltCoreDataManager saveContext];
+    
+    [self selectTasks];
+    
     return YES;
+}
+
+// 查询方法
+- (void)selectTasks{
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    
+    NSArray *fetchObjArr = [_ltCoreDataManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (fetchObjArr == nil) {
+        
+        NSLog(@"%@", error);
+    }
+    
+    NSMutableArray *dataArray = fetchObjArr.mutableCopy;
+    
+    for (Task *taskObj in dataArray) {
+        
+        NSLog(@"Task名称：%@ - 开始时间：%@ - 结束时间：%@", taskObj.taskName, taskObj.startTime, taskObj.endTime);
+        
+    }
+    
 }
 
 // 返回上一页
