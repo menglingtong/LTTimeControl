@@ -20,6 +20,12 @@
 
 #import "UIView+LTKeyboardOffsetView.h"
 
+#import "Task.h"
+
+#import "Plan.h"
+
+#import "LTCoreDataManager.h"
+
 @interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, LTNSDatePickerDelegate, LTKeyboardOffsetViewDelegate>
 
 @property (nonatomic, strong) UITableView *mainTableView;
@@ -308,11 +314,30 @@
 #pragma mark 添加分区按钮点击方法 - 添加任务
 - (void)didClickedAddSection
 {
-    _sectionCount += 1;
+    // 保存成功，添加新的空分区
+    if ([self saveSectionWithSectionNum:_sectionCount - 1]) {
+        
+        NSLog(@"%ld", _sectionCount -1);
+        
+        _sectionCount += 1;
+        
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:_sectionCount-1];
+        
+        [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+        
+    }
     
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:_sectionCount-1];
     
-    [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+}
+
+/**
+ *  保存分区数据
+ *
+ *  @param sectionNum 需要保存数据的分区号
+ */
+- (BOOL)saveSectionWithSectionNum:(NSInteger)sectionNum
+{
+    return YES;
 }
 
 // 返回上一页

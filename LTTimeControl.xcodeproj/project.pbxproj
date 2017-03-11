@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		2EA8BD9218EC3AA9F6351FD7 /* libPods-LTTimeControl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 218F1E3BF0A86E1F8142F838 /* libPods-LTTimeControl.a */; };
 		8D0624AC1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0624AB1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.m */; };
+		8D0849761E7432C000B9E05C /* Plan+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0849731E7432C000B9E05C /* Plan+CoreDataProperties.m */; };
+		8D0849771E7432C000B9E05C /* Plan.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0849751E7432C000B9E05C /* Plan.m */; };
+		8D08497D1E74571D00B9E05C /* Task+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D08497A1E74571D00B9E05C /* Task+CoreDataProperties.m */; };
+		8D08497E1E74571D00B9E05C /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D08497C1E74571D00B9E05C /* Task.m */; };
+		8D0849811E74651000B9E05C /* LTCoreDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0849801E74651000B9E05C /* LTCoreDataManager.m */; };
 		8D0AC5831E67B81B003E2D81 /* NSDate+LTCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0AC5821E67B81B003E2D81 /* NSDate+LTCategory.m */; };
 		8D0B80C41E6510D7006B0315 /* LTPlanListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C31E6510D7006B0315 /* LTPlanListViewController.m */; };
 		8D0B80C71E6518BB006B0315 /* LTBaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C61E6518BB006B0315 /* LTBaseModel.m */; };
@@ -37,6 +42,16 @@
 		4E12815B1BA5537BED02770C /* Pods-LTTimeControl.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LTTimeControl.release.xcconfig"; path = "Pods/Target Support Files/Pods-LTTimeControl/Pods-LTTimeControl.release.xcconfig"; sourceTree = "<group>"; };
 		8D0624AA1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+LTKeyboardOffsetView.h"; sourceTree = "<group>"; };
 		8D0624AB1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+LTKeyboardOffsetView.m"; sourceTree = "<group>"; };
+		8D0849721E7432C000B9E05C /* Plan+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Plan+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8D0849731E7432C000B9E05C /* Plan+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Plan+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8D0849741E7432C000B9E05C /* Plan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Plan.h; sourceTree = "<group>"; };
+		8D0849751E7432C000B9E05C /* Plan.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Plan.m; sourceTree = "<group>"; };
+		8D0849791E74571D00B9E05C /* Task+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+CoreDataProperties.h"; sourceTree = "<group>"; };
+		8D08497A1E74571D00B9E05C /* Task+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+CoreDataProperties.m"; sourceTree = "<group>"; };
+		8D08497B1E74571D00B9E05C /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		8D08497C1E74571D00B9E05C /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		8D08497F1E74651000B9E05C /* LTCoreDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTCoreDataManager.h; sourceTree = "<group>"; };
+		8D0849801E74651000B9E05C /* LTCoreDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTCoreDataManager.m; sourceTree = "<group>"; };
 		8D0AC5811E67B81B003E2D81 /* NSDate+LTCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+LTCategory.h"; sourceTree = "<group>"; };
 		8D0AC5821E67B81B003E2D81 /* NSDate+LTCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+LTCategory.m"; sourceTree = "<group>"; };
 		8D0B80C21E6510D7006B0315 /* LTPlanListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPlanListViewController.h; sourceTree = "<group>"; };
@@ -113,6 +128,39 @@
 				8D0624AB1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.m */,
 			);
 			path = "UIView+LTKeyboardOffsetView";
+			sourceTree = "<group>";
+		};
+		8D0849701E74329C00B9E05C /* CoreDataClass */ = {
+			isa = PBXGroup;
+			children = (
+				8D0849781E74569700B9E05C /* Task */,
+				8D0849711E74329C00B9E05C /* Plan */,
+				8D08497F1E74651000B9E05C /* LTCoreDataManager.h */,
+				8D0849801E74651000B9E05C /* LTCoreDataManager.m */,
+			);
+			path = CoreDataClass;
+			sourceTree = "<group>";
+		};
+		8D0849711E74329C00B9E05C /* Plan */ = {
+			isa = PBXGroup;
+			children = (
+				8D0849721E7432C000B9E05C /* Plan+CoreDataProperties.h */,
+				8D0849731E7432C000B9E05C /* Plan+CoreDataProperties.m */,
+				8D0849741E7432C000B9E05C /* Plan.h */,
+				8D0849751E7432C000B9E05C /* Plan.m */,
+			);
+			path = Plan;
+			sourceTree = "<group>";
+		};
+		8D0849781E74569700B9E05C /* Task */ = {
+			isa = PBXGroup;
+			children = (
+				8D0849791E74571D00B9E05C /* Task+CoreDataProperties.h */,
+				8D08497A1E74571D00B9E05C /* Task+CoreDataProperties.m */,
+				8D08497B1E74571D00B9E05C /* Task.h */,
+				8D08497C1E74571D00B9E05C /* Task.m */,
+			);
+			path = Task;
 			sourceTree = "<group>";
 		};
 		8D0AC5801E67B81B003E2D81 /* NSDate+LTCategory */ = {
@@ -269,6 +317,7 @@
 		8DE3DF5C1E647A290007BAA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8D0849701E74329C00B9E05C /* CoreDataClass */,
 				8D72CDF01E671A3200EA56AF /* Tools */,
 				8D0B80CE1E658055006B0315 /* AddPlan */,
 				8D0B80BE1E6510C2006B0315 /* PlanList */,
@@ -469,9 +518,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0849771E7432C000B9E05C /* Plan.m in Sources */,
 				8D0DBEA31E65CD5F00ACB812 /* LTAddPlanSectionFooterView.m in Sources */,
+				8D08497D1E74571D00B9E05C /* Task+CoreDataProperties.m in Sources */,
 				8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */,
 				8D0DBEA91E65D4AA00ACB812 /* LTTimePickerTableViewCell.m in Sources */,
+				8D0849811E74651000B9E05C /* LTCoreDataManager.m in Sources */,
 				8D0624AC1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.m in Sources */,
 				8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */,
 				8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */,
@@ -481,10 +533,12 @@
 				8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */,
 				8D0B80D41E65807F006B0315 /* LTAddPlanViewController.m in Sources */,
 				8D0DBEA01E65C7D800ACB812 /* LTPlanTitleTableViewCell.m in Sources */,
+				8D08497E1E74571D00B9E05C /* Task.m in Sources */,
 				8D0B80CD1E65301E006B0315 /* LTPlanListTableViewCell.m in Sources */,
 				8D0B80C71E6518BB006B0315 /* LTBaseModel.m in Sources */,
 				8D0B80C41E6510D7006B0315 /* LTPlanListViewController.m in Sources */,
 				8D0B80CA1E6518DB006B0315 /* LTPlanListModel.m in Sources */,
+				8D0849761E7432C000B9E05C /* Plan+CoreDataProperties.m in Sources */,
 				8D1FA4131E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld in Sources */,
 				8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */,
 			);
