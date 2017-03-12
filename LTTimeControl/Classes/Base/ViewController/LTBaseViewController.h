@@ -10,4 +10,6 @@
 
 @interface LTBaseViewController : UIViewController
 
+- (BOOL) isBlankString:(NSString *)string;
+
 @end

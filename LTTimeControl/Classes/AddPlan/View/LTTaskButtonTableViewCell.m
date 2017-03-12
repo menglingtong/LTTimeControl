@@ -20,9 +20,14 @@
         
         _deleteBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         
+        _confirmBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        
         [self.contentView addSubview:_deleteBtn];
         
+        [self.contentView addSubview:_confirmBtn];
+        
         [self.contentView addSubview:_topLine];
+        
         
     }
     
@@ -69,14 +74,45 @@
     [_deleteBtn addTarget:self action:@selector(didClickedDeleteBtn) forControlEvents:UIControlEventTouchUpInside];
     
     _deleteBtn.titleLabel.font = [UIFont systemFontOfSize:kTITLEFONTSIZE];
+    
+    [_confirmBtn makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.right.equalTo(_deleteBtn.left).offset(-12 * kWIDTHFIT);
+        
+        make.top.equalTo(_topLine.bottom).offset(15 * kHEIGHTFIT);
+        
+        make.bottom.equalTo(self).offset(-15 * kHEIGHTFIT);
+        
+        make.width.equalTo(70 * kWIDTHFIT);
+    }];
+    
+    [_confirmBtn setBackgroundColor:kSUCCESS];
+    
+    [_confirmBtn setTitle:@"保存" forState:UIControlStateNormal];
+    
+    [_confirmBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    
+    _confirmBtn.layer.cornerRadius = kCORNERRADIUS;
+    
+    [_confirmBtn addTarget:self action:@selector(didClickedConfirmBtn) forControlEvents:UIControlEventTouchUpInside];
+    
+    _confirmBtn.titleLabel.font = [UIFont systemFontOfSize:kTITLEFONTSIZE];
 }
 
 - (void)didClickedDeleteBtn
 {
-    if (_deleteBtn) {
+    if (_deleteBlock) {
         
         _deleteBlock(_sectionNum);
         
+    }
+}
+
+- (void)didClickedConfirmBtn
+{
+    if (_confirmBlock) {
+        
+        _confirmBlock(_sectionNum);
     }
 }
 

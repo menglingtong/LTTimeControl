@@ -19,12 +19,12 @@
         _topLine        = [UIView new];
         _planTitleLabel = [UILabel new];
         _timeLabel      = [UILabel new];
-        _timeHintLabel  = [UILabel new];
+//        _timeHintLabel  = [UILabel new];
         
         [self.contentView addSubview:_topLine];
         [self.contentView addSubview:_planTitleLabel];
         [self.contentView addSubview:_timeLabel];
-        [self.contentView addSubview:_timeHintLabel];
+//        [self.contentView addSubview:_timeHintLabel];
         
     }
     

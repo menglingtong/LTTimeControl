@@ -279,6 +279,12 @@
                 
             };
             
+            cell.confirmBlock = ^(NSInteger sectionNum){
+                
+                [self saveSectionWithSectionNum:sectionNum];
+                
+            };
+            
             return cell;
             
         }else if (indexPath.row == 1)
@@ -287,7 +293,7 @@
             
             cell.planTitleLabel.text = @"开始时间：";
             
-            cell.timeLabel.text = @"15:29";
+            cell.timeLabel.text = @"请选择开始时间";
             
             return cell;
         }else if (indexPath.row == 2)
@@ -296,7 +302,7 @@
             
             cell.planTitleLabel.text = @"结束时间：";
             
-            cell.timeLabel.text = @"16:29";
+            cell.timeLabel.text = @"请选择结束时间";
             
             return cell;
         }
@@ -333,21 +339,21 @@
 - (void)didClickedAddSection
 {
     // 保存成功，添加新的空分区
-    if ([self saveSectionWithSectionNum:_sectionCount - 1]) {
-        
-        NSLog(@"%ld", _sectionCount -1);
-        
+//    if ([self saveSectionWithSectionNum:_sectionCount - 1]) {
+//        
+//        NSLog(@"%ld", _sectionCount -1);
+//        
         _sectionCount += 1;
         
         NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:_sectionCount-1];
         
         [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
-        
-    }
-    else
-    {
-        NSLog(@"保存失败");
-    }
+//
+//    }
+//    else
+//    {
+//        NSLog(@"保存失败");
+//    }
     
     
 }
@@ -359,29 +365,79 @@
  */
 - (BOOL)saveSectionWithSectionNum:(NSInteger)sectionNum
 {
-    NSIndexPath *titleIndexPath = [NSIndexPath indexPathForRow:0 inSection:sectionNum];
+    // 计划标题
+    NSIndexPath *planTitleIndexPath         = [NSIndexPath indexPathForRow:0 inSection:0];
+    LTPlanTitleTableViewCell *planTitleCell = [_mainTableView cellForRowAtIndexPath:planTitleIndexPath];
     
-    NSIndexPath *startTimeIndexPath = [NSIndexPath indexPathForRow:1 inSection:sectionNum];
+    // task标题
+    NSIndexPath *titleIndexPath             = [NSIndexPath indexPathForRow:0 inSection:sectionNum];
+    LTPlanTitleTableViewCell *titleCell     = [_mainTableView cellForRowAtIndexPath:titleIndexPath];
     
-    NSIndexPath *endTimeIndexPath = [NSIndexPath indexPathForRow:2 inSection:sectionNum];
+    // 开始时间
+    NSIndexPath *startTimeIndexPath         = [NSIndexPath indexPathForRow:1 inSection:sectionNum];
+    LTTimePickerTableViewCell *startCell    = [_mainTableView cellForRowAtIndexPath:startTimeIndexPath];
     
-    LTPlanTitleTableViewCell *titleCell = [_mainTableView cellForRowAtIndexPath:titleIndexPath];
+    // 结束时间
+    NSIndexPath *endTimeIndexPath           = [NSIndexPath indexPathForRow:2 inSection:sectionNum];
+    LTTimePickerTableViewCell *endCell      = [_mainTableView cellForRowAtIndexPath:endTimeIndexPath];
     
-    LTTimePickerTableViewCell *startCell = [_mainTableView cellForRowAtIndexPath:startTimeIndexPath];
-    
-    LTTimePickerTableViewCell *endCell = [_mainTableView cellForRowAtIndexPath:endTimeIndexPath];
-    
+    // 获取task实体
     Task *task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
     
-    task.taskName = titleCell.planTitleTextField.text;
-    
-    task.startTime = startCell.timeLabel.text;
-    
-    task.endTime = endCell.timeLabel.text;
-    
-    [_ltCoreDataManager saveContext];
-    
-    [self selectTasks];
+    // 验证计划名称是否为空
+    if (![self isBlankString:planTitleCell.planTitleTextField.text]) {
+        
+        // 给实体类赋值
+        task.planName = planTitleCell.planTitleTextField.text;
+        
+        // 验证task名是否为空
+        if (![self isBlankString:titleCell.planTitleTextField.text]) {
+            
+            // 给实体类赋值
+            task.taskName = titleCell.planTitleTextField.text;
+            
+            // 验证开始时间是否为空
+            if (![self isBlankString:startCell.timeLabel.text] && ![startCell.timeLabel.text isEqualToString:@"请选择开始时间"]) {
+                
+                task.startTime = startCell.timeLabel.text;
+                
+                // 验证结束时间是否为空
+                if (![self isBlankString:endCell.timeLabel.text] && ![endCell.timeLabel.text isEqualToString:@"请选择结束时间"]) {
+                    
+                    task.endTime = endCell.timeLabel.text;
+                    
+                    // 验证全部通过 保存
+                    [_ltCoreDataManager saveContext];
+                    
+                    [self selectTasks];
+                }
+                else
+                {
+                    NSLog(@"结束时间为空！");
+                    
+                    return NO;
+                }
+            }
+            else
+            {
+                NSLog(@"开始时间为空！");
+                
+                return NO;
+            }
+        }
+        else
+        {
+            NSLog(@"task名称为空！");
+            
+            return NO;
+        }
+    }
+    else
+    {
+        NSLog(@"计划名称为空！");
+        
+        return NO;
+    }
     
     return YES;
 }

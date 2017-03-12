@@ -18,6 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *endTime;
 @property (nullable, nonatomic, retain) NSString *startTime;
 @property (nullable, nonatomic, retain) NSString *taskName;
+@property (nullable, nonatomic, retain) NSString *planName;
 @property (nullable, nonatomic, retain) Plan *plan;
 
 @end

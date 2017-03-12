@@ -29,6 +29,9 @@
 // 警告色
 #define kWARNING [UIColor colorWithRed:0.95 green:0.33 blue:0.33 alpha:1.00]
 
+// 保存色
+#define kSUCCESS [UIColor colorWithRed:0.66 green:0.88 blue:0.53 alpha:1.00]
+
 // 屏幕宽
 #define kSCREENWIDTH [UIScreen mainScreen].bounds.size.width
 

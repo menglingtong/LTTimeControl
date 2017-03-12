@@ -16,6 +16,7 @@
 @dynamic endTime;
 @dynamic startTime;
 @dynamic taskName;
+@dynamic planName;
 @dynamic plan;
 
 @end

@@ -10,6 +10,8 @@
 
 // 删除按钮block
 typedef void(^deleteBlock)(NSInteger);
+// 保存按钮block
+typedef void(^confirmBlock)(NSInteger);
 
 @interface LTTaskButtonTableViewCell : UITableViewCell
 
@@ -17,9 +19,13 @@ typedef void(^deleteBlock)(NSInteger);
 
 @property (nonatomic, strong) UIButton *deleteBtn;
 
+@property (nonatomic, strong) UIButton *confirmBtn;
+
 @property (nonatomic, assign) NSInteger sectionNum;
 
 @property (nonatomic, copy) deleteBlock deleteBlock;
+
+@property (nonatomic, copy) confirmBlock confirmBlock;
 
 //@property (nonatomic, strong) UIButton *saveBtn;
 
