@@ -384,7 +384,7 @@
                 // 验证结束时间是否为空
                 if (![self isBlankString:endCell.timeLabel.text] && ![endCell.timeLabel.text isEqualToString:@"请选择结束时间"]) {
                     
-                    Task *task = [self getTaskInfoById:sectionNum];
+                    Task *task = [self getTaskInfoById:sectionNum andPlanId:1];
                     
                     // 判断未存储过该条信息，则创建新的task对象
                     if (task == nil) {
@@ -396,6 +396,8 @@
                     
                     // 给实体类赋值
                     task.planName   = planTitleCell.planTitleTextField.text;
+                    
+                    task.planId     = [NSNumber numberWithInteger:1];
                     
                     task.endTime    = endCell.timeLabel.text;
                     
@@ -443,7 +445,7 @@
 }
 
 // 根据id查询对应task信息
-- (Task *)getTaskInfoById:(NSInteger)taskId
+- (Task *)getTaskInfoById:(NSInteger)taskId andPlanId:(NSInteger)planId
 {
     Task *taskObj = nil;
     
@@ -454,9 +456,14 @@
     [fetchRequest setEntity:entity];
     
     // 设置查询条件
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"taskId == %ld", taskId];
+    // taskId 是否存在
+    NSPredicate *predicateTaskId = [NSPredicate predicateWithFormat:@"taskId == %ld", taskId];
+    // planId 是否存在
+    NSPredicate *predicatePlanId = [NSPredicate predicateWithFormat:@"planId == %ld", planId];
     
-    [fetchRequest setPredicate:predicate];
+    NSCompoundPredicate *compoundPredicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[predicatePlanId, predicateTaskId]];
+    
+    [fetchRequest setPredicate:compoundPredicate];
     // 设置最多条目
     [fetchRequest setFetchLimit:1];
     

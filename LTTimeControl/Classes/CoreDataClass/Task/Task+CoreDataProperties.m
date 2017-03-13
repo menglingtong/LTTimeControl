@@ -18,6 +18,7 @@
 @dynamic startTime;
 @dynamic taskName;
 @dynamic taskId;
+@dynamic planId;
 @dynamic plan;
 
 @end
