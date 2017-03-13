@@ -91,6 +91,8 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"查询" style:UIBarButtonItemStylePlain target:self action:@selector(selectTasks)];
+    
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kSCREENWIDTH, kSCREENHEIGHT - 64) style:UITableViewStylePlain];
     
     _mainTableView.delegate = self;
@@ -338,24 +340,13 @@
 #pragma mark 添加分区按钮点击方法 - 添加任务
 - (void)didClickedAddSection
 {
-    // 保存成功，添加新的空分区
-//    if ([self saveSectionWithSectionNum:_sectionCount - 1]) {
-//        
-//        NSLog(@"%ld", _sectionCount -1);
-//        
-        _sectionCount += 1;
-        
-        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:_sectionCount-1];
-        
-        [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
-//
-//    }
-//    else
-//    {
-//        NSLog(@"保存失败");
-//    }
     
+    _sectionCount += 1;
     
+    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:_sectionCount-1];
+    
+    [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+
 }
 
 /**
@@ -381,33 +372,42 @@
     NSIndexPath *endTimeIndexPath           = [NSIndexPath indexPathForRow:2 inSection:sectionNum];
     LTTimePickerTableViewCell *endCell      = [_mainTableView cellForRowAtIndexPath:endTimeIndexPath];
     
-    // 获取task实体
-    Task *task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
-    
     // 验证计划名称是否为空
     if (![self isBlankString:planTitleCell.planTitleTextField.text]) {
-        
-        // 给实体类赋值
-        task.planName = planTitleCell.planTitleTextField.text;
         
         // 验证task名是否为空
         if (![self isBlankString:titleCell.planTitleTextField.text]) {
             
-            // 给实体类赋值
-            task.taskName = titleCell.planTitleTextField.text;
-            
             // 验证开始时间是否为空
             if (![self isBlankString:startCell.timeLabel.text] && ![startCell.timeLabel.text isEqualToString:@"请选择开始时间"]) {
-                
-                task.startTime = startCell.timeLabel.text;
                 
                 // 验证结束时间是否为空
                 if (![self isBlankString:endCell.timeLabel.text] && ![endCell.timeLabel.text isEqualToString:@"请选择结束时间"]) {
                     
-                    task.endTime = endCell.timeLabel.text;
+                    Task *task = [self getTaskInfoById:sectionNum];
+                    
+                    // 判断未存储过该条信息，则创建新的task对象
+                    if (task == nil) {
+                        
+                        task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+                    }
+                    
+                    task.taskId     = [NSNumber numberWithInteger:sectionNum];
+                    
+                    // 给实体类赋值
+                    task.planName   = planTitleCell.planTitleTextField.text;
+                    
+                    task.endTime    = endCell.timeLabel.text;
+                    
+                    task.taskName   = titleCell.planTitleTextField.text;
+                    
+                    task.startTime  = startCell.timeLabel.text;
                     
                     // 验证全部通过 保存
                     [_ltCoreDataManager saveContext];
+                    
+                    // 将存储对象制空
+                    task = nil;
                     
                     [self selectTasks];
                 }
@@ -440,6 +440,44 @@
     }
     
     return YES;
+}
+
+// 根据id查询对应task信息
+- (Task *)getTaskInfoById:(NSInteger)taskId
+{
+    Task *taskObj = nil;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity  = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    
+    [fetchRequest setEntity:entity];
+    
+    // 设置查询条件
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"taskId == %ld", taskId];
+    
+    [fetchRequest setPredicate:predicate];
+    // 设置最多条目
+    [fetchRequest setFetchLimit:1];
+    
+    NSError *error = nil;
+    
+    NSArray *fetchObjArr = [_ltCoreDataManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    
+    if (fetchObjArr && [fetchObjArr count] > 0) {
+        
+        taskObj = [fetchObjArr objectAtIndex:0];
+        
+    }
+    
+    fetchRequest = nil;
+    
+    return taskObj;
+    
 }
 
 // 查询方法

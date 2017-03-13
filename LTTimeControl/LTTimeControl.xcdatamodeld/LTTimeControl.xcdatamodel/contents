@@ -8,11 +8,13 @@
         <attribute name="endTime" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="planName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="startTime" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="taskName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="plan" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Plan" inverseName="task" inverseEntity="Plan" syncable="YES"/>
     </entity>
+    <fetchRequest name="FetchRequest" entity="Task" predicateString="planName != &quot;null&quot; AND endTime != &quot;null&quot; AND taskName != &quot;null&quot; AND startTime != &quot;null&quot;"/>
     <elements>
         <element name="Plan" positionX="-36" positionY="-0" width="128" height="73"/>
-        <element name="Task" positionX="-279" positionY="-0" width="128" height="120"/>
+        <element name="Task" positionX="-279" positionY="-0" width="128" height="135"/>
     </elements>
 </model>
