@@ -277,6 +277,9 @@
                         
                     });
                     
+                    // 点击删除，执行删除
+                    [self deleteTaskWithTaskId:indexPath.section andPlanId:1];
+                    
                 }
                 
             };
@@ -509,9 +512,52 @@
     
     for (Task *taskObj in dataArray) {
         
-        NSLog(@"Task名称：%@ - 开始时间：%@ - 结束时间：%@", taskObj.taskName, taskObj.startTime, taskObj.endTime);
+        NSLog(@"Plan名称：%@ - Task名称：%@ - 开始时间：%@ - 结束时间：%@", taskObj.planName, taskObj.taskName, taskObj.startTime, taskObj.endTime);
         
     }
+    
+}
+
+// 删除方法
+- (void)deleteTaskWithTaskId:(NSInteger)taskId andPlanId:(NSInteger)planId{
+    
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(taskId == %ld) && (planId == %ld)", taskId, planId];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    [fetchRequest setFetchLimit:1];
+    
+    NSError *error = nil;
+    
+    NSArray *fetchArr = [_ltCoreDataManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    // 判断是否查询出结果
+    if (fetchArr && [fetchArr count] > 0) {
+        
+        // 遍历数组删除符合条件的对象
+        [fetchArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            [_ltCoreDataManager.managedObjectContext deleteObject:obj];
+            
+        }];
+        
+    }
+    
+    // 保存上下文
+    if (_ltCoreDataManager.managedObjectContext.hasChanges) {
+        
+        [_ltCoreDataManager.managedObjectContext save:nil];
+    }
+    
+    // 错误处理
+    if (error) {
+        NSLog(@"CoreData Delete Data Error : %@", error);
+    }
+    
+    [self selectTasks];
+    
     
 }
 
