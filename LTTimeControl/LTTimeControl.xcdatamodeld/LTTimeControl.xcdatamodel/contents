@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10174" systemVersion="15G1004" minimumToolsVersion="Automatic">
     <entity name="Plan" representedClassName="Plan" syncable="YES">
+        <attribute name="planId" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
         <attribute name="planName" optional="YES" attributeType="String" defaultValueString="我的计划" syncable="YES"/>
         <relationship name="task" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="plan" inverseEntity="Task" syncable="YES"/>
     </entity>
@@ -15,7 +16,7 @@
     </entity>
     <fetchRequest name="FetchRequest" entity="Task" predicateString="planName != &quot;null&quot; AND endTime != &quot;null&quot; AND taskName != &quot;null&quot; AND startTime != &quot;null&quot;"/>
     <elements>
-        <element name="Plan" positionX="-36" positionY="-0" width="128" height="73"/>
+        <element name="Plan" positionX="-36" positionY="-0" width="128" height="90"/>
         <element name="Task" positionX="-279" positionY="-0" width="128" height="150"/>
     </elements>
 </model>

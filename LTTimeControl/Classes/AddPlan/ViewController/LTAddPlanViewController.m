@@ -79,6 +79,8 @@
     
     self.navigationItem.title = @"Add Plan";
     
+    _planId = 1;
+    
     UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
     
 //    [self.view addGestureRecognizer:tapGesture];
@@ -91,7 +93,7 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"查询" style:UIBarButtonItemStylePlain target:self action:@selector(selectTasks)];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(savePlan)];
     
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kSCREENWIDTH, kSCREENHEIGHT - 64) style:UITableViewStylePlain];
     
@@ -445,6 +447,68 @@
     }
     
     return YES;
+}
+
+// 保存plan方法
+- (void)savePlan
+{
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    
+    LTPlanTitleTableViewCell *cell = [_mainTableView cellForRowAtIndexPath:indexPath];
+    
+    Plan *planObj = [self getPlanInfoById:_planId];
+    
+    if (planObj == nil) {
+        planObj = [NSEntityDescription insertNewObjectForEntityForName:@"Plan" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    }
+    
+    if (![self isBlankString:cell.planTitleLabel.text]) {
+        
+        planObj.planId = [NSNumber numberWithInteger:_planId];
+        
+        planObj.planName = cell.planTitleTextField.text;
+        
+        [_ltCoreDataManager saveContext];
+    }
+    
+    planObj = nil;
+}
+
+// 根据id查询对应的plan信息
+- (Plan *)getPlanInfoById:(NSInteger)planId
+{
+    Plan *planObj = nil;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Plan" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    
+    [fetchRequest setFetchLimit:1];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"planId == %ld", planId];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    
+    NSArray *fetchObjArr = [_ltCoreDataManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    
+    if (fetchObjArr && [fetchObjArr count] > 0) {
+        
+        planObj = [fetchObjArr objectAtIndex:0];
+        
+    }
+    
+    fetchRequest = nil;
+    
+    return planObj;
+    
 }
 
 // 根据id查询对应task信息

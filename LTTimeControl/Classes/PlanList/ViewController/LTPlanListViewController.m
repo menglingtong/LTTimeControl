@@ -14,6 +14,10 @@
 
 #import "LTAddPlanViewController.h"
 
+#import "LTCoreDataManager.h"
+
+#import "Plan.h"
+
 @interface LTPlanListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UITableView *mainTableView;
@@ -21,6 +25,8 @@
 @property (nonatomic, strong) NSMutableArray *dataSourceArr;
 
 @property (nonatomic, strong) LTPlanListModel *model;
+
+@property (nonatomic, strong) LTCoreDataManager *ltCoreDataManager;
 
 @end
 
@@ -33,25 +39,13 @@
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"add"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedAddPlan)];
     
+    _ltCoreDataManager = [LTCoreDataManager shareLTCoreDataManager];
+    
     self.navigationItem.title = @"Plan List";
     
     _dataSourceArr = [NSMutableArray array];
     
-    for (NSInteger i = 0; i < 20; i++) {
-        
-        @autoreleasepool {
-            
-            _model = [LTPlanListModel new];
-            
-            _model.planTitle = [NSString stringWithFormat:@"工作日计划%ld", i];
-            
-            _model.planTimeRange = @"10:37:59 ~ 20:38:13";
-            
-            [_dataSourceArr addObject:_model];
-            
-        }
-        
-    }
+    [self selectPlanFromDataBase];
     
     // 导航控制器高度44 电池条20
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kSCREENWIDTH, kSCREENHEIGHT - 64) style:UITableViewStylePlain];
@@ -66,6 +60,28 @@
     
     [self.view addSubview:_mainTableView];
     
+}
+
+- (void)selectPlanFromDataBase
+{
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Plan" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSError *error = nil;
+    
+    NSArray *fetchArr = [_ltCoreDataManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    _dataSourceArr = [fetchArr mutableCopy];
+    
+    for (Plan *planObj in _dataSourceArr) {
+        
+        NSLog(@"计划：%@", planObj.planName);
+    }
+    
+    [_mainTableView reloadData];
 }
 
 - (void)didClickedGoBack{
@@ -94,11 +110,11 @@
 {
     LTPlanListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
-    LTPlanListModel *modelForCell = [_dataSourceArr objectAtIndex:indexPath.row];
+    Plan *planObj = [_dataSourceArr objectAtIndex:indexPath.row];
     
-    cell.planTitleLabel.text = modelForCell.planTitle;
+    cell.planTitleLabel.text = planObj.planName;
     
-    cell.planTimeRangeLabel.text = modelForCell.planTimeRange;
+//    cell.planTimeRangeLabel.text = modelForCell.planTimeRange;
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     

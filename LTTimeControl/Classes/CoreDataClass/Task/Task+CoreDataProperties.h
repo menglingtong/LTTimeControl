@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.h
 //  LTTimeControl
 //
-//  Created by 孟令通 on 17/3/13.
+//  Created by 孟令通 on 17/3/14.
 //  Copyright © 2017年 LryMlt. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -16,11 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Task (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *endTime;
+@property (nullable, nonatomic, retain) NSNumber *planId;
 @property (nullable, nonatomic, retain) NSString *planName;
 @property (nullable, nonatomic, retain) NSString *startTime;
-@property (nullable, nonatomic, retain) NSString *taskName;
 @property (nullable, nonatomic, retain) NSNumber *taskId;
-@property (nullable, nonatomic, retain) NSNumber *planId;
+@property (nullable, nonatomic, retain) NSString *taskName;
 @property (nullable, nonatomic, retain) Plan *plan;
 
 @end

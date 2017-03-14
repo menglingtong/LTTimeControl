@@ -10,4 +10,6 @@
 
 @interface LTAddPlanViewController : LTBaseViewController
 
+@property (nonatomic, assign) NSInteger planId;
+
 @end

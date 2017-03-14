@@ -2,7 +2,7 @@
 //  Plan+CoreDataProperties.h
 //  LTTimeControl
 //
-//  Created by 孟令通 on 17/3/11.
+//  Created by 孟令通 on 17/3/14.
 //  Copyright © 2017年 LryMlt. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -11,21 +11,24 @@
 
 #import "Plan.h"
 
+#import "Task.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Plan (CoreDataProperties)
 
 @property (nullable, nonatomic, retain) NSString *planName;
-@property (nullable, nonatomic, retain) NSSet<NSManagedObject *> *task;
+@property (nullable, nonatomic, retain) NSNumber *planId;
+@property (nullable, nonatomic, retain) NSSet<Task *> *task;
 
 @end
 
 @interface Plan (CoreDataGeneratedAccessors)
 
-- (void)addTaskObject:(NSManagedObject *)value;
-- (void)removeTaskObject:(NSManagedObject *)value;
-- (void)addTask:(NSSet<NSManagedObject *> *)values;
-- (void)removeTask:(NSSet<NSManagedObject *> *)values;
+- (void)addTaskObject:(Task *)value;
+- (void)removeTaskObject:(Task *)value;
+- (void)addTask:(NSSet<Task *> *)values;
+- (void)removeTask:(NSSet<Task *> *)values;
 
 @end
 

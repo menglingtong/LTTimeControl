@@ -2,7 +2,7 @@
 //  Task+CoreDataProperties.m
 //  LTTimeControl
 //
-//  Created by 孟令通 on 17/3/13.
+//  Created by 孟令通 on 17/3/14.
 //  Copyright © 2017年 LryMlt. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -14,11 +14,11 @@
 @implementation Task (CoreDataProperties)
 
 @dynamic endTime;
+@dynamic planId;
 @dynamic planName;
 @dynamic startTime;
-@dynamic taskName;
 @dynamic taskId;
-@dynamic planId;
+@dynamic taskName;
 @dynamic plan;
 
 @end
