@@ -32,6 +32,7 @@
 		8D1FA4151E5FC68F00F0EDD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D1FA4141E5FC68F00F0EDD7 /* Assets.xcassets */; };
 		8D1FA4181E5FC68F00F0EDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1FA4161E5FC68F00F0EDD7 /* LaunchScreen.storyboard */; };
 		8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D72CDF31E671A5000EA56AF /* LTDatePicker.m */; };
+		8D84AA181E7D2831009FF9ED /* LTAddPlanTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D84AA171E7D2831009FF9ED /* LTAddPlanTitleViewController.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
 		8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */; };
 /* End PBXBuildFile section */
@@ -86,6 +87,8 @@
 		8D43F1E51E64809D00A01FCA /* LTPrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LTPrefixHeader.pch; sourceTree = "<group>"; };
 		8D72CDF21E671A5000EA56AF /* LTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTDatePicker.h; sourceTree = "<group>"; };
 		8D72CDF31E671A5000EA56AF /* LTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTDatePicker.m; sourceTree = "<group>"; };
+		8D84AA161E7D2831009FF9ED /* LTAddPlanTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAddPlanTitleViewController.h; sourceTree = "<group>"; };
+		8D84AA171E7D2831009FF9ED /* LTAddPlanTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAddPlanTitleViewController.m; sourceTree = "<group>"; };
 		8DE3DF611E647AA70007BAA5 /* LTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseViewController.h; sourceTree = "<group>"; };
 		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
 		8DE3DF681E647B740007BAA5 /* LTHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHomePageViewController.h; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 			children = (
 				8D0B80D21E65807F006B0315 /* LTAddPlanViewController.h */,
 				8D0B80D31E65807F006B0315 /* LTAddPlanViewController.m */,
+				8D84AA161E7D2831009FF9ED /* LTAddPlanTitleViewController.h */,
+				8D84AA171E7D2831009FF9ED /* LTAddPlanTitleViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -425,7 +430,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = LT;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = LryMlt;
 				TargetAttributes = {
 					8D1FA4011E5FC68F00F0EDD7 = {
@@ -524,6 +529,7 @@
 				8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */,
 				8D0DBEA91E65D4AA00ACB812 /* LTTimePickerTableViewCell.m in Sources */,
 				8D0849811E74651000B9E05C /* LTCoreDataManager.m in Sources */,
+				8D84AA181E7D2831009FF9ED /* LTAddPlanTitleViewController.m in Sources */,
 				8D0624AC1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.m in Sources */,
 				8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */,
 				8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */,
@@ -580,8 +586,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -603,7 +611,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -624,8 +632,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -641,7 +651,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

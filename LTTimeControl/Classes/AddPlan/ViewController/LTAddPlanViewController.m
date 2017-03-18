@@ -36,6 +36,8 @@
 
 @property (nonatomic, strong) LTCoreDataManager *ltCoreDataManager;
 
+@property (nonatomic, strong) NSMutableArray *dataSourceArr;
+
 @end
 
 @implementation LTAddPlanViewController
@@ -77,13 +79,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"Add Plan";
+    self.navigationItem.title = @"添加任务";
     
-    _planId = 1;
-    
-    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
-    
+//    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
 //    [self.view addGestureRecognizer:tapGesture];
+    
+    // 初始化数据源数组
+    _dataSourceArr = [NSMutableArray arrayWithCapacity:0];
     
     // 初始化CoreData管理器
     _ltCoreDataManager = [LTCoreDataManager shareLTCoreDataManager];
@@ -251,7 +253,18 @@
             
             cell.planTitleLabel.text = @"任务名称：";
             
-            cell.planTitleTextField.placeholder = @"请输入任务名称";
+            // 判断该分区是否有数据
+            if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+                
+                Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
+                
+                cell.planTitleTextField.text = taskObj.taskName;
+                
+            }
+            else
+            {
+                cell.planTitleTextField.placeholder = @"请输入任务名称";
+            }
             
             return cell;
             
@@ -300,7 +313,18 @@
             
             cell.planTitleLabel.text = @"开始时间：";
             
-            cell.timeLabel.text = @"请选择开始时间";
+            // 判断该分区是否有数据
+            if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+                
+                Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
+                
+                cell.timeLabel.text = taskObj.startTime;
+                
+            }
+            else
+            {
+                cell.timeLabel.text = @"请选择开始时间";
+            }
             
             return cell;
         }else if (indexPath.row == 2)
@@ -309,7 +333,18 @@
             
             cell.planTitleLabel.text = @"结束时间：";
             
-            cell.timeLabel.text = @"请选择结束时间";
+            // 判断该分区是否有数据
+            if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+                
+                Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
+                
+                cell.timeLabel.text = taskObj.endTime;
+                
+            }
+            else
+            {
+                cell.timeLabel.text = @"请选择结束时间";
+            }
             
             return cell;
         }
@@ -389,7 +424,7 @@
                 // 验证结束时间是否为空
                 if (![self isBlankString:endCell.timeLabel.text] && ![endCell.timeLabel.text isEqualToString:@"请选择结束时间"]) {
                     
-                    Task *task = [self getTaskInfoById:sectionNum andPlanId:1];
+                    Task *task = [self getTaskInfoById:sectionNum andPlanId:_planId];
                     
                     // 判断未存储过该条信息，则创建新的task对象
                     if (task == nil) {
@@ -402,7 +437,7 @@
                     // 给实体类赋值
                     task.planName   = planTitleCell.planTitleTextField.text;
                     
-                    task.planId     = [NSNumber numberWithInteger:1];
+                    task.planId     = [NSNumber numberWithInteger:_planId];
                     
                     task.endTime    = endCell.timeLabel.text;
                     
@@ -469,6 +504,8 @@
         planObj.planName = cell.planTitleTextField.text;
         
         [_ltCoreDataManager saveContext];
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
     
     planObj = nil;

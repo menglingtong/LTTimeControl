@@ -12,7 +12,7 @@
 
 #import "LTPlanListTableViewCell.h"
 
-#import "LTAddPlanViewController.h"
+#import "LTAddPlanTitleViewController.h"
 
 #import "LTCoreDataManager.h"
 
@@ -41,7 +41,7 @@
     
     _ltCoreDataManager = [LTCoreDataManager shareLTCoreDataManager];
     
-    self.navigationItem.title = @"Plan List";
+    self.navigationItem.title = @"计划列表";
     
     _dataSourceArr = [NSMutableArray array];
     
@@ -76,6 +76,8 @@
     
     _dataSourceArr = [fetchArr mutableCopy];
     
+    NSLog(@"%ld", _dataSourceArr.count);
+    
     for (Plan *planObj in _dataSourceArr) {
         
         NSLog(@"计划：%@", planObj.planName);
@@ -91,7 +93,9 @@
 
 - (void)didClickedAddPlan{
     
-    LTAddPlanViewController *addPlanVC = [LTAddPlanViewController new];
+    LTAddPlanTitleViewController *addPlanVC = [LTAddPlanTitleViewController new];
+    
+    addPlanVC.planId = [_dataSourceArr count];
     
     [self.navigationController pushViewController:addPlanVC animated:YES];
 }
