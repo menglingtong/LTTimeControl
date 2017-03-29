@@ -79,7 +79,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.title = @"添加任务";
+    self.navigationItem.title = _planTitle;
     
 //    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesture)];
 //    [self.view addGestureRecognizer:tapGesture];
@@ -90,8 +90,8 @@
     // 初始化CoreData管理器
     _ltCoreDataManager = [LTCoreDataManager shareLTCoreDataManager];
     
-    // 默认两个分区，一个题头，一个空任务
-    _sectionCount = 2;
+    // 默认1个分区
+    _sectionCount = 1;
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
@@ -209,146 +209,119 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if (section == 0) {
-        
-        return 1;
-    }
-    else
-    {
-        return 4;
-    }
+    return 4;
     
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if (_sectionCount >= 2) {
         
-        return _sectionCount;
-    }
-    else
-    {
-        return 2;
-    }
-    
+    return _sectionCount;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.section == 0) {
+
+    if (indexPath.row == 0) {
         
         LTPlanTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleCell"];
         
-        cell.planTitleLabel.text = @"计划名称：";
+        cell.planTitleLabel.text = @"任务名称：";
         
-        cell.planTitleTextField.placeholder = @"请输入计划名称";
+        // 判断该分区是否有数据
+        if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+            
+            Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
+            
+            cell.planTitleTextField.text = taskObj.taskName;
+            
+        }
+        else
+        {
+            cell.planTitleTextField.placeholder = @"请输入任务名称";
+        }
         
         return cell;
+        
     }
-    else
+    else if(indexPath.row == 3)
     {
-        if (indexPath.row == 0) {
+        LTTaskButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buttonCell"];
+        
+        cell.sectionNum = indexPath.section;
+        
+        cell.deleteBlock = ^(NSInteger sectionNum){
             
-            LTPlanTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleCell"];
+            NSIndexSet *set = [NSIndexSet indexSetWithIndex:sectionNum];
             
-            cell.planTitleLabel.text = @"任务名称：";
-            
-            // 判断该分区是否有数据
-            if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+            if (_sectionCount > 1) {
                 
-                Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
+                _sectionCount -= 1;
                 
-                cell.planTitleTextField.text = taskObj.taskName;
+                [_mainTableView deleteSections:set withRowAnimation:UITableViewRowAnimationFade];
+                
+                // 延迟0.3秒执行刷新tableview，实现动画完整性
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    
+                    [_mainTableView reloadData];
+                    
+                });
+                
+                // 点击删除，执行删除
+                [self deleteTaskWithTaskId:indexPath.section andPlanId:1];
                 
             }
-            else
-            {
-                cell.planTitleTextField.placeholder = @"请输入任务名称";
-            }
             
-            return cell;
+        };
+        
+        cell.confirmBlock = ^(NSInteger sectionNum){
+            
+            [self saveSectionWithSectionNum:sectionNum];
+            
+        };
+        
+        return cell;
+        
+    }else if (indexPath.row == 1)
+    {
+        LTTimePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell"];
+        
+        cell.planTitleLabel.text = @"开始时间：";
+        
+        // 判断该分区是否有数据
+        if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+            
+            Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
+            
+            cell.timeLabel.text = taskObj.startTime;
             
         }
-        else if(indexPath.row == 3)
+        else
         {
-            LTTaskButtonTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"buttonCell"];
-            
-            cell.sectionNum = indexPath.section;
-            
-            cell.deleteBlock = ^(NSInteger sectionNum){
-                
-                NSIndexSet *set = [NSIndexSet indexSetWithIndex:sectionNum];
-                
-                if (_sectionCount > 2) {
-                    
-                    _sectionCount -= 1;
-                    
-                    [_mainTableView deleteSections:set withRowAnimation:UITableViewRowAnimationFade];
-                    
-                    // 延迟0.3秒执行刷新tableview，实现动画完整性
-                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                        
-                        [_mainTableView reloadData];
-                        
-                    });
-                    
-                    // 点击删除，执行删除
-                    [self deleteTaskWithTaskId:indexPath.section andPlanId:1];
-                    
-                }
-                
-            };
-            
-            cell.confirmBlock = ^(NSInteger sectionNum){
-                
-                [self saveSectionWithSectionNum:sectionNum];
-                
-            };
-            
-            return cell;
-            
-        }else if (indexPath.row == 1)
-        {
-            LTTimePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell"];
-            
-            cell.planTitleLabel.text = @"开始时间：";
-            
-            // 判断该分区是否有数据
-            if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
-                
-                Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
-                
-                cell.timeLabel.text = taskObj.startTime;
-                
-            }
-            else
-            {
-                cell.timeLabel.text = @"请选择开始时间";
-            }
-            
-            return cell;
-        }else if (indexPath.row == 2)
-        {
-            LTTimePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell"];
-            
-            cell.planTitleLabel.text = @"结束时间：";
-            
-            // 判断该分区是否有数据
-            if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
-                
-                Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
-                
-                cell.timeLabel.text = taskObj.endTime;
-                
-            }
-            else
-            {
-                cell.timeLabel.text = @"请选择结束时间";
-            }
-            
-            return cell;
+            cell.timeLabel.text = @"请选择开始时间";
         }
         
+        return cell;
+    }else if (indexPath.row == 2)
+    {
+        LTTimePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell"];
+        
+        cell.planTitleLabel.text = @"结束时间：";
+        
+        // 判断该分区是否有数据
+        if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+            
+            Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
+            
+            cell.timeLabel.text = taskObj.endTime;
+            
+        }
+        else
+        {
+            cell.timeLabel.text = @"请选择结束时间";
+        }
+        
+        return cell;
     }
     
     return nil;

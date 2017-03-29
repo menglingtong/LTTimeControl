@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign) NSInteger planId;
 
+@property (nonatomic, copy) NSString *planTitle;
+
 @end

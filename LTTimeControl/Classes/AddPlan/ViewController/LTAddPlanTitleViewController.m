@@ -56,6 +56,7 @@
     
     [_mainScrollView addSubview:_planTitle];
     
+    // 下一步按钮
     UIButton *nextStep = [UIButton buttonWithType:UIButtonTypeCustom];
     
     nextStep.frame = CGRectMake(30 * kWIDTHFIT, 220 * kHEIGHTFIT, kSCREENWIDTH - 60 * kWIDTHFIT, 30 * kHEIGHTFIT);
@@ -73,11 +74,15 @@
     _coreDataManager  = [LTCoreDataManager shareLTCoreDataManager];
 }
 
+// 下一步按钮点击方法
 - (void)didClickedNextStep:(id)sender{
     
+    // 保存成功跳转下一页
     if ([self savePlanTitle]) {
         
         LTAddPlanViewController *addPlan = [LTAddPlanViewController new];
+        
+        addPlan.planTitle = _planTitle.text;
         
         [self.navigationController pushViewController:addPlan animated:YES];
     }
@@ -117,6 +122,7 @@
     
 }
 
+// 按照 Id 查询是否存在该Plan
 - (Plan *)getPlanInfoById:(NSInteger)planId
 {
     Plan *planObj = nil;
