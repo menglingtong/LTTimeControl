@@ -84,6 +84,8 @@
         
         addPlan.planTitle = _planTitle.text;
         
+        addPlan.planId = _planId;
+        
         [self.navigationController pushViewController:addPlan animated:YES];
     }
     else

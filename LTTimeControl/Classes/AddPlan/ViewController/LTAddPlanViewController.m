@@ -228,8 +228,10 @@
         
         cell.planTitleLabel.text = @"任务名称：";
         
+        NSLog(@"数据原数组中的数据数量：%ld", _dataSourceArr.count);
+        
         // 判断该分区是否有数据
-        if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+        if (_dataSourceArr.count != 0 && _dataSourceArr.count > indexPath.section) {
             
             Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
             
@@ -273,7 +275,7 @@
             }
             
         };
-        
+#pragma mark 保存按钮block
         cell.confirmBlock = ^(NSInteger sectionNum){
             
             [self saveSectionWithSectionNum:sectionNum];
@@ -288,8 +290,10 @@
         
         cell.planTitleLabel.text = @"开始时间：";
         
+        NSLog(@"数据原数组中的数据数量：%ld", _dataSourceArr.count);
+        
         // 判断该分区是否有数据
-        if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+        if (_dataSourceArr.count != 0 && _dataSourceArr.count > indexPath.section) {
             
             Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
             
@@ -309,7 +313,7 @@
         cell.planTitleLabel.text = @"结束时间：";
         
         // 判断该分区是否有数据
-        if (_dataSourceArr.count != 0 && _dataSourceArr.count >= indexPath.section) {
+        if (_dataSourceArr.count != 0 && _dataSourceArr.count > indexPath.section) {
             
             Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.section];
             
@@ -331,35 +335,38 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    if (indexPath.section != 0) {
         
-        if (indexPath.row == 1 || indexPath.row == 2) {
+    if (indexPath.row == 1 || indexPath.row == 2) {
+        
+        if (_timePiker) {
             
-            if (_timePiker) {
-                
-                [_timePiker removeFromSuperview];
-                
-            }
-            
-            [self.view endEditing:YES];
-            
-            [self putPickerViewWithSectionNum:indexPath.section RowNum:indexPath.row];
+            [_timePiker removeFromSuperview];
             
         }
         
+        [self.view endEditing:YES];
+        
+        [self putPickerViewWithSectionNum:indexPath.section RowNum:indexPath.row];
+        
     }
+    
 }
 
 #pragma mark 添加分区按钮点击方法 - 添加任务
 - (void)didClickedAddSection
 {
+    // 添加新分区前，先存储旧分区
+    if ([self saveSectionWithSectionNum:_sectionCount - 1]) {
+        
+        _sectionCount += 1;
+        
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:_sectionCount - 1];
+        
+        [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
+        
+        
+    }
     
-    _sectionCount += 1;
-    
-    NSIndexSet *indexSet = [NSIndexSet indexSetWithIndex:_sectionCount-1];
-    
-    [_mainTableView insertSections:indexSet withRowAnimation:UITableViewRowAnimationFade];
-
 }
 
 /**
@@ -370,8 +377,8 @@
 - (BOOL)saveSectionWithSectionNum:(NSInteger)sectionNum
 {
     // 计划标题
-    NSIndexPath *planTitleIndexPath         = [NSIndexPath indexPathForRow:0 inSection:0];
-    LTPlanTitleTableViewCell *planTitleCell = [_mainTableView cellForRowAtIndexPath:planTitleIndexPath];
+    //    NSIndexPath *planTitleIndexPath         = [NSIndexPath indexPathForRow:0 inSection:0];
+    //    LTPlanTitleTableViewCell *planTitleCell = [_mainTableView cellForRowAtIndexPath:planTitleIndexPath];
     
     // task标题
     NSIndexPath *titleIndexPath             = [NSIndexPath indexPathForRow:0 inSection:sectionNum];
@@ -386,8 +393,8 @@
     LTTimePickerTableViewCell *endCell      = [_mainTableView cellForRowAtIndexPath:endTimeIndexPath];
     
     // 验证计划名称是否为空
-    if (![self isBlankString:planTitleCell.planTitleTextField.text]) {
-        
+//    if (![self isBlankString:planTitleCell.planTitleTextField.text]) {
+    
         // 验证task名是否为空
         if (![self isBlankString:titleCell.planTitleTextField.text]) {
             
@@ -408,7 +415,7 @@
                     task.taskId     = [NSNumber numberWithInteger:sectionNum];
                     
                     // 给实体类赋值
-                    task.planName   = planTitleCell.planTitleTextField.text;
+                    task.planName   = _planTitle;
                     
                     task.planId     = [NSNumber numberWithInteger:_planId];
                     
@@ -418,13 +425,15 @@
                     
                     task.startTime  = startCell.timeLabel.text;
                     
+                    [_dataSourceArr addObject:task];
+                    
                     // 验证全部通过 保存
-                    [_ltCoreDataManager saveContext];
+//                    [_ltCoreDataManager saveContext];
                     
                     // 将存储对象制空
-                    task = nil;
+//                    task = nil;
                     
-                    [self selectTasks];
+//                    [self selectTasks];
                 }
                 else
                 {
@@ -446,23 +455,20 @@
             
             return NO;
         }
-    }
-    else
-    {
-        NSLog(@"计划名称为空！");
-        
-        return NO;
-    }
-    
+//    }
+//    else
+//    {
+//        NSLog(@"计划名称为空！");
+//        
+//        return NO;
+//    }
+
     return YES;
 }
 
-// 保存plan方法
+#pragma mark 保存plan方法
 - (void)savePlan
 {
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    
-    LTPlanTitleTableViewCell *cell = [_mainTableView cellForRowAtIndexPath:indexPath];
     
     Plan *planObj = [self getPlanInfoById:_planId];
     
@@ -470,21 +476,69 @@
         planObj = [NSEntityDescription insertNewObjectForEntityForName:@"Plan" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
     }
     
-    if (![self isBlankString:cell.planTitleLabel.text]) {
+    if (![self isBlankString:_planTitle]) {
         
-        planObj.planId = [NSNumber numberWithInteger:_planId];
+        // 调用保存任务方法
+        if ([self saveTask]) {
+            
+            // 保存计划id
+            planObj.planId = [NSNumber numberWithInteger:_planId];
+            
+            // 保存计划名称
+            planObj.planName = _planTitle;
+            
+            NSLog(@"%@", _planTitle);
+            
+            [_ltCoreDataManager saveContext];
+            
+            [self.navigationController popViewControllerAnimated:YES];
+        }
+        else
+        {
+            NSLog(@"保存失败");
+        }
         
-        planObj.planName = cell.planTitleTextField.text;
-        
-        [_ltCoreDataManager saveContext];
-        
-        [self.navigationController popViewControllerAnimated:YES];
     }
     
     planObj = nil;
 }
 
-// 根据id查询对应的plan信息
+#pragma mark 保存task方法
+- (BOOL)saveTask
+{
+    if ([_dataSourceArr count] != 0) {
+        
+        for (Task *task in _dataSourceArr) {
+            
+            Task *taskObj = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+            
+            taskObj.taskId     = task.taskId;
+            
+            // 给实体类赋值
+            taskObj.planName   = task.planName;
+            
+            taskObj.planId     = task.planId;
+            
+            taskObj.endTime    = task.endTime;
+            
+            taskObj.taskName   = task.taskName;
+            
+            taskObj.startTime  = task.startTime;
+            
+            [_ltCoreDataManager saveContext];
+        }
+        
+        return YES;
+    }
+    else
+    {
+        NSLog(@"没有任务可保存");
+        
+        return NO;
+    }
+}
+
+#pragma mark 根据id查询对应的plan信息
 - (Plan *)getPlanInfoById:(NSInteger)planId
 {
     Plan *planObj = nil;
@@ -521,7 +575,7 @@
     
 }
 
-// 根据id查询对应task信息
+#pragma mark 根据id查询对应task信息
 - (Task *)getTaskInfoById:(NSInteger)taskId andPlanId:(NSInteger)planId
 {
     Task *taskObj = nil;
@@ -564,7 +618,7 @@
     
 }
 
-// 查询方法
+#pragma mark 查询方法
 - (void)selectTasks{
     
     NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
@@ -572,6 +626,10 @@
     NSEntityDescription *entity = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
     
     [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(planId == %ld)", _planId];
+    
+    [fetchRequest setPredicate:predicate];
     
     NSError *error = nil;
     
@@ -583,6 +641,9 @@
     }
     
     NSMutableArray *dataArray = fetchObjArr.mutableCopy;
+    
+    // 更新数据源数组
+    _dataSourceArr = dataArray;
     
     for (Task *taskObj in dataArray) {
         

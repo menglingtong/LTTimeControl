@@ -69,6 +69,8 @@
     // 6.获取 一个数据库的路径
     NSURL *storeURL = [[self applicationDocumentsDirectory] URLByAppendingPathComponent:@"LTTimeControl.sqlite"];
     
+    NSLog(@"文件存储位置：%@", storeURL);
+    
     NSError *error = nil;
     
     NSString *failureReason = @"There was an error creating or loading the application's saved data.";

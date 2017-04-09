@@ -94,7 +94,10 @@
     
     _confirmBtn.layer.cornerRadius = kCORNERRADIUS;
     
-    [_confirmBtn addTarget:self action:@selector(didClickedConfirmBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_confirmBtn addTarget:self action:@selector(didClickedConfirmBtn) forControlEvents:UIControlEventTouchDown];
+    
+    // 设置保存按钮点击时颜色
+    [_confirmBtn addTarget:self action:@selector(changeConfirmBtnBg:) forControlEvents:UIControlEventTouchUpInside];
     
     _confirmBtn.titleLabel.font = [UIFont systemFontOfSize:kTITLEFONTSIZE];
 }
@@ -115,6 +118,12 @@
         _confirmBlock(_sectionNum);
     }
 }
+
+- (void)changeConfirmBtnBg:(UIButton *)button
+{
+    [button setBackgroundColor:[UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:1.00]];
+}
+
 
 - (void)awakeFromNib {
     [super awakeFromNib];

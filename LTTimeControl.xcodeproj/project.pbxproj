@@ -663,6 +663,7 @@
 			baseConfigurationReference = 1AD8AE88B49AB1B234778076 /* Pods-LTTimeControl.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 69M2LTLWFX;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LTTimeControl/LTPrefixHeader.pch";
 				INFOPLIST_FILE = LTTimeControl/Info.plist;
@@ -677,6 +678,7 @@
 			baseConfigurationReference = 4E12815B1BA5537BED02770C /* Pods-LTTimeControl.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 69M2LTLWFX;
 				GCC_INCREASE_PRECOMPILED_HEADER_SHARING = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/LTTimeControl/LTPrefixHeader.pch";
 				INFOPLIST_FILE = LTTimeControl/Info.plist;

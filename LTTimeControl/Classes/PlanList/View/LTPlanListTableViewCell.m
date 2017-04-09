@@ -86,7 +86,7 @@
         
         make.left.equalTo(self).offset(12 * kWIDTHFIT);
         
-        make.width.equalTo(100 * kWIDTHFIT);
+        make.width.equalTo(200 * kWIDTHFIT);
         
     }];
     
