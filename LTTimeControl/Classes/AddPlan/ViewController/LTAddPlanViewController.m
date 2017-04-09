@@ -277,7 +277,7 @@
         };
 #pragma mark 保存按钮block
         cell.confirmBlock = ^(NSInteger sectionNum){
-            
+            NSLog(@"%ld", sectionNum);
             [self saveSectionWithSectionNum:sectionNum];
             
         };
@@ -376,6 +376,8 @@
  */
 - (BOOL)saveSectionWithSectionNum:(NSInteger)sectionNum
 {
+    
+    NSLog(@"%ld", sectionNum);
     // 计划标题
     //    NSIndexPath *planTitleIndexPath         = [NSIndexPath indexPathForRow:0 inSection:0];
     //    LTPlanTitleTableViewCell *planTitleCell = [_mainTableView cellForRowAtIndexPath:planTitleIndexPath];
@@ -487,11 +489,12 @@
             // 保存计划名称
             planObj.planName = _planTitle;
             
-            NSLog(@"%@", _planTitle);
+            NSLog(@"%@", planObj.planName);
             
             [_ltCoreDataManager saveContext];
             
-            [self.navigationController popViewControllerAnimated:YES];
+//            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popToRootViewControllerAnimated:YES];
         }
         else
         {
