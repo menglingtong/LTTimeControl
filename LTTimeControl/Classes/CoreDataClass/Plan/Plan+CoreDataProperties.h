@@ -2,23 +2,22 @@
 //  Plan+CoreDataProperties.h
 //  LTTimeControl
 //
-//  Created by 孟令通 on 17/3/14.
+//  Created by 孟令通 on 2017/4/10.
 //  Copyright © 2017年 LryMlt. All rights reserved.
 //
-//  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
-//  to delete and recreate this implementation file for your updated model.
-//
 
-#import "Plan.h"
+#import "Plan+CoreDataClass.h"
 
-#import "Task.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Plan (CoreDataProperties)
 
-@property (nullable, nonatomic, retain) NSString *planName;
-@property (nullable, nonatomic, retain) NSNumber *planId;
++ (NSFetchRequest<Plan *> *)fetchRequest;
+
+@property (nullable, nonatomic, copy) NSNumber *planId;
+@property (nullable, nonatomic, copy) NSString *planName;
+@property (nullable, nonatomic, copy) NSNumber *isOn;
 @property (nullable, nonatomic, retain) NSSet<Task *> *task;
 
 @end
