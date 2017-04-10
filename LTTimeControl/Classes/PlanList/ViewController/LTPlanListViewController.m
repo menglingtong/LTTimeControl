@@ -18,7 +18,7 @@
 
 #import "Plan.h"
 
-@interface LTPlanListViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface LTPlanListViewController ()<UITableViewDelegate, UITableViewDataSource, planStatementDelegate>
 
 @property (nonatomic, strong) UITableView *mainTableView;
 
@@ -114,6 +114,8 @@
 {
     LTPlanListTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
+    cell.delegate = self;
+    
     Plan *planObj = [_dataSourceArr objectAtIndex:indexPath.row];
     
     cell.planTitleLabel.text = planObj.planName;
@@ -123,6 +125,12 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     return cell;
+}
+
+#pragma mark 代理方法
+- (void)switchPlanStateWithRow:(NSInteger)row andState:(BOOL)state
+{
+    NSLog(@"第 %ld 行 的状态是 %d", row, state);
 }
 
 - (void)didReceiveMemoryWarning {

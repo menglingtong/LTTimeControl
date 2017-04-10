@@ -22,12 +22,14 @@
         _bottomBoldLine     = [UIView new];
         _planTitleLabel     = [UILabel new];
         _planTimeRangeLabel = [UILabel new];
+        _switchBtn          = [UISwitch new];
         
         [self.contentView addSubview:_topLine];
         [self.contentView addSubview:_bottomLine];
         [self.contentView addSubview:_bottomBoldLine];
         [self.contentView addSubview:_planTitleLabel];
         [self.contentView addSubview:_planTimeRangeLabel];
+        [self.contentView addSubview:_switchBtn];
         
     }
     
@@ -94,9 +96,10 @@
     
     _planTitleLabel.textColor = kTITLEFONTCOLOR;
     
+    // 时间显示布局 - 暂不需要 _switchBtn
     [_planTimeRangeLabel makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(_topLine).offset(0);
+        make.top.equalTo(_topLine.bottom).offset(0);
         
         make.bottom.equalTo(_bottomLine.top).offset(0);
         
@@ -110,6 +113,30 @@
     _planTimeRangeLabel.textColor = kTIMEFONTCOLOR;
     
     _planTimeRangeLabel.textAlignment = 2;
+    
+    // 开关控件
+    [_switchBtn makeConstraints:^(MASConstraintMaker *make) {
+        
+        make.top.equalTo(_topLine.bottom).offset(10 * kHEIGHTFIT);
+        
+        make.right.equalTo(self).offset(-12 * kWIDTHFIT);
+    }];
+    
+    [_switchBtn setOn:_isOn];
+    
+    [_switchBtn addTarget:self action:@selector(didClickedSwitchBtn:) forControlEvents:UIControlEventValueChanged];
+    
+    
+    
+}
+
+- (void)didClickedSwitchBtn:(UISwitch *)switchBtn
+{
+    if ([_delegate respondsToSelector:@selector(switchPlanStateWithRow:andState:)]) {
+        
+        [_delegate switchPlanStateWithRow:_row andState:_switchBtn.isOn];
+        
+    }
 }
 
 - (void)awakeFromNib {
