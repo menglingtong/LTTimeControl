@@ -7,7 +7,7 @@
 //
 
 #import "Plan+CoreDataClass.h"
-
+#import "Task.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

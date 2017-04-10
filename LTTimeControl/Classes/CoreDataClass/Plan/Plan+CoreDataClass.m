@@ -8,6 +8,6 @@
 
 #import "Plan+CoreDataClass.h"
 #import "Task.h"
-@implementation Plan
+@implementation Plan (CoreDataClass)
 
 @end

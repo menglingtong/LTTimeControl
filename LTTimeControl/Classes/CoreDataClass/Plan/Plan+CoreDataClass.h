@@ -8,12 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
+#import "Plan.h"
 
 @class Task;
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Plan : NSManagedObject
+@interface Plan (CoreDataClass)
 
 @end
 
