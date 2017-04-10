@@ -228,8 +228,6 @@
         
         cell.planTitleLabel.text = @"任务名称：";
         
-        NSLog(@"数据原数组中的数据数量：%ld", _dataSourceArr.count);
-        
         // 判断该分区是否有数据
         if (_dataSourceArr.count != 0 && _dataSourceArr.count > indexPath.section) {
             
@@ -289,8 +287,6 @@
         LTTimePickerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"pickerCell"];
         
         cell.planTitleLabel.text = @"开始时间：";
-        
-        NSLog(@"数据原数组中的数据数量：%ld", _dataSourceArr.count);
         
         // 判断该分区是否有数据
         if (_dataSourceArr.count != 0 && _dataSourceArr.count > indexPath.section) {
@@ -412,6 +408,7 @@
                     if (task == nil) {
                         
                         task = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+                        
                     }
                     
                     task.taskId     = [NSNumber numberWithInteger:sectionNum];
@@ -428,6 +425,8 @@
                     task.startTime  = startCell.timeLabel.text;
                     
                     [_dataSourceArr addObject:task];
+                    
+                    NSLog(@"数据原数组中的数据数量：%ld", _dataSourceArr.count);
                     
                     // 验证全部通过 保存
 //                    [_ltCoreDataManager saveContext];
@@ -512,7 +511,12 @@
         
         for (Task *task in _dataSourceArr) {
             
-            Task *taskObj = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+            Task *taskObj = [self getTaskInfoById:[task.taskId integerValue] andPlanId:[task.planId integerValue]];
+            
+            if (taskObj == nil) {
+                
+                taskObj = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+            }
             
             taskObj.taskId     = task.taskId;
             
