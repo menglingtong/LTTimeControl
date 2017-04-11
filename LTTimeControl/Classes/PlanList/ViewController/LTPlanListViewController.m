@@ -116,6 +116,8 @@
     
     cell.delegate = self;
     
+    cell.row = indexPath.row;
+    
     Plan *planObj = [_dataSourceArr objectAtIndex:indexPath.row];
     
     cell.planTitleLabel.text = planObj.planName;
@@ -124,14 +126,72 @@
     
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    cell.isOn = [planObj.isOn integerValue];
+    
     return cell;
+}
+- (Plan *)getPlanById:(NSInteger)planId
+{
+    Plan *planObj = nil;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Plan" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"planId == %ld", planId];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    [fetchRequest setFetchLimit:1];
+    
+    NSError *error = nil;
+    
+    NSArray *fetchObjArr = [_ltCoreDataManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    
+    if (fetchObjArr && [fetchObjArr count] >0) {
+        
+        planObj = [fetchObjArr firstObject];
+        
+    }
+    
+    fetchRequest = nil;
+    
+    return planObj;
 }
 
 #pragma mark 代理方法
 - (void)switchPlanStateWithRow:(NSInteger)row andState:(BOOL)state
 {
     NSLog(@"第 %ld 行 的状态是 %d", row, state);
+    
+    for (Plan *plan in _dataSourceArr) {
+        
+        plan.isOn = [NSNumber numberWithBool:0];
+        
+        [_ltCoreDataManager saveContext];
+        
+    }
+    
+    Plan *planObj = [self getPlanById:row];
+    
+    if (planObj != nil) {
+        
+        planObj.isOn = [NSNumber numberWithBool:state];
+        
+        [_ltCoreDataManager saveContext];
+        
+    }
+    
+    [_mainTableView reloadData];
+    
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

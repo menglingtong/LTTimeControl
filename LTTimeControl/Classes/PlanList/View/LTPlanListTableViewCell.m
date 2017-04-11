@@ -127,7 +127,6 @@
     [_switchBtn addTarget:self action:@selector(didClickedSwitchBtn:) forControlEvents:UIControlEventValueChanged];
     
     
-    
 }
 
 - (void)didClickedSwitchBtn:(UISwitch *)switchBtn
@@ -136,6 +135,16 @@
         
         [_delegate switchPlanStateWithRow:_row andState:_switchBtn.isOn];
         
+    }
+}
+
+- (void)setIsOn:(BOOL)isOn
+{
+    if (isOn != _isOn) {
+        
+        _isOn = isOn;
+        
+        NSLog(@"是否选中 %d", isOn);
     }
 }
 
