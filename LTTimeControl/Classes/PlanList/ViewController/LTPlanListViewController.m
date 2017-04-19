@@ -168,7 +168,6 @@
 #pragma mark 代理方法
 - (void)switchPlanStateWithRow:(NSInteger)row andState:(BOOL)state
 {
-    NSLog(@"第 %ld 行 的状态是 %d", row, state);
     
     for (Plan *plan in _dataSourceArr) {
         
