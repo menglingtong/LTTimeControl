@@ -16,6 +16,8 @@
 
 #import "Task.h"
 
+#import "LTHomeTaskTableViewCell.h"
+
 @interface LTHomePageViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) UIButton *addBtn;
@@ -202,7 +204,9 @@
     
     _mainTableView.dataSource = self;
     
-    [_mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    _mainTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    
+    [_mainTableView registerClass:[LTHomeTaskTableViewCell class] forCellReuseIdentifier:@"cell"];
     
     [self.view addSubview:_mainTableView];
 }
@@ -220,11 +224,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    LTHomeTaskTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     Task *taskObj = [_dataSourceArr objectAtIndex:indexPath.row];
     
-    cell.textLabel.text = taskObj.taskName;
+    cell.timeLabel.text = taskObj.startTime;
+    
+    cell.taskNameLabel.text = taskObj.taskName;
     
     return cell;
 }
