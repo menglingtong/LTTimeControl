@@ -8,7 +8,13 @@
 
 #import "LTAddTaskViewController.h"
 
-@interface LTAddTaskViewController ()<UITableViewDelegate, UITableViewDataSource>
+#import "LTTaskTitleTableViewCell.h"
+
+#import "LTTaskDateTableViewCell.h"
+
+#import "LTDatePicker.h"
+
+@interface LTAddTaskViewController ()<UITableViewDelegate, UITableViewDataSource, LTNSDatePickerDelegate>
 
 @property (nonatomic, strong) UITableView *mainTableView;
 
@@ -21,11 +27,10 @@
     
     self.navigationItem.title = @"新建任务";
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(100, 100, 100, 30)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
-    label.text = _startTime;
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:nil];
     
-    [self.view addSubview:label];
     
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kSCREENWIDTH, kSCREENHEIGHT - 44) style:UITableViewStyleGrouped];
     
@@ -34,6 +39,8 @@
     _mainTableView.dataSource = self;
     
     [_mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    [_mainTableView registerClass:[LTTaskTitleTableViewCell class] forCellReuseIdentifier:@"titleCell"];
+    [_mainTableView registerClass:[LTTaskDateTableViewCell class] forCellReuseIdentifier:@"dateCell"];
     
     [self.view addSubview:_mainTableView];
     
@@ -67,25 +74,73 @@
     
     if (indexPath.section == 0) {
         
-        cell.textLabel.text = @"标题";
+        LTTaskTitleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"titleCell"];
+        
+        cell.taskTitleTextField.placeholder = @"标题";
+        
+        return cell;
     }
     else if (indexPath.section == 1)
     {
+        LTTaskDateTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"dateCell"];
+        
         if (indexPath.row == 0) {
             
-            cell.textLabel.text = @"开始";
+            cell.titleLabel.text = @"开始";
+            
+            cell.timeLabel.text = _startTime;
         }
         else
         {
-            cell.textLabel.text = @"结束";
+            cell.titleLabel.text = @"结束";
+            
+            cell.timeLabel.text = _endTime;
         }
+        
+        return cell;
     }
     else
     {
         cell.textLabel.text = @"备注";
+        
+        return cell;
     }
     
-    return cell;
+    return nil;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (indexPath.section == 1 && indexPath.row == 0) {
+        
+        [self setLtDatePickerInPage];
+    }
+    else if(indexPath.section == 1 && indexPath.row == 1)
+    {
+        [self setLtDatePickerInPage];
+    }
+}
+
+- (void)setLtDatePickerInPage
+{
+    LTDatePicker *ltDatePicker = [[LTDatePicker alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 44, kSCREENWIDTH, 200 * kHEIGHTFIT)];
+    
+    ltDatePicker.delegate = self;
+    
+    [self.view addSubview:ltDatePicker];
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        ltDatePicker.frame = CGRectMake(0, kSCREENHEIGHT - 44 - 200 * kHEIGHTFIT, kSCREENWIDTH, 200 * kHEIGHTFIT);
+        
+    }];
+
+}
+
+#pragma mark LTDatePicker的代理方法
+- (void)confirmActionWithDatePicker:(LTDatePicker *)datePicker WithHintStr:(NSString *)hintStr WithSection:(NSInteger)section WithRow:(NSInteger)row
+{
+    
 }
 
 - (void)didReceiveMemoryWarning {

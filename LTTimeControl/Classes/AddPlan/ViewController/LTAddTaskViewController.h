@@ -12,4 +12,6 @@
 
 @property (nonatomic, strong) NSString *startTime;
 
+@property (nonatomic, strong) NSString *endTime;
+
 @end

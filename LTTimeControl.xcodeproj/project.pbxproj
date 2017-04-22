@@ -20,6 +20,8 @@
 		8D0B80CA1E6518DB006B0315 /* LTPlanListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C91E6518DB006B0315 /* LTPlanListModel.m */; };
 		8D0B80CD1E65301E006B0315 /* LTPlanListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80CC1E65301E006B0315 /* LTPlanListTableViewCell.m */; };
 		8D0B80D41E65807F006B0315 /* LTAddPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80D31E65807F006B0315 /* LTAddPlanViewController.m */; };
+		8D0E979C1EAB63AD00575593 /* LTTaskTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E979B1EAB63AD00575593 /* LTTaskTitleTableViewCell.m */; };
+		8D0E979F1EAB63C700575593 /* LTTaskDateTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0E979E1EAB63C700575593 /* LTTaskDateTableViewCell.m */; };
 		8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4061E5FC68F00F0EDD7 /* main.m */; };
 		8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4091E5FC68F00F0EDD7 /* AppDelegate.m */; };
 		8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA40C1E5FC68F00F0EDD7 /* ViewController.m */; };
@@ -65,6 +67,10 @@
 		8D0B80CC1E65301E006B0315 /* LTPlanListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPlanListTableViewCell.m; sourceTree = "<group>"; };
 		8D0B80D21E65807F006B0315 /* LTAddPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAddPlanViewController.h; sourceTree = "<group>"; };
 		8D0B80D31E65807F006B0315 /* LTAddPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAddPlanViewController.m; sourceTree = "<group>"; };
+		8D0E979A1EAB63AD00575593 /* LTTaskTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTaskTitleTableViewCell.h; sourceTree = "<group>"; };
+		8D0E979B1EAB63AD00575593 /* LTTaskTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTaskTitleTableViewCell.m; sourceTree = "<group>"; };
+		8D0E979D1EAB63C700575593 /* LTTaskDateTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTaskDateTableViewCell.h; sourceTree = "<group>"; };
+		8D0E979E1EAB63C700575593 /* LTTaskDateTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTaskDateTableViewCell.m; sourceTree = "<group>"; };
 		8D1FA4021E5FC68F00F0EDD7 /* LTTimeControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LTTimeControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1FA4061E5FC68F00F0EDD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1FA4081E5FC68F00F0EDD7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -236,6 +242,10 @@
 			children = (
 				8D6FFF101EA9025B0076B214 /* LTDayHourTableViewCell.h */,
 				8D6FFF111EA9025B0076B214 /* LTDayHourTableViewCell.m */,
+				8D0E979A1EAB63AD00575593 /* LTTaskTitleTableViewCell.h */,
+				8D0E979B1EAB63AD00575593 /* LTTaskTitleTableViewCell.m */,
+				8D0E979D1EAB63C700575593 /* LTTaskDateTableViewCell.h */,
+				8D0E979E1EAB63C700575593 /* LTTaskDateTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -527,7 +537,9 @@
 				8D08497D1E74571D00B9E05C /* Task+CoreDataProperties.m in Sources */,
 				8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */,
 				8D0849811E74651000B9E05C /* LTCoreDataManager.m in Sources */,
+				8D0E979F1EAB63C700575593 /* LTTaskDateTableViewCell.m in Sources */,
 				8D6EC6241E9BD3AD0022AEE3 /* Plan+CoreDataClass.m in Sources */,
+				8D0E979C1EAB63AD00575593 /* LTTaskTitleTableViewCell.m in Sources */,
 				8D84AA181E7D2831009FF9ED /* LTAddPlanTitleViewController.m in Sources */,
 				8D0624AC1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.m in Sources */,
 				8D6FFF1B1EAA4C050076B214 /* LTAddTaskViewController.m in Sources */,

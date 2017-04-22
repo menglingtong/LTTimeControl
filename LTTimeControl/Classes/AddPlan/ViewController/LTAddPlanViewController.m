@@ -130,6 +130,16 @@
     
     addTaskVC.startTime = [_timeDataSourceArr objectAtIndex:indexPath.row];
     
+    if (indexPath.row == _timeDataSourceArr.count) {
+        
+        addTaskVC.endTime = [_timeDataSourceArr objectAtIndex:0];
+    }
+    else
+    {
+        addTaskVC.endTime = [_timeDataSourceArr objectAtIndex:indexPath.row +1];
+    }
+    
+    
     [self.navigationController pushViewController:addTaskVC animated:YES];
 }
 
