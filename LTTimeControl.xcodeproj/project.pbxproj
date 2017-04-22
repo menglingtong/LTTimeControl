@@ -20,10 +20,6 @@
 		8D0B80CA1E6518DB006B0315 /* LTPlanListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80C91E6518DB006B0315 /* LTPlanListModel.m */; };
 		8D0B80CD1E65301E006B0315 /* LTPlanListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80CC1E65301E006B0315 /* LTPlanListTableViewCell.m */; };
 		8D0B80D41E65807F006B0315 /* LTAddPlanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0B80D31E65807F006B0315 /* LTAddPlanViewController.m */; };
-		8D0DBEA01E65C7D800ACB812 /* LTPlanTitleTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DBE9F1E65C7D800ACB812 /* LTPlanTitleTableViewCell.m */; };
-		8D0DBEA31E65CD5F00ACB812 /* LTAddPlanSectionFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DBEA21E65CD5F00ACB812 /* LTAddPlanSectionFooterView.m */; };
-		8D0DBEA61E65D05D00ACB812 /* LTTaskButtonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DBEA51E65D05D00ACB812 /* LTTaskButtonTableViewCell.m */; };
-		8D0DBEA91E65D4AA00ACB812 /* LTTimePickerTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0DBEA81E65D4AA00ACB812 /* LTTimePickerTableViewCell.m */; };
 		8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4061E5FC68F00F0EDD7 /* main.m */; };
 		8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA4091E5FC68F00F0EDD7 /* AppDelegate.m */; };
 		8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1FA40C1E5FC68F00F0EDD7 /* ViewController.m */; };
@@ -33,6 +29,8 @@
 		8D1FA4181E5FC68F00F0EDD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D1FA4161E5FC68F00F0EDD7 /* LaunchScreen.storyboard */; };
 		8D6EC6241E9BD3AD0022AEE3 /* Plan+CoreDataClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6EC6231E9BD3AD0022AEE3 /* Plan+CoreDataClass.m */; };
 		8D6FFF0F1EA7A95F0076B214 /* LTHomeTaskTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6FFF0E1EA7A95F0076B214 /* LTHomeTaskTableViewCell.m */; };
+		8D6FFF121EA9025B0076B214 /* LTDayHourTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6FFF111EA9025B0076B214 /* LTDayHourTableViewCell.m */; };
+		8D6FFF1B1EAA4C050076B214 /* LTAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6FFF1A1EAA4C050076B214 /* LTAddTaskViewController.m */; };
 		8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D72CDF31E671A5000EA56AF /* LTDatePicker.m */; };
 		8D84AA181E7D2831009FF9ED /* LTAddPlanTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D84AA171E7D2831009FF9ED /* LTAddPlanTitleViewController.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
@@ -67,14 +65,6 @@
 		8D0B80CC1E65301E006B0315 /* LTPlanListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPlanListTableViewCell.m; sourceTree = "<group>"; };
 		8D0B80D21E65807F006B0315 /* LTAddPlanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAddPlanViewController.h; sourceTree = "<group>"; };
 		8D0B80D31E65807F006B0315 /* LTAddPlanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAddPlanViewController.m; sourceTree = "<group>"; };
-		8D0DBE9E1E65C7D800ACB812 /* LTPlanTitleTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTPlanTitleTableViewCell.h; sourceTree = "<group>"; };
-		8D0DBE9F1E65C7D800ACB812 /* LTPlanTitleTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTPlanTitleTableViewCell.m; sourceTree = "<group>"; };
-		8D0DBEA11E65CD5F00ACB812 /* LTAddPlanSectionFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAddPlanSectionFooterView.h; sourceTree = "<group>"; };
-		8D0DBEA21E65CD5F00ACB812 /* LTAddPlanSectionFooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAddPlanSectionFooterView.m; sourceTree = "<group>"; };
-		8D0DBEA41E65D05D00ACB812 /* LTTaskButtonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTaskButtonTableViewCell.h; sourceTree = "<group>"; };
-		8D0DBEA51E65D05D00ACB812 /* LTTaskButtonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTaskButtonTableViewCell.m; sourceTree = "<group>"; };
-		8D0DBEA71E65D4AA00ACB812 /* LTTimePickerTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTimePickerTableViewCell.h; sourceTree = "<group>"; };
-		8D0DBEA81E65D4AA00ACB812 /* LTTimePickerTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTimePickerTableViewCell.m; sourceTree = "<group>"; };
 		8D1FA4021E5FC68F00F0EDD7 /* LTTimeControl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LTTimeControl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D1FA4061E5FC68F00F0EDD7 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8D1FA4081E5FC68F00F0EDD7 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -91,6 +81,10 @@
 		8D6EC6231E9BD3AD0022AEE3 /* Plan+CoreDataClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Plan+CoreDataClass.m"; sourceTree = "<group>"; };
 		8D6FFF0D1EA7A95F0076B214 /* LTHomeTaskTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHomeTaskTableViewCell.h; sourceTree = "<group>"; };
 		8D6FFF0E1EA7A95F0076B214 /* LTHomeTaskTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHomeTaskTableViewCell.m; sourceTree = "<group>"; };
+		8D6FFF101EA9025B0076B214 /* LTDayHourTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTDayHourTableViewCell.h; sourceTree = "<group>"; };
+		8D6FFF111EA9025B0076B214 /* LTDayHourTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTDayHourTableViewCell.m; sourceTree = "<group>"; };
+		8D6FFF191EAA4C050076B214 /* LTAddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAddTaskViewController.h; sourceTree = "<group>"; };
+		8D6FFF1A1EAA4C050076B214 /* LTAddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAddTaskViewController.m; sourceTree = "<group>"; };
 		8D72CDF21E671A5000EA56AF /* LTDatePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTDatePicker.h; sourceTree = "<group>"; };
 		8D72CDF31E671A5000EA56AF /* LTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTDatePicker.m; sourceTree = "<group>"; };
 		8D84AA161E7D2831009FF9ED /* LTAddPlanTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAddPlanTitleViewController.h; sourceTree = "<group>"; };
@@ -240,14 +234,8 @@
 		8D0B80D01E658055006B0315 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				8D0DBE9E1E65C7D800ACB812 /* LTPlanTitleTableViewCell.h */,
-				8D0DBE9F1E65C7D800ACB812 /* LTPlanTitleTableViewCell.m */,
-				8D0DBEA41E65D05D00ACB812 /* LTTaskButtonTableViewCell.h */,
-				8D0DBEA51E65D05D00ACB812 /* LTTaskButtonTableViewCell.m */,
-				8D0DBEA71E65D4AA00ACB812 /* LTTimePickerTableViewCell.h */,
-				8D0DBEA81E65D4AA00ACB812 /* LTTimePickerTableViewCell.m */,
-				8D0DBEA11E65CD5F00ACB812 /* LTAddPlanSectionFooterView.h */,
-				8D0DBEA21E65CD5F00ACB812 /* LTAddPlanSectionFooterView.m */,
+				8D6FFF101EA9025B0076B214 /* LTDayHourTableViewCell.h */,
+				8D6FFF111EA9025B0076B214 /* LTDayHourTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -259,6 +247,8 @@
 				8D0B80D31E65807F006B0315 /* LTAddPlanViewController.m */,
 				8D84AA161E7D2831009FF9ED /* LTAddPlanTitleViewController.h */,
 				8D84AA171E7D2831009FF9ED /* LTAddPlanTitleViewController.m */,
+				8D6FFF191EAA4C050076B214 /* LTAddTaskViewController.h */,
+				8D6FFF1A1EAA4C050076B214 /* LTAddTaskViewController.m */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -534,22 +524,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0849771E7432C000B9E05C /* Plan.m in Sources */,
-				8D0DBEA31E65CD5F00ACB812 /* LTAddPlanSectionFooterView.m in Sources */,
 				8D08497D1E74571D00B9E05C /* Task+CoreDataProperties.m in Sources */,
 				8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */,
-				8D0DBEA91E65D4AA00ACB812 /* LTTimePickerTableViewCell.m in Sources */,
 				8D0849811E74651000B9E05C /* LTCoreDataManager.m in Sources */,
 				8D6EC6241E9BD3AD0022AEE3 /* Plan+CoreDataClass.m in Sources */,
 				8D84AA181E7D2831009FF9ED /* LTAddPlanTitleViewController.m in Sources */,
 				8D0624AC1E6CF266005CB22C /* UIView+LTKeyboardOffsetView.m in Sources */,
+				8D6FFF1B1EAA4C050076B214 /* LTAddTaskViewController.m in Sources */,
 				8D1FA40D1E5FC68F00F0EDD7 /* ViewController.m in Sources */,
 				8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */,
 				8D0AC5831E67B81B003E2D81 /* NSDate+LTCategory.m in Sources */,
 				8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */,
-				8D0DBEA61E65D05D00ACB812 /* LTTaskButtonTableViewCell.m in Sources */,
 				8D1FA40A1E5FC68F00F0EDD7 /* AppDelegate.m in Sources */,
 				8D0B80D41E65807F006B0315 /* LTAddPlanViewController.m in Sources */,
-				8D0DBEA01E65C7D800ACB812 /* LTPlanTitleTableViewCell.m in Sources */,
 				8D08497E1E74571D00B9E05C /* Task.m in Sources */,
 				8D0B80CD1E65301E006B0315 /* LTPlanListTableViewCell.m in Sources */,
 				8D0B80C71E6518BB006B0315 /* LTBaseModel.m in Sources */,
@@ -558,6 +545,7 @@
 				8D0B80CA1E6518DB006B0315 /* LTPlanListModel.m in Sources */,
 				8D0849761E7432C000B9E05C /* Plan+CoreDataProperties.m in Sources */,
 				8D1FA4131E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld in Sources */,
+				8D6FFF121EA9025B0076B214 /* LTDayHourTableViewCell.m in Sources */,
 				8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

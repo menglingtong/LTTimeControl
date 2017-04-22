@@ -17,7 +17,7 @@
     </entity>
     <fetchRequest name="FetchRequest" entity="Task" predicateString="planName != &quot;null&quot; AND endTime != &quot;null&quot; AND taskName != &quot;null&quot; AND startTime != &quot;null&quot;"/>
     <elements>
-        <element name="Plan" positionX="-36" positionY="-0" width="128" height="105"/>
-        <element name="Task" positionX="-279" positionY="-0" width="128" height="150"/>
+        <element name="Plan" positionX="-36" positionY="-0" width="128" height="103"/>
+        <element name="Task" positionX="-279" positionY="-0" width="128" height="148"/>
     </elements>
 </model>
