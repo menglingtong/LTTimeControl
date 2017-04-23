@@ -142,7 +142,7 @@
         _hourValue = hourValue;
     }
     
-    if (_isGetCurrentTime == 0) {
+    if (_isGetCurrentTime == 0 && _datePickerMode == 1) {
         
         _hintStr = [self getCurrentMomentTimeHourValue:_hourValue MinuteValue:_minuteValue];
         
@@ -161,14 +161,21 @@
         _minuteValue = minuteValue;
     }
     
-    if (_isGetCurrentTime == 0) {
+    if (_isGetCurrentTime == 0 && _datePickerMode == 1) {
         
         _hintStr = [self getCurrentMomentTimeHourValue:_hourValue MinuteValue:_minuteValue];
         
         _hintLabel.text = _hintStr;
         
         // 选中当前分钟
-        [_mainPickerView selectRow:_minuteValue inComponent:1 animated:YES];
+        if (_minuteValue == 0) {
+            [_mainPickerView selectRow:_minuteValue inComponent:1 animated:YES];
+        }
+        else
+        {
+            [_mainPickerView selectRow:1 inComponent:1 animated:YES];
+        }
+        
     }
     
 }

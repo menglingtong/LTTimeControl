@@ -18,6 +18,8 @@
 
 @property (nonatomic, strong) UITableView *mainTableView;
 
+@property (nonatomic, strong) LTDatePicker *ltDatePicker;
+
 @end
 
 @implementation LTAddTaskViewController
@@ -113,31 +115,41 @@
 {
     if (indexPath.section == 1 && indexPath.row == 0) {
         
-        [self setLtDatePickerInPageWithTime:_startTime];
+        [self setLtDatePickerInPageWithTime:_startTime andSection:indexPath.section andRow:indexPath.row];
     }
     else if(indexPath.section == 1 && indexPath.row == 1)
     {
-        [self setLtDatePickerInPageWithTime:_endTime];
+        [self setLtDatePickerInPageWithTime:_endTime andSection:indexPath.section andRow:indexPath.row];
     }
 }
 
-- (void)setLtDatePickerInPageWithTime:(NSString *)time
+- (void)setLtDatePickerInPageWithTime:(NSString *)time andSection:(NSInteger)section andRow:(NSInteger)row
 {
-    LTDatePicker *ltDatePicker = [[LTDatePicker alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 44, kSCREENWIDTH, 200 * kHEIGHTFIT)];
+    [_ltDatePicker removeFromSuperview];
     
-    ltDatePicker.delegate = self;
+    _ltDatePicker  = [[LTDatePicker alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 44, kSCREENWIDTH, 200 * kHEIGHTFIT)];
     
-    ltDatePicker.datePickerMode = LTDatePickerModeTimeTwentyFourHalf;
+    _ltDatePicker.delegate       = self;
     
-    ltDatePicker.hourValue = [[[time componentsSeparatedByString:@" : "] objectAtIndex:0] integerValue];
+    _ltDatePicker.sectionNum     = section;
     
-    ltDatePicker.minuteValue = [[[time componentsSeparatedByString:@" : "] objectAtIndex:1] integerValue];
+    _ltDatePicker.rowNum         = row;
     
-    [self.view addSubview:ltDatePicker];
+    _ltDatePicker.datePickerMode = LTDatePickerModeTimeTwentyFourHalf;
+    
+    NSInteger hour              = [[[time componentsSeparatedByString:@" : "] objectAtIndex:0] integerValue];
+    
+    NSInteger minute            = [[[time componentsSeparatedByString:@" : "] objectAtIndex:1] integerValue];
+    
+    _ltDatePicker.hourValue      = hour;
+    
+    _ltDatePicker.minuteValue    = minute;
+    
+    [self.view addSubview:_ltDatePicker];
     
     [UIView animateWithDuration:0.5 animations:^{
         
-        ltDatePicker.frame = CGRectMake(0, kSCREENHEIGHT - 44 - 200 * kHEIGHTFIT, kSCREENWIDTH, 200 * kHEIGHTFIT);
+        _ltDatePicker.frame = CGRectMake(0, kSCREENHEIGHT - 44 - 200 * kHEIGHTFIT, kSCREENWIDTH, 200 * kHEIGHTFIT);
         
     }];
 
@@ -146,7 +158,27 @@
 #pragma mark LTDatePicker的代理方法
 - (void)confirmActionWithDatePicker:(LTDatePicker *)datePicker WithHintStr:(NSString *)hintStr WithSection:(NSInteger)section WithRow:(NSInteger)row
 {
-    NSLog(@"%@, %ld, %ld", hintStr, section, row);
+    
+    LTTaskDateTableViewCell *cell = [_mainTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:row inSection:section]];
+    
+    cell.timeLabel.text = hintStr;
+    
+    if (section == 1 && row == 0) {
+        
+        _startTime = hintStr;
+    }
+    else if(section == 1 && row == 1)
+    {
+        _endTime = hintStr;
+    }
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        
+        [datePicker removeFromSuperview];
+        
+    });
+    
+    
 }
 
 // 返回上一页
