@@ -12,6 +12,8 @@
 
 #import "LTTaskDateTableViewCell.h"
 
+#import "LTTaskBGColorTableViewCell.h"
+
 #import "LTDatePicker.h"
 
 @interface LTAddTaskViewController ()<UITableViewDelegate, UITableViewDataSource, LTNSDatePickerDelegate>
@@ -43,6 +45,7 @@
     [_mainTableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     [_mainTableView registerClass:[LTTaskTitleTableViewCell class] forCellReuseIdentifier:@"titleCell"];
     [_mainTableView registerClass:[LTTaskDateTableViewCell class] forCellReuseIdentifier:@"dateCell"];
+    [_mainTableView registerClass:[LTTaskBGColorTableViewCell class] forCellReuseIdentifier:@"colorCell"];
     
     [self.view addSubview:_mainTableView];
     
@@ -103,7 +106,12 @@
     }
     else
     {
-        cell.textLabel.text = @"备注";
+        LTTaskBGColorTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"colorCell"];
+        
+//        cell.colorBlock = ^(color){
+//            
+//            
+//        };
         
         return cell;
     }

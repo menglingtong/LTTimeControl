@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-//typedef void(^colorBlock)() <#new#>;
+typedef void(^colorBlock)(UIColor *);
 
 @interface LTTaskBGColorTableViewCell : UITableViewCell
 
@@ -19,5 +19,7 @@
 @property (nonatomic, strong) UIButton *blueBtn;
 
 @property (nonatomic, strong) UIButton *yellowBtn;
+
+@property (nonatomic, copy) colorBlock colorBlock;
 
 @end
