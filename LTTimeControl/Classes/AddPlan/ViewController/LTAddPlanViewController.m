@@ -128,6 +128,8 @@
 {
     LTAddTaskViewController *addTaskVC = [LTAddTaskViewController new];
     
+    addTaskVC.planId = _planId;
+    
     addTaskVC.startTime = [_timeDataSourceArr objectAtIndex:indexPath.row];
     
     if (indexPath.row == _timeDataSourceArr.count) {

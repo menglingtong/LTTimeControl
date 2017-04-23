@@ -14,4 +14,6 @@
 
 @property (nonatomic, strong) NSString *endTime;
 
+@property (nonatomic, assign) NSInteger planId;
+
 @end

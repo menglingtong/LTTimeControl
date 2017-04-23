@@ -113,19 +113,25 @@
 {
     if (indexPath.section == 1 && indexPath.row == 0) {
         
-        [self setLtDatePickerInPage];
+        [self setLtDatePickerInPageWithTime:_startTime];
     }
     else if(indexPath.section == 1 && indexPath.row == 1)
     {
-        [self setLtDatePickerInPage];
+        [self setLtDatePickerInPageWithTime:_endTime];
     }
 }
 
-- (void)setLtDatePickerInPage
+- (void)setLtDatePickerInPageWithTime:(NSString *)time
 {
     LTDatePicker *ltDatePicker = [[LTDatePicker alloc] initWithFrame:CGRectMake(0, kSCREENHEIGHT - 44, kSCREENWIDTH, 200 * kHEIGHTFIT)];
     
     ltDatePicker.delegate = self;
+    
+    ltDatePicker.datePickerMode = LTDatePickerModeTimeTwentyFourHalf;
+    
+    ltDatePicker.hourValue = [[[time componentsSeparatedByString:@" : "] objectAtIndex:0] integerValue];
+    
+    ltDatePicker.minuteValue = [[[time componentsSeparatedByString:@" : "] objectAtIndex:1] integerValue];
     
     [self.view addSubview:ltDatePicker];
     
@@ -140,7 +146,13 @@
 #pragma mark LTDatePicker的代理方法
 - (void)confirmActionWithDatePicker:(LTDatePicker *)datePicker WithHintStr:(NSString *)hintStr WithSection:(NSInteger)section WithRow:(NSInteger)row
 {
+    NSLog(@"%@, %ld, %ld", hintStr, section, row);
+}
+
+// 返回上一页
+- (void)didClickedGoBack{
     
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {

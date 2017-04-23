@@ -10,6 +10,7 @@
 
 typedef NS_ENUM(NSUInteger, LTDatePickerMode) {
     LTDatePickerModeTimeTwentyFour,
+    LTDatePickerModeTimeTwentyFourHalf,
 //    LTDatePickerModeTimeTwelve,
 //    LTDatePickerModeDate,
 //    LTDatePickerModeDateAndTimeTwentyFour,
@@ -23,6 +24,12 @@ typedef NS_ENUM(NSUInteger, LTDatePickerMode) {
 @property (nonatomic, assign) LTDatePickerMode datePickerMode;
 
 @property (nonatomic, assign) id<LTNSDatePickerDelegate> delegate;
+
+@property (nonatomic, assign) BOOL isGetCurrentTime;
+
+@property (nonatomic, assign) NSInteger hourValue;
+
+@property (nonatomic, assign) NSInteger minuteValue;
 
 @property (nonatomic, assign) NSInteger sectionNum;
 

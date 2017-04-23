@@ -19,9 +19,7 @@
 // 根据模式不同，创建不同列数
 @property (nonatomic, assign) NSInteger componentNum;
 
-@property (nonatomic, assign) NSInteger hourValue;
 
-@property (nonatomic, assign) NSInteger minuteValue;
 
 // 提示框
 @property (nonatomic, strong) UILabel *hintLabel;
@@ -73,10 +71,8 @@
 }
 
 - (void)defaultInit{
-    _hourValue = [[NSDate date] lt_hour];
     
-    _minuteValue = [[NSDate date] lt_minute];
-    
+
     // 默认为时间模式 h : m
     _componentNum = 2;
     
@@ -90,6 +86,16 @@
     _hintLabel = [[UILabel alloc] initWithFrame:CGRectMake((kSCREENWIDTH - 200 * kWIDTHFIT) / 2.0, 0, 200 * kWIDTHFIT, 30 * kHEIGHTFIT)];
     
     _hintLabel.textAlignment = NSTextAlignmentCenter;
+    
+    // 24小时制 0 - 59分钟 且允许获取当前时间的时候，才获取当前时间
+    if (_datePickerMode == 0 && _isGetCurrentTime == 1) {
+        
+        _hourValue = [[NSDate date] lt_hour];
+        
+        _minuteValue = [[NSDate date] lt_minute];
+        
+        
+    }
     
     // 获取当前时间格式
     _hintStr = [self getCurrentMomentTimeHourValue:_hourValue MinuteValue:_minuteValue];
@@ -129,6 +135,44 @@
     [self addSubview:_mainPickerView];
 }
 
+- (void)setHourValue:(NSInteger)hourValue
+{
+    if (_hourValue != hourValue) {
+        
+        _hourValue = hourValue;
+    }
+    
+    if (_isGetCurrentTime == 0) {
+        
+        _hintStr = [self getCurrentMomentTimeHourValue:_hourValue MinuteValue:_minuteValue];
+        
+        _hintLabel.text = _hintStr;
+        
+        // 选中当前的小时
+        [_mainPickerView selectRow:_hourValue inComponent:0 animated:YES];
+    }
+
+}
+
+- (void)setMinuteValue:(NSInteger)minuteValue
+{
+    if (_minuteValue != minuteValue) {
+        
+        _minuteValue = minuteValue;
+    }
+    
+    if (_isGetCurrentTime == 0) {
+        
+        _hintStr = [self getCurrentMomentTimeHourValue:_hourValue MinuteValue:_minuteValue];
+        
+        _hintLabel.text = _hintStr;
+        
+        // 选中当前分钟
+        [_mainPickerView selectRow:_minuteValue inComponent:1 animated:YES];
+    }
+    
+}
+
 - (void)setDatePickerMode:(LTDatePickerMode)datePickerMode
 {
     if (_datePickerMode != datePickerMode) {
@@ -145,6 +189,13 @@
         // 刷新时间选择器
         [_mainPickerView reloadAllComponents];
     }
+    else if (_datePickerMode == 1)
+    {
+        _componentNum = 2;
+        
+        // 刷新时间选择器
+        [_mainPickerView reloadAllComponents];
+    }
 }
 
 #pragma mark UIPickerView 代理方法
@@ -155,6 +206,7 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
+    // 24小时制，0-59分钟
     if (_datePickerMode == 0) {
         
         if (component == 0) {
@@ -166,35 +218,97 @@
             return 59;
         }
     }
+    // 24小时制，0 、30分钟
+    else if (_datePickerMode == 1){
+        if (component == 0) {
+            
+            return 24;
+        }
+        else
+        {
+            return 2;
+        }
+    }
     
     return 0;
 }
 
 -(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    if (component == 0) {
+    // 24小时制，0-59分钟
+    if (_datePickerMode == 0) {
         
-        return [NSString stringWithFormat:@"%ld", row];
+        if (component == 0) {
+            
+            return [NSString stringWithFormat:@"%ld", row];
+        }
+        else
+        {
+            
+            return [NSString stringWithFormat:@"%ld", row + 1];
+        }
+    }
+    // 24小时制，0 、30分钟
+    else if (_datePickerMode == 1)
+    {
+        if (component == 0) {
+            
+            return [NSString stringWithFormat:@"%ld", row];
+        }
+        else
+        {
+            if (row == 0) {
+                return [NSString stringWithFormat:@"0"];
+            }
+            else
+            {
+                return [NSString stringWithFormat:@"30"];
+            }
+        }
     }
     else
     {
-        return [NSString stringWithFormat:@"%ld", row + 1];
+        return [NSString stringWithFormat:@"opps!"];
     }
+    
 }
 
 -(void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSLog(@"%ld - %ld", component, row);
-    
-    if (component == 0) {
+    // 24小时制，0-59分钟
+    if (_datePickerMode == 0) {
         
-        _hourValue = row;
-        
-    }else if (component == 1) {
-        
-        _minuteValue = row + 1;
-        
+        if (component == 0) {
+            
+            _hourValue = row;
+            
+        }else if (component == 1) {
+            
+            _minuteValue = row + 1;
+            
+        }
     }
+    // 24小时制，0 、30分钟
+    else if (_datePickerMode == 1)
+    {
+        if (component == 0) {
+            
+            _hourValue = row;
+            
+        }else if (component == 1) {
+            
+            if (row == 0) {
+                
+                _minuteValue = 0;
+            }
+            else
+            {
+                _minuteValue = 30;
+            }
+            
+        }
+    }
+    
     
     _hintStr = [self getCurrentMomentTimeHourValue:_hourValue MinuteValue:_minuteValue];
     
