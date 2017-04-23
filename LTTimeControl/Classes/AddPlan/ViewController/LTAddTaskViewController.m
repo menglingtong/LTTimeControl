@@ -31,7 +31,7 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"save" style:UIBarButtonItemStylePlain target:self action:@selector(didClickedSaveBtn)];
     
     
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kSCREENWIDTH, kSCREENHEIGHT - 44) style:UITableViewStyleGrouped];
@@ -189,10 +189,17 @@
 // 保存任务
 - (void)didClickedSaveBtn
 {
-    if ([self.delegate respondsToSelector:@selector(saveTaskWithTaskName:andStartTime:andEndTime:)]) {
+    LTTaskTitleTableViewCell *cell = [_mainTableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+    
+    NSString *taskName = cell.taskTitleTextField.text;
+    
+    if ([self.delegate respondsToSelector:@selector(saveTaskWithTaskName:andStartTime:andEndTime:)] && ![self isBlankString:taskName]) {
         
-        [self.delegate saveTaskWithTaskName:<#(NSString *)#> andStartTime:<#(NSString *)#> andEndTime:<#(NSString *)#>]
+        [self.delegate saveTaskWithTaskName:taskName andStartTime:_startTime andEndTime:_endTime];
+        
+        [self.navigationController popViewControllerAnimated:YES];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {

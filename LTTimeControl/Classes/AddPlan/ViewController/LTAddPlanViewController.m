@@ -14,7 +14,7 @@
 
 #import "LTCoreDataManager.h"
 
-@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, LTAddTaskDelegate>
 
 @property (nonatomic, strong) UITableView *mainTableView;
 
@@ -26,10 +26,11 @@
 
 @property (nonatomic, strong) NSMutableArray *timeDataSourceArr;
 
+@property (nonatomic, strong) NSMutableArray *taskSourceArr;
+
 @end
 
 @implementation LTAddPlanViewController
-
 
 
 
@@ -39,6 +40,8 @@
     self.navigationItem.title = _planTitle;
     
     _timeDataSourceArr = [NSMutableArray array];
+    
+    _taskSourceArr = [NSMutableArray array];
     
     for (NSInteger i = 0; i < 24; i++) {
         
@@ -126,11 +129,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    LTAddTaskViewController *addTaskVC = [LTAddTaskViewController new];
+    LTAddTaskViewController *addTaskVC  = [LTAddTaskViewController new];
     
-    addTaskVC.planId = _planId;
+    addTaskVC.delegate                  = self;
     
-    addTaskVC.startTime = [_timeDataSourceArr objectAtIndex:indexPath.row];
+    addTaskVC.planId                    = _planId;
+    
+    addTaskVC.startTime                 = [_timeDataSourceArr objectAtIndex:indexPath.row];
     
     if (indexPath.row == _timeDataSourceArr.count) {
         
@@ -150,6 +155,52 @@
     
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark 添加Task代理方法
+- (void)saveTaskWithTaskName:(NSString *)taskName andStartTime:(NSString *)startTime andEndTime:(NSString *)endTime
+{
+    NSLog(@"任务名称：%@, 开始时间：%@, 结束时间：%@", taskName, startTime, endTime);
+    
+    NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:taskName, @"taskName", startTime, @"startTime", endTime, @"endTime", nil];
+    
+    [_taskSourceArr addObject:dic];
+    
+    NSLog(@"%ld", _taskSourceArr.count);
+    
+    [self drawTaskInPageWithTaskDic:dic];
+    
+}
+
+#pragma mark 根据添加的task 绘制页面
+- (void)drawTaskInPageWithTaskDic:(NSDictionary *)taskDic
+{
+    
+    NSInteger startIndex = [_timeDataSourceArr indexOfObject:[taskDic objectForKey:@"startTime"]];
+    
+    NSInteger endIndex   = [_timeDataSourceArr indexOfObject:[taskDic objectForKey:@"endTime"]];
+    
+    CGRect viewFrame = CGRectMake(0, 60 * startIndex, kSCREENWIDTH, (endIndex - startIndex) * 60);
+    
+    UIView *view = [[UIView alloc] initWithFrame:viewFrame];
+    
+    view.backgroundColor = [UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:0.40];
+    
+    [_mainTableView addSubview:view];
+    
+    UILabel *taskNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, kSCREENWIDTH, (endIndex - startIndex) * 60)];
+    
+    taskNameLabel.text = [taskDic objectForKey:@"taskName"];
+    
+    taskNameLabel.textAlignment = 1;
+    
+    taskNameLabel.textColor = [UIColor colorWithRed:0.86 green:0.32 blue:0.29 alpha:1.00];
+    
+    [view addSubview:taskNameLabel];
+    
+    NSLog(@"开始排序 %ld， 结束排序 %ld", startIndex, endIndex);
+    
+}
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

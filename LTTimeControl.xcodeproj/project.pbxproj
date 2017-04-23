@@ -35,6 +35,7 @@
 		8D6FFF1B1EAA4C050076B214 /* LTAddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D6FFF1A1EAA4C050076B214 /* LTAddTaskViewController.m */; };
 		8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D72CDF31E671A5000EA56AF /* LTDatePicker.m */; };
 		8D84AA181E7D2831009FF9ED /* LTAddPlanTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D84AA171E7D2831009FF9ED /* LTAddPlanTitleViewController.m */; };
+		8DDDCA481EAD12E000B0E01D /* LTTaskBGColorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDCA471EAD12E000B0E01D /* LTTaskBGColorTableViewCell.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
 		8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */; };
 /* End PBXBuildFile section */
@@ -95,6 +96,8 @@
 		8D72CDF31E671A5000EA56AF /* LTDatePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTDatePicker.m; sourceTree = "<group>"; };
 		8D84AA161E7D2831009FF9ED /* LTAddPlanTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTAddPlanTitleViewController.h; sourceTree = "<group>"; };
 		8D84AA171E7D2831009FF9ED /* LTAddPlanTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTAddPlanTitleViewController.m; sourceTree = "<group>"; };
+		8DDDCA461EAD12E000B0E01D /* LTTaskBGColorTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTaskBGColorTableViewCell.h; sourceTree = "<group>"; };
+		8DDDCA471EAD12E000B0E01D /* LTTaskBGColorTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTaskBGColorTableViewCell.m; sourceTree = "<group>"; };
 		8DE3DF611E647AA70007BAA5 /* LTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseViewController.h; sourceTree = "<group>"; };
 		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
 		8DE3DF681E647B740007BAA5 /* LTHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHomePageViewController.h; sourceTree = "<group>"; };
@@ -246,6 +249,8 @@
 				8D0E979B1EAB63AD00575593 /* LTTaskTitleTableViewCell.m */,
 				8D0E979D1EAB63C700575593 /* LTTaskDateTableViewCell.h */,
 				8D0E979E1EAB63C700575593 /* LTTaskDateTableViewCell.m */,
+				8DDDCA461EAD12E000B0E01D /* LTTaskBGColorTableViewCell.h */,
+				8DDDCA471EAD12E000B0E01D /* LTTaskBGColorTableViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -534,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D0849771E7432C000B9E05C /* Plan.m in Sources */,
+				8DDDCA481EAD12E000B0E01D /* LTTaskBGColorTableViewCell.m in Sources */,
 				8D08497D1E74571D00B9E05C /* Task+CoreDataProperties.m in Sources */,
 				8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */,
 				8D0849811E74651000B9E05C /* LTCoreDataManager.m in Sources */,
