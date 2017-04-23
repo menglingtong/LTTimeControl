@@ -28,6 +28,8 @@
 
 @property (nonatomic, strong) NSMutableArray *taskSourceArr;
 
+@property (nonatomic, strong) UIColor *bgColor;
+
 @end
 
 @implementation LTAddPlanViewController
@@ -157,13 +159,15 @@
 }
 
 #pragma mark 添加Task代理方法
-- (void)saveTaskWithTaskName:(NSString *)taskName andStartTime:(NSString *)startTime andEndTime:(NSString *)endTime
+- (void)saveTaskWithTaskName:(NSString *)taskName andStartTime:(NSString *)startTime andEndTime:(NSString *)endTime andBgColor:(UIColor *)bgColor
 {
     NSLog(@"任务名称：%@, 开始时间：%@, 结束时间：%@", taskName, startTime, endTime);
     
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:taskName, @"taskName", startTime, @"startTime", endTime, @"endTime", nil];
     
     [_taskSourceArr addObject:dic];
+    
+    _bgColor = bgColor;
     
     NSLog(@"%ld", _taskSourceArr.count);
     
@@ -183,7 +187,7 @@
     
     UIView *view = [[UIView alloc] initWithFrame:viewFrame];
     
-    view.backgroundColor = [UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:0.40];
+    view.backgroundColor = _bgColor;
     
     [_mainTableView addSubview:view];
     

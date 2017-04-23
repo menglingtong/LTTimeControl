@@ -39,7 +39,7 @@
         
         make.width.equalTo(60 * kWIDTHFIT);
         
-        make.height.equalTo(40 * kHEIGHTFIT);
+        make.bottom.equalTo(self).offset(-10 * kHEIGHTFIT);
         
         make.top.equalTo(self).offset(10 * kHEIGHTFIT);
         
@@ -56,7 +56,7 @@
         
         make.width.equalTo(60 * kWIDTHFIT);
         
-        make.height.equalTo(40 * kHEIGHTFIT);
+        make.bottom.equalTo(self).offset(-10 * kHEIGHTFIT);
         
         make.top.equalTo(self).offset(10 * kHEIGHTFIT);
         
@@ -73,7 +73,7 @@
         
         make.width.equalTo(60 * kWIDTHFIT);
         
-        make.height.equalTo(40 * kHEIGHTFIT);
+        make.bottom.equalTo(self).offset(-10 * kHEIGHTFIT);
         
         make.top.equalTo(self).offset(10 * kHEIGHTFIT);
         
@@ -90,7 +90,7 @@
         
         make.width.equalTo(60 * kWIDTHFIT);
         
-        make.height.equalTo(40 * kHEIGHTFIT);
+        make.bottom.equalTo(self).offset(-10 * kHEIGHTFIT);
         
         make.top.equalTo(self).offset(10 * kHEIGHTFIT);
         

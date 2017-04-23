@@ -10,7 +10,7 @@
 
 @protocol LTAddTaskDelegate <NSObject>
 @required
-- (void) saveTaskWithTaskName:(NSString *)taskName andStartTime:(NSString *)startTime andEndTime:(NSString *)endTime;
+- (void) saveTaskWithTaskName:(NSString *)taskName andStartTime:(NSString *)startTime andEndTime:(NSString *)endTime andBgColor:(UIColor *)bgColor;
 
 @end
 
