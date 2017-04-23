@@ -8,6 +8,12 @@
 
 #import "LTBaseViewController.h"
 
+@protocol LTAddTaskDelegate <NSObject>
+@required
+- (void) saveTaskWithTaskName:(NSString *)taskName andStartTime:(NSString *)startTime andEndTime:(NSString *)endTime;
+
+@end
+
 @interface LTAddTaskViewController : LTBaseViewController
 
 @property (nonatomic, strong) NSString *startTime;
@@ -15,5 +21,7 @@
 @property (nonatomic, strong) NSString *endTime;
 
 @property (nonatomic, assign) NSInteger planId;
+
+@property (nonatomic, assign) id<LTAddTaskDelegate> delegate;
 
 @end
