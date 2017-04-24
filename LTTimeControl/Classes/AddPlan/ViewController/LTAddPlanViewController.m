@@ -220,15 +220,99 @@
 {
     NSLog(@"有%ld个task，planId 是 %ld, PlanName为%@", _taskSourceArr.count, _planId, _planTitle);
     
+    [self savePlan];
+}
+
+#pragma mark 保存plan方法
+- (void)savePlan
+{
+    
+    Plan *planObj = [self getPlanInfoById:_planId];
+    
+    if (planObj == nil) {
+        planObj = [NSEntityDescription insertNewObjectForEntityForName:@"Plan" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    }
+    
+    if (![self isBlankString:_planTitle]) {
+        
+        // 调用保存任务方法
+        if ([self saveTask]) {
+            
+            // 保存计划id
+            planObj.planId = [NSNumber numberWithInteger:_planId];
+            
+            // 保存计划名称
+            planObj.planName = _planTitle;
+            
+            NSLog(@"%@", planObj.planName);
+            
+            [_ltCoreDataManager saveContext];
+            
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+        else
+        {
+            NSLog(@"保存失败");
+        }
+        
+    }
+    
+    planObj = nil;
+}
+
+#pragma mark 根据id查询对应的plan信息
+- (Plan *)getPlanInfoById:(NSInteger)planId
+{
+    Plan *planObj = nil;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity = [NSEntityDescription entityForName:@"Plan" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    
+    [fetchRequest setFetchLimit:1];
+    
+    [fetchRequest setEntity:entity];
+    
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"planId == %ld", planId];
+    
+    [fetchRequest setPredicate:predicate];
+    
+    NSError *error = nil;
+    
+    NSArray *fetchObjArr = [_ltCoreDataManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    
+    if (fetchObjArr && [fetchObjArr count] > 0) {
+        
+        planObj = [fetchObjArr objectAtIndex:0];
+        
+    }
+    
+    fetchRequest = nil;
+    
+    return planObj;
+    
+}
+
+#pragma mark 保存task方法
+- (BOOL)saveTask
+{
     NSArray *newTaskArr = [_taskSourceArr sortedArrayUsingSelector:@selector(compareWithStartTime:)];
     
-    if (_taskSourceArr.count > 0) {
+    if ([_taskSourceArr count] > 0) {
         
         for (NSInteger i = 0; i < newTaskArr.count; i++) {
             
-            NSLog(@"%@", [[newTaskArr objectAtIndex:i] startTime]);
+            Task *taskObj = [self getTaskInfoById:i andPlanId:_planId];
             
-            Task *taskObj = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+            if (taskObj == nil) {
+                
+                taskObj = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+            }
+            
             
             taskObj.planId = [NSNumber numberWithInteger:_planId];
             
@@ -240,13 +324,73 @@
             
             taskObj.taskName = [[newTaskArr objectAtIndex:i] taskName];
             
+            taskObj.taskId = [NSNumber numberWithInteger:i];
+            
+            NSError *error = nil;
+            
+            if (_ltCoreDataManager.managedObjectContext.hasChanges) {
+                
+                [_ltCoreDataManager.managedObjectContext save:&error];
+            }
+            
+            if (error) {
+                
+                NSLog(@"CoreData Insert Data Error : %@", error);
+            }
             
         }
+        
+        return YES;
     }
     else
     {
-        NSLog(@"当前没有任务可保存！");
+        NSLog(@"没有任务可保存");
+        
+        return NO;
     }
+    
+}
+
+#pragma mark 根据id查询对应task信息
+- (Task *)getTaskInfoById:(NSInteger)taskId andPlanId:(NSInteger)planId
+{
+    Task *taskObj = nil;
+    
+    NSFetchRequest *fetchRequest = [[NSFetchRequest alloc] init];
+    
+    NSEntityDescription *entity  = [NSEntityDescription entityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+    
+    [fetchRequest setEntity:entity];
+    
+    // 设置查询条件
+    // taskId 是否存在
+    NSPredicate *predicateTaskId = [NSPredicate predicateWithFormat:@"taskId == %ld", taskId];
+    // planId 是否存在
+    NSPredicate *predicatePlanId = [NSPredicate predicateWithFormat:@"planId == %ld", planId];
+    
+    NSCompoundPredicate *compoundPredicate = [[NSCompoundPredicate alloc] initWithType:NSAndPredicateType subpredicates:@[predicatePlanId, predicateTaskId]];
+    
+    [fetchRequest setPredicate:compoundPredicate];
+    // 设置最多条目
+    [fetchRequest setFetchLimit:1];
+    
+    NSError *error = nil;
+    
+    NSArray *fetchObjArr = [_ltCoreDataManager.managedObjectContext executeFetchRequest:fetchRequest error:&error];
+    
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    
+    if (fetchObjArr && [fetchObjArr count] > 0) {
+        
+        taskObj = [fetchObjArr objectAtIndex:0];
+        
+    }
+    
+    fetchRequest = nil;
+    
+    return taskObj;
     
 }
 
