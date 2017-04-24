@@ -228,6 +228,18 @@
             
             NSLog(@"%@", [[newTaskArr objectAtIndex:i] startTime]);
             
+            Task *taskObj = [NSEntityDescription insertNewObjectForEntityForName:@"Task" inManagedObjectContext:_ltCoreDataManager.managedObjectContext];
+            
+            taskObj.planId = [NSNumber numberWithInteger:_planId];
+            
+            taskObj.planName = _planTitle;
+            
+            taskObj.startTime = [[newTaskArr objectAtIndex:i] startTime];
+            
+            taskObj.endTime = [[newTaskArr objectAtIndex:i] endTime];
+            
+            taskObj.taskName = [[newTaskArr objectAtIndex:i] taskName];
+            
             
         }
     }
