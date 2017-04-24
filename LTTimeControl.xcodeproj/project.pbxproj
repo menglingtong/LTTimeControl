@@ -38,6 +38,7 @@
 		8DDDCA481EAD12E000B0E01D /* LTTaskBGColorTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DDDCA471EAD12E000B0E01D /* LTTaskBGColorTableViewCell.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
 		8DE3DF6A1E647B740007BAA5 /* LTHomePageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */; };
+		8DF0E2F51EADE8AE001EF828 /* LTTaskWithOrderModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF0E2F41EADE8AE001EF828 /* LTTaskWithOrderModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -102,6 +103,8 @@
 		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
 		8DE3DF681E647B740007BAA5 /* LTHomePageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTHomePageViewController.h; sourceTree = "<group>"; };
 		8DE3DF691E647B740007BAA5 /* LTHomePageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTHomePageViewController.m; sourceTree = "<group>"; };
+		8DF0E2F31EADE8AE001EF828 /* LTTaskWithOrderModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTTaskWithOrderModel.h; sourceTree = "<group>"; };
+		8DF0E2F41EADE8AE001EF828 /* LTTaskWithOrderModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTTaskWithOrderModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +239,8 @@
 		8D0B80CF1E658055006B0315 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				8DF0E2F31EADE8AE001EF828 /* LTTaskWithOrderModel.h */,
+				8DF0E2F41EADE8AE001EF828 /* LTTaskWithOrderModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -563,6 +568,7 @@
 				8D0B80CA1E6518DB006B0315 /* LTPlanListModel.m in Sources */,
 				8D0849761E7432C000B9E05C /* Plan+CoreDataProperties.m in Sources */,
 				8D1FA4131E5FC68F00F0EDD7 /* LTTimeControl.xcdatamodeld in Sources */,
+				8DF0E2F51EADE8AE001EF828 /* LTTaskWithOrderModel.m in Sources */,
 				8D6FFF121EA9025B0076B214 /* LTDayHourTableViewCell.m in Sources */,
 				8D1FA4071E5FC68F00F0EDD7 /* main.m in Sources */,
 			);

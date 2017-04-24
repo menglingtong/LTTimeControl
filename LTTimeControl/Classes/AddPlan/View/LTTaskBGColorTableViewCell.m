@@ -49,7 +49,7 @@
     
     _redBtn.backgroundColor = [UIColor colorWithRed:0.69 green:0.02 blue:0.06 alpha:1.00];
     
-    [_redBtn addTarget:self action:@selector(didClickedRedBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_redBtn addTarget:self action:@selector(didClickedRedBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     // 绿色按钮
     [_greenBtn makeConstraints:^(MASConstraintMaker *make) {
@@ -66,7 +66,7 @@
     
     _greenBtn.backgroundColor = [UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:1.00];
     
-    [_greenBtn addTarget:self action:@selector(didClickedGreenBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_greenBtn addTarget:self action:@selector(didClickedGreenBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     // 蓝色按钮
     [_blueBtn makeConstraints:^(MASConstraintMaker *make) {
@@ -83,7 +83,7 @@
     
     _blueBtn.backgroundColor = [UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:1.00];
     
-    [_blueBtn addTarget:self action:@selector(didClickedBlueBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_blueBtn addTarget:self action:@selector(didClickedBlueBtn:) forControlEvents:UIControlEventTouchUpInside];
     
     // 黄色按钮
     [_yellowBtn makeConstraints:^(MASConstraintMaker *make) {
@@ -100,36 +100,64 @@
     
     _yellowBtn.backgroundColor = [UIColor colorWithRed:0.99 green:0.74 blue:0.25 alpha:1.00];
     
-    [_yellowBtn addTarget:self action:@selector(didClickedYellowBtn) forControlEvents:UIControlEventTouchUpInside];
+    [_yellowBtn addTarget:self action:@selector(didClickedYellowBtn:) forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (void)didClickedRedBtn
+- (void)didClickedRedBtn:(UIButton *)button
 {
     if (_colorBlock) {
+        
+        _redBtn.backgroundColor = [UIColor colorWithRed:0.69 green:0.02 blue:0.06 alpha:1.00];
+        _greenBtn.backgroundColor = [UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:1.00];
+        _blueBtn.backgroundColor = [UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:1.00];
+        _yellowBtn.backgroundColor = [UIColor colorWithRed:0.99 green:0.74 blue:0.25 alpha:1.00];
+        
+        button.backgroundColor = [UIColor colorWithRed:0.69 green:0.02 blue:0.06 alpha:0.40];
         
         _colorBlock([UIColor colorWithRed:0.69 green:0.02 blue:0.06 alpha:0.40]);
     }
 }
 
-- (void)didClickedGreenBtn
+- (void)didClickedGreenBtn:(UIButton *)button
 {
     if (_colorBlock) {
+        
+        _redBtn.backgroundColor = [UIColor colorWithRed:0.69 green:0.02 blue:0.06 alpha:1.00];
+        _greenBtn.backgroundColor = [UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:1.00];
+        _blueBtn.backgroundColor = [UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:1.00];
+        _yellowBtn.backgroundColor = [UIColor colorWithRed:0.99 green:0.74 blue:0.25 alpha:1.00];
+        
+        button.backgroundColor = [UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:0.40];
         
         _colorBlock([UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:0.40]);
     }
 }
 
-- (void)didClickedBlueBtn
+- (void)didClickedBlueBtn:(UIButton *)button
 {
     if (_colorBlock) {
+        
+        _redBtn.backgroundColor = [UIColor colorWithRed:0.69 green:0.02 blue:0.06 alpha:1.00];
+        _greenBtn.backgroundColor = [UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:1.00];
+        _blueBtn.backgroundColor = [UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:1.00];
+        _yellowBtn.backgroundColor = [UIColor colorWithRed:0.99 green:0.74 blue:0.25 alpha:1.00];
+        
+        button.backgroundColor = [UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:0.40];
         
         _colorBlock([UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:0.40]);
     }
 }
 
-- (void)didClickedYellowBtn
+- (void)didClickedYellowBtn:(UIButton *)button
 {
     if (_colorBlock) {
+        
+        _redBtn.backgroundColor = [UIColor colorWithRed:0.69 green:0.02 blue:0.06 alpha:1.00];
+        _greenBtn.backgroundColor = [UIColor colorWithRed:0.13 green:0.62 blue:0.37 alpha:1.00];
+        _blueBtn.backgroundColor = [UIColor colorWithRed:0.00 green:0.54 blue:1.00 alpha:1.00];
+        _yellowBtn.backgroundColor = [UIColor colorWithRed:0.99 green:0.74 blue:0.25 alpha:1.00];
+        
+        button.backgroundColor = [UIColor colorWithRed:0.99 green:0.74 blue:0.25 alpha:0.40];
         
         _colorBlock([UIColor colorWithRed:0.99 green:0.74 blue:0.25 alpha:0.40]);
     }

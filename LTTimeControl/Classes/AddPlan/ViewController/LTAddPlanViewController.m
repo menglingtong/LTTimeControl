@@ -12,6 +12,12 @@
 
 #import "LTDayHourTableViewCell.h"
 
+#import "LTTaskWithOrderModel.h"
+
+#import "Task.h"
+
+#import "Plan.h"
+
 #import "LTCoreDataManager.h"
 
 @interface LTAddPlanViewController ()<UITableViewDelegate, UITableViewDataSource, LTAddTaskDelegate>
@@ -86,7 +92,7 @@
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStylePlain target:self action:@selector(didClickedGoBack)];
     
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:nil];
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"保存" style:UIBarButtonItemStylePlain target:self action:@selector(didClickedSaveBtn:)];
     
     _mainTableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kSCREENWIDTH, kSCREENHEIGHT - 64) style:UITableViewStylePlain];
     
@@ -165,7 +171,11 @@
     
     NSDictionary *dic = [NSDictionary dictionaryWithObjectsAndKeys:taskName, @"taskName", startTime, @"startTime", endTime, @"endTime", nil];
     
-    [_taskSourceArr addObject:dic];
+    LTTaskWithOrderModel *taskModel = [[LTTaskWithOrderModel alloc] initWithStartTime:startTime andEndTime:endTime andTaskName:taskName];
+    
+    taskModel.timeDataSourceArr = [_timeDataSourceArr copy];
+    
+    [_taskSourceArr addObject:taskModel];
     
     _bgColor = bgColor;
     
@@ -202,6 +212,29 @@
     [view addSubview:taskNameLabel];
     
     NSLog(@"开始排序 %ld， 结束排序 %ld", startIndex, endIndex);
+    
+}
+
+#pragma mark 保存整个Plan
+- (void)didClickedSaveBtn:(UIButton *)sender
+{
+    NSLog(@"有%ld个task，planId 是 %ld, PlanName为%@", _taskSourceArr.count, _planId, _planTitle);
+    
+    NSArray *newTaskArr = [_taskSourceArr sortedArrayUsingSelector:@selector(compareWithStartTime:)];
+    
+    if (_taskSourceArr.count > 0) {
+        
+        for (NSInteger i = 0; i < newTaskArr.count; i++) {
+            
+            NSLog(@"%@", [[newTaskArr objectAtIndex:i] startTime]);
+            
+            
+        }
+    }
+    else
+    {
+        NSLog(@"当前没有任务可保存！");
+    }
     
 }
 
