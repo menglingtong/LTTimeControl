@@ -14,6 +14,16 @@ pod 'DZNEmptyDataSet'
 # 动画
 pod 'MMTweenAnimation'
 
+# 网络请求
+pod 'AFNetworking', '~> 3.1.0'
+
+# 网络图片加载
+pod 'SDWebImage', '~> 4.0.0'
+
+pod 'YYKit', '~> 1.0.9'
+
+pod 'MJExtension', '~> 3.0.13'
+
 # 日历
 #use_frameworks!
 #pod 'FSCalendar'

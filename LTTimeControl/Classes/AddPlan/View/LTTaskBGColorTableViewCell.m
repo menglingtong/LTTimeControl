@@ -60,7 +60,7 @@
         
         make.top.equalTo(self).offset(10 * kHEIGHTFIT);
         
-        make.left.equalTo(_redBtn.right).offset(20 * kWIDTHFIT);
+        make.left.equalTo(_redBtn.mas_right).offset(20 * kWIDTHFIT);
         
     }];
     
@@ -77,7 +77,7 @@
         
         make.top.equalTo(self).offset(10 * kHEIGHTFIT);
         
-        make.left.equalTo(_greenBtn.right).offset(20 * kWIDTHFIT);
+        make.left.equalTo(_greenBtn.mas_right).offset(20 * kWIDTHFIT);
         
     }];
     
@@ -94,7 +94,7 @@
         
         make.top.equalTo(self).offset(10 * kHEIGHTFIT);
         
-        make.left.equalTo(_blueBtn.right).offset(20 * kWIDTHFIT);
+        make.left.equalTo(_blueBtn.mas_right).offset(20 * kWIDTHFIT);
         
     }];
     

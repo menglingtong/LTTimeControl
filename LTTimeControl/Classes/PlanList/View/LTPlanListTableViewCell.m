@@ -71,7 +71,7 @@
         
         make.left.equalTo(self).offset(0);
         
-        make.bottom.equalTo(_bottomBoldLine.top).offset(0);
+        make.bottom.equalTo(_bottomBoldLine.mas_top).offset(0);
         
         make.right.equalTo(self).offset(0);
         
@@ -82,9 +82,9 @@
     
     [_planTitleLabel makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(_topLine.bottom).offset(0);
+        make.top.equalTo(_topLine.mas_bottom).offset(0);
         
-        make.bottom.equalTo(_bottomLine.top).offset(0);
+        make.bottom.equalTo(_bottomLine.mas_top).offset(0);
         
         make.left.equalTo(self).offset(12 * kWIDTHFIT);
         
@@ -99,11 +99,11 @@
     // 时间显示布局 - 暂不需要 _switchBtn
     [_planTimeRangeLabel makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(_topLine.bottom).offset(0);
+        make.top.equalTo(_topLine.mas_bottom).offset(0);
         
-        make.bottom.equalTo(_bottomLine.top).offset(0);
+        make.bottom.equalTo(_bottomLine.mas_top).offset(0);
         
-        make.left.equalTo(_planTitleLabel.right).offset(12 * kWIDTHFIT);
+        make.left.equalTo(_planTitleLabel.mas_right).offset(12 * kWIDTHFIT);
         
         make.right.equalTo(self).offset(-12 * kWIDTHFIT);
     }];
@@ -117,7 +117,7 @@
     // 开关控件
     [_switchBtn makeConstraints:^(MASConstraintMaker *make) {
         
-        make.top.equalTo(_topLine.bottom).offset(10 * kHEIGHTFIT);
+        make.top.equalTo(_topLine.mas_bottom).offset(10 * kHEIGHTFIT);
         
         make.right.equalTo(self).offset(-12 * kWIDTHFIT);
     }];

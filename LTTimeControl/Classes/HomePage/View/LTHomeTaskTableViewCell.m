@@ -37,11 +37,11 @@
     // 竖线
     [_lineLabel makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(self.left).offset(20);
+        make.left.equalTo(self).offset(20);
         
-        make.top.equalTo(self.top).offset(0);
+        make.top.equalTo(self).offset(0);
         
-        make.bottom.equalTo(self.bottom).offset(0);
+        make.bottom.equalTo(self).offset(0);
         
         make.width.equalTo(1);
         
@@ -56,9 +56,9 @@
         
         make.height.equalTo(10);
         
-        make.left.equalTo(self.left).offset(15);
+        make.left.equalTo(self).offset(15);
         
-        make.top.equalTo(self.top).offset(15);
+        make.top.equalTo(self).offset(15);
         
     }];
     
@@ -75,11 +75,11 @@
     // 时间
     [_timeLabel makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(_circleLabel.right).offset(20);
+        make.left.equalTo(_circleLabel.mas_right).offset(20);
         
-        make.top.equalTo(self.top).offset(0);
+        make.top.equalTo(self).offset(0);
         
-        make.bottom.equalTo(self.bottom).offset(0);
+        make.bottom.equalTo(self).offset(0);
         
         make.width.equalTo(50);
     }];
@@ -93,11 +93,11 @@
     // 任务名
     [_taskNameLabel makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(_timeLabel.right).offset(20);
+        make.left.equalTo(_timeLabel.mas_right).offset(20);
         
-        make.top.equalTo(self.top).offset(0);
+        make.top.equalTo(self).offset(0);
         
-        make.bottom.equalTo(self.bottom).offset(0);
+        make.bottom.equalTo(self).offset(0);
         
         make.width.equalTo(200);
         

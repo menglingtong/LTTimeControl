@@ -31,9 +31,9 @@
 {
     [_timeLabel makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(self.left).offset(0);
+        make.left.equalTo(self.mas_left).offset(0);
         
-        make.top.equalTo(self.top).offset(0);
+        make.top.equalTo(self.mas_top).offset(0);
         
         make.height.equalTo(20 * kHEIGHTFIT);
         
@@ -50,11 +50,11 @@
     
     [_lineLabel makeConstraints:^(MASConstraintMaker *make) {
         
-        make.left.equalTo(_timeLabel.right).offset(10);
+        make.left.equalTo(_timeLabel.mas_right).offset(10);
         
-        make.top.equalTo(self.top).offset(10 * kHEIGHTFIT);
+        make.top.equalTo(self.mas_top).offset(10 * kHEIGHTFIT);
         
-        make.right.equalTo(self.right).offset(0);
+        make.right.equalTo(self.mas_right).offset(0);
         
         make.height.equalTo(0.5);
         

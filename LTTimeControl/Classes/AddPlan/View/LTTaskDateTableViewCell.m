@@ -51,7 +51,7 @@
         
         make.bottom.equalTo(self).offset(0);
         
-        make.left.equalTo(self.titleLabel.right).offset(0);
+        make.left.equalTo(self.titleLabel.mas_right).offset(0);
         
     }];
     
