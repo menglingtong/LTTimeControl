@@ -24,6 +24,8 @@ pod 'YYKit', '~> 1.0.9'
 
 pod 'MJExtension', '~> 3.0.13'
 
+pod 'BmobSDK'
+
 # 日历
 #use_frameworks!
 #pod 'FSCalendar'
