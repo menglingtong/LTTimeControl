@@ -43,6 +43,7 @@
 		8DB4C3641EBE0E6900679E30 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C3611EBE0E6900679E30 /* ViewController.m */; };
 		8DB4C3FA1EBE1F8E00679E30 /* LTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C3F81EBE1F8E00679E30 /* LTRegisterViewController.m */; };
 		8DB4C3FB1EBE1F8E00679E30 /* LTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB4C3F91EBE1F8E00679E30 /* LTRegisterViewController.xib */; };
+		8DB4C3FF1EBE26F200679E30 /* NSString+LTVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C3FE1EBE26F200679E30 /* NSString+LTVerify.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -116,6 +117,8 @@
 		8DB4C3F71EBE1F8E00679E30 /* LTRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTRegisterViewController.h; sourceTree = "<group>"; };
 		8DB4C3F81EBE1F8E00679E30 /* LTRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTRegisterViewController.m; sourceTree = "<group>"; };
 		8DB4C3F91EBE1F8E00679E30 /* LTRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LTRegisterViewController.xib; sourceTree = "<group>"; };
+		8DB4C3FD1EBE26F200679E30 /* NSString+LTVerify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LTVerify.h"; sourceTree = "<group>"; };
+		8DB4C3FE1EBE26F200679E30 /* NSString+LTVerify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LTVerify.m"; sourceTree = "<group>"; };
 		8DE3DF611E647AA70007BAA5 /* LTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseViewController.h; sourceTree = "<group>"; };
 		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,6 +248,7 @@
 		8D72CDF01E671A3200EA56AF /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				8DB4C3FC1EBE26B200679E30 /* NSString+LTCategory */,
 				8DB4C3131EBCDFE400679E30 /* Network */,
 				8D0624A91E6CF24D005CB22C /* UIView+LTKeyboardOffsetView */,
 				8D0AC5801E67B81B003E2D81 /* NSDate+LTCategory */,
@@ -458,6 +462,15 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		8DB4C3FC1EBE26B200679E30 /* NSString+LTCategory */ = {
+			isa = PBXGroup;
+			children = (
+				8DB4C3FD1EBE26F200679E30 /* NSString+LTVerify.h */,
+				8DB4C3FE1EBE26F200679E30 /* NSString+LTVerify.m */,
+			);
+			path = "NSString+LTCategory";
+			sourceTree = "<group>";
+		};
 		8DE3DF5C1E647A290007BAA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +649,7 @@
 				8D08497D1E74571D00B9E05C /* Task+CoreDataProperties.m in Sources */,
 				8D0849811E74651000B9E05C /* LTCoreDataManager.m in Sources */,
 				8DB4C3461EBE0BFE00679E30 /* LTAddTaskViewController.m in Sources */,
+				8DB4C3FF1EBE26F200679E30 /* NSString+LTVerify.m in Sources */,
 				8DB4C3471EBE0BFE00679E30 /* LTHomeTaskTableViewCell.m in Sources */,
 				8D6EC6241E9BD3AD0022AEE3 /* Plan+CoreDataClass.m in Sources */,
 				8DB4C3591EBE0C8E00679E30 /* LTLoginViewController.m in Sources */,
