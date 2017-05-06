@@ -10,6 +10,8 @@
 
 #import "LTHomePageViewController.h"
 
+#import "LTLoginViewController.h"
+
 #import <BmobSDK/Bmob.h>
 
 @interface AppDelegate ()
@@ -36,7 +38,7 @@
     
     taskNav.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"任务列表" image:[UIImage imageNamed:@"taskList"] tag:1000];
     
-    UIViewController *userVC = [[UIViewController alloc] init];
+    LTLoginViewController *userVC = [[LTLoginViewController alloc] init];
     
     UINavigationController *userNav = [[UINavigationController alloc] initWithRootViewController:userVC];
 
