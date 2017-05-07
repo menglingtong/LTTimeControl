@@ -26,6 +26,9 @@ pod 'MJExtension', '~> 3.0.13'
 
 pod 'BmobSDK'
 
+pod 'RongCloudIM/IMLib', '~> 2.8.3'
+pod 'RongCloudIM/IMKit', '~> 2.8.3'
+
 # 日历
 #use_frameworks!
 #pod 'FSCalendar'

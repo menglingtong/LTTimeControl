@@ -79,23 +79,6 @@
                 }
             }];
             
-//            [query getObjectInBackgroundWithId:@"d803023542" block:^(BmobObject *object,NSError *error){
-//                if (error){
-//                    //进行错误处理
-//                }else{
-//                    //表里有id为0c6db13c的数据
-//                    if (object) {
-//                        //得到playerName和cheatMode
-//                        NSString *playerName = [object objectForKey:@"userName"];
-//                        BOOL cheatMode = [[object objectForKey:@"verify"] boolValue];
-//                        NSString *uid = [object objectForKey:@"uid"];
-//                        NSLog(@"%@----%i ----- %@",playerName,cheatMode, uid);
-//                    }
-//                }
-//            }];
-            
-            
-            
         }
         else
         {
