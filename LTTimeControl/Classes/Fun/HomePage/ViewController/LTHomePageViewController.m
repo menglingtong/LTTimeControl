@@ -76,7 +76,7 @@
         
         Plan *planObj = [fetchPlanArry firstObject];
         
-        NSLog(@"%ld", [planObj.planId integerValue]);
+//        NSLog(@"%ld", [planObj.planId integerValue]);
         
         NSFetchRequest *fetchPlanRequest = [[NSFetchRequest alloc] init];
         
@@ -140,7 +140,7 @@
         
         Plan *planObj = [fetchPlanArry firstObject];
         
-        NSLog(@"%ld", [planObj.planId integerValue]);
+//        NSLog(@"%ld", [planObj.planId integerValue]);
         
         NSFetchRequest *fetchPlanRequest = [[NSFetchRequest alloc] init];
         

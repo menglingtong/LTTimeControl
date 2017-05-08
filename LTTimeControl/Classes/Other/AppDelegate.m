@@ -14,6 +14,8 @@
 
 #import <BmobSDK/Bmob.h>
 
+#import <RongIMKit/RongIMKit.h>
+
 @interface AppDelegate ()
 
 @end
@@ -24,7 +26,11 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+    // 初始化Bmob
     [Bmob registerWithAppKey:@"24234f530af7e5a0baf2d0969a41e406"];
+    
+    // 初始化融云
+    [[RCIM sharedRCIM] initWithAppKey:@"82hegw5u83btx"];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     

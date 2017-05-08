@@ -44,6 +44,7 @@
 		8DB4C3FA1EBE1F8E00679E30 /* LTRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C3F81EBE1F8E00679E30 /* LTRegisterViewController.m */; };
 		8DB4C3FB1EBE1F8E00679E30 /* LTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB4C3F91EBE1F8E00679E30 /* LTRegisterViewController.xib */; };
 		8DB4C3FF1EBE26F200679E30 /* NSString+LTVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C3FE1EBE26F200679E30 /* NSString+LTVerify.m */; };
+		8DB4C4071EBF97C700679E30 /* LTChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C4061EBF97C700679E30 /* LTChatListViewController.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +120,8 @@
 		8DB4C3F91EBE1F8E00679E30 /* LTRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LTRegisterViewController.xib; sourceTree = "<group>"; };
 		8DB4C3FD1EBE26F200679E30 /* NSString+LTVerify.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LTVerify.h"; sourceTree = "<group>"; };
 		8DB4C3FE1EBE26F200679E30 /* NSString+LTVerify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LTVerify.m"; sourceTree = "<group>"; };
+		8DB4C4051EBF97C700679E30 /* LTChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTChatListViewController.h; sourceTree = "<group>"; };
+		8DB4C4061EBF97C700679E30 /* LTChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTChatListViewController.m; sourceTree = "<group>"; };
 		8DE3DF611E647AA70007BAA5 /* LTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseViewController.h; sourceTree = "<group>"; };
 		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -278,6 +281,7 @@
 		8DB4C3181EBE0BFE00679E30 /* Fun */ = {
 			isa = PBXGroup;
 			children = (
+				8DB4C4001EBF916000679E30 /* ChatList */,
 				8DB4C34C1EBE0C7300679E30 /* Login */,
 				8DB4C3191EBE0BFE00679E30 /* AddPlan */,
 				8DB4C32D1EBE0BFE00679E30 /* HomePage */,
@@ -471,6 +475,47 @@
 			path = "NSString+LTCategory";
 			sourceTree = "<group>";
 		};
+		8DB4C4001EBF916000679E30 /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				8DB4C4011EBF916000679E30 /* Handler */,
+				8DB4C4021EBF916000679E30 /* Model */,
+				8DB4C4031EBF916000679E30 /* View */,
+				8DB4C4041EBF916000679E30 /* ViewController */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		8DB4C4011EBF916000679E30 /* Handler */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Handler;
+			sourceTree = "<group>";
+		};
+		8DB4C4021EBF916000679E30 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DB4C4031EBF916000679E30 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8DB4C4041EBF916000679E30 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8DB4C4051EBF97C700679E30 /* LTChatListViewController.h */,
+				8DB4C4061EBF97C700679E30 /* LTChatListViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		8DE3DF5C1E647A290007BAA5 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -661,6 +706,7 @@
 				8D0AC5831E67B81B003E2D81 /* NSDate+LTCategory.m in Sources */,
 				8D72CDF41E671A5000EA56AF /* LTDatePicker.m in Sources */,
 				8D08497E1E74571D00B9E05C /* Task.m in Sources */,
+				8DB4C4071EBF97C700679E30 /* LTChatListViewController.m in Sources */,
 				8DB4C3621EBE0E6900679E30 /* AppDelegate.m in Sources */,
 				8D0B80C71E6518BB006B0315 /* LTBaseModel.m in Sources */,
 				8DB4C3FA1EBE1F8E00679E30 /* LTRegisterViewController.m in Sources */,

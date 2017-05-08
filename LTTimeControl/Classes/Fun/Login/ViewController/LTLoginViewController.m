@@ -14,6 +14,10 @@
 
 #import <BmobSDK/Bmob.h>
 
+#import <RongIMKit/RongIMKit.h>
+
+#import "LTChatListViewController.h"
+
 @interface LTLoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *userNameImage;
 @property (weak, nonatomic) IBOutlet UIImageView *pswImage;
@@ -70,12 +74,32 @@
                     
                 } else {
                     
-                    for (BmobObject *obj in array) {
+                    BmobObject *obj = [array firstObject];
+                    
+                    NSString *token = [obj objectForKey:@"Token"];
+                    
+                    NSLog(@"%@",[obj objectForKey:@"userName"]);
+                    
+                    NSLog(@"%@",[obj objectForKey:@"Token"]);
+                    
+                    [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
                         
-                        NSLog(@"%@",[obj objectForKey:@"userName"]);
+                        NSLog(@"融云userId：%@", userId);
                         
-                        NSLog(@"%@",[obj objectForKey:@"Token"]);
-                    }
+                        LTChatListViewController *chatListVC = [[LTChatListViewController alloc] init];
+                        
+//                        chatListVC.displayConversationTypeArray = @[@(ConversationType_PRIVATE)];
+                        
+                        [self.navigationController pushViewController:chatListVC animated:YES];
+                        
+                    } error:^(RCConnectErrorCode status) {
+                        
+                        
+                    } tokenIncorrect:^{
+                        
+                        
+                    }];
+                    
                 }
             }];
             
