@@ -82,13 +82,17 @@
                     
                     NSLog(@"%@",[obj objectForKey:@"Token"]);
                     
+                    @weakify(self)
+                    
                     [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
                         
+                        @strongify(self)
                         NSLog(@"融云userId：%@", userId);
                         
                         LTChatListViewController *chatListVC = [[LTChatListViewController alloc] init];
                         
-//                        chatListVC.displayConversationTypeArray = @[@(ConversationType_PRIVATE)];
+                        chatListVC.displayConversationTypeArray = @[@(ConversationType_PRIVATE)];
+                        
                         
                         [self.navigationController pushViewController:chatListVC animated:YES];
                         
