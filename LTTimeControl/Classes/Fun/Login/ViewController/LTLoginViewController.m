@@ -18,7 +18,8 @@
 
 #import "LTChatListViewController.h"
 
-@interface LTLoginViewController ()
+@interface LTLoginViewController ()<RCIMUserInfoDataSource>
+
 @property (weak, nonatomic) IBOutlet UIImageView *userNameImage;
 @property (weak, nonatomic) IBOutlet UIImageView *pswImage;
 @property (weak, nonatomic) IBOutlet UIButton *loginBtn;
@@ -55,70 +56,114 @@
     
     NSString *psw = _pswTextField.text;
     
-    if (![NSString isBlank:userName]) {
+    @weakify(self)
+    
+    NSString *token = @"GfwHsNMT/FMOBYWp6etCmIw4yHKIfdmAX+KRha22eoeyYcZJG13zpvBaZlrD3Y1P4RbFAgFKxNOR3yLpFaj4Bw==";
+    
+    [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
         
-        if (![NSString isBlank:psw]) {
+        @strongify(self)
+        NSLog(@"融云userId：%@", userId);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
             
-            //查找GameScore表
-            BmobQuery   *query = [BmobQuery queryWithClassName:@"UserList"];
+            [[RCIM sharedRCIM] setUserInfoDataSource:self];
             
-            [query whereKey:@"userName" equalTo:userName];
+            LTChatListViewController *chatListVC = [[LTChatListViewController alloc] init];
             
-            [query whereKey:@"passWord" equalTo:psw];
+            chatListVC.displayConversationTypeArray = @[@(ConversationType_PRIVATE)];
             
-            [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
-                
-                if (error) {
-                    
-                    NSLog(@"%@",error);
-                    
-                } else {
-                    
-                    BmobObject *obj = [array firstObject];
-                    
-                    NSString *token = [obj objectForKey:@"Token"];
-                    
-                    NSLog(@"%@",[obj objectForKey:@"userName"]);
-                    
-                    NSLog(@"%@",[obj objectForKey:@"Token"]);
-                    
-                    @weakify(self)
-                    
-                    [[RCIM sharedRCIM] connectWithToken:token success:^(NSString *userId) {
-                        
-                        @strongify(self)
-                        NSLog(@"融云userId：%@", userId);
-                        
-                        LTChatListViewController *chatListVC = [[LTChatListViewController alloc] init];
-                        
-                        chatListVC.displayConversationTypeArray = @[@(ConversationType_PRIVATE)];
-                        
-                        
-                        [self.navigationController pushViewController:chatListVC animated:YES];
-                        
-                    } error:^(RCConnectErrorCode status) {
-                        
-                        
-                    } tokenIncorrect:^{
-                        
-                        
-                    }];
-                    
-                }
-            }];
             
-        }
-        else
-        {
-            NSLog(@"密码不能为空！");
-        }
+            [self.navigationController pushViewController:chatListVC animated:YES];
+        });
+        
+        
+    } error:^(RCConnectErrorCode status) {
+        
+        
+    } tokenIncorrect:^{
+        
+        
+    }];
+    
+//    if (![NSString isBlank:userName]) {
+//        
+//        if (![NSString isBlank:psw]) {
+//            
+//            //查找GameScore表
+//            BmobQuery   *query = [BmobQuery queryWithClassName:@"UserList"];
+//            
+//            [query whereKey:@"userName" equalTo:userName];
+//            
+//            [query whereKey:@"passWord" equalTo:psw];
+//            
+//            
+//            
+//            [query findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
+//                
+//                if (error) {
+//                    
+//                    NSLog(@"%@",error);
+//                    
+//                } else {
+//                    
+//                    BmobObject *obj = [array firstObject];
+//                    
+//                    NSString *token = [obj objectForKey:@"Token"];
+//                    
+//                    NSLog(@"%@",[obj objectForKey:@"userName"]);
+//                    
+//                    NSLog(@"%@",[obj objectForKey:@"Token"]);
+//                    
+//                    
+//                    
+//                    
+//                    
+//                }
+//            }];
+//            
+//        }
+//        else
+//        {
+//            NSLog(@"密码不能为空！");
+//        }
+//    }
+//    else
+//    {
+//        NSLog(@"用户名为空");
+//    }
+    
+//    NSLog(@"登录");
+}
+
+- (void)getUserInfoWithUserId:(NSString *)userId completion:(void (^)(RCUserInfo *))completion
+{
+    if ([userId isEqualToString:@"2"]) {
+        
+        RCUserInfo *userInfo1 = [[RCUserInfo alloc] init];
+        
+        userInfo1.userId = userId;
+        
+        userInfo1.name = @"Amy";
+        
+        userInfo1.portraitUri = @"http://opn4bzoai.bkt.clouddn.com/t2.jpg";
+        
+        return completion(userInfo1);
     }
-    else
+    else if ([userId isEqualToString:@"3"])
     {
-        NSLog(@"用户名为空");
+        RCUserInfo *userInfo2 = [[RCUserInfo alloc] init];
+        
+        userInfo2.userId = userId;
+        
+        userInfo2.name = @"Jason";
+        
+        userInfo2.portraitUri = @"http://opn4bzoai.bkt.clouddn.com/t3.jpeg";
+        
+        return completion(userInfo2);
     }
     
-    NSLog(@"登录");
+    return completion(nil);
 }
 
 
@@ -127,6 +172,7 @@
     LTRegisterViewController *registerVC = [LTRegisterViewController new];
     
     [self.navigationController pushViewController:registerVC animated:YES];
+    
     
 }
 

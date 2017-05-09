@@ -14,7 +14,8 @@
 
 #import <BmobSDK/Bmob.h>
 
-#import <RongIMKit/RongIMKit.h>
+#import "AppDelegate+LTRongCloud.h"
+
 
 @interface AppDelegate ()
 
@@ -29,8 +30,7 @@
     // 初始化Bmob
     [Bmob registerWithAppKey:@"24234f530af7e5a0baf2d0969a41e406"];
     
-    // 初始化融云
-    [[RCIM sharedRCIM] initWithAppKey:@"82hegw5u83btx"];
+    [self setupRongCloud];
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     

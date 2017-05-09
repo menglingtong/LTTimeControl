@@ -36,11 +36,11 @@
     
     //往GameScore表添加一条playerName为小明，分数为78的数据
 //    BmobObject *UserList = [BmobObject objectWithClassName:@"UserList"];
-//    [UserList setObject:@2 forKey:@"uid"];
-//    [UserList setObject:@"Amy" forKey:@"userName"];
+//    [UserList setObject:@3 forKey:@"uid"];
+//    [UserList setObject:@"Jason" forKey:@"userName"];
 //    [UserList setObject:@"123456" forKey:@"passWord"];
-//    [UserList setObject:@26 forKey:@"age"];
-//    [UserList setObject:@"01qjbk3AeZzLs+b8+Yk4How4yHKIfdmAX+KRha22eoeyYcZJG13zps+7uzhV8tfzdaffs6XVBuuR3yLpFaj4Bw==" forKey:@"Token"];
+//    [UserList setObject:@27 forKey:@"age"];
+//    [UserList setObject:@"I5xHMPnbAHX0sFYepkz8QG/NCSl892bAihEJv9xTulSefGx03d7S/UHrtJDOXfPbJ4/kWAbM7i8=" forKey:@"Token"];
 //    [UserList setObject:[NSNumber numberWithBool:YES] forKey:@"verify"];
 //    [UserList saveInBackgroundWithResultBlock:^(BOOL isSuccessful, NSError *error) {
 //        //进行操作

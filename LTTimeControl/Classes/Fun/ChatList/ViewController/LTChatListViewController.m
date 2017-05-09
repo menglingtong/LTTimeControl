@@ -30,11 +30,23 @@
     return self;
 }
 
+- (void)willDisplayConversationTableCell:(RCConversationBaseCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    RCConversationModel *model = self.conversationListDataSource[indexPath.row];
+    
+    if (model.conversationType == ConversationType_PRIVATE) {
+        
+        RCConversationCell *conversationCell = (RCConversationCell *)cell;
+        
+        conversationCell.conversationTitle.textColor = [UIColor colorWithRed:0.84 green:0.21 blue:0.20 alpha:1.00];
+    }
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    
+//    self.cellBackgroundColor = [UIColor colorWithRed:0.99 green:0.74 blue:0.25 alpha:1.00];
+//    self.topCellBackgroundColor = [UIColor colorWithRed:0.60 green:0.91 blue:0.41 alpha:1.00];
 }
 
 
@@ -59,6 +71,8 @@
     {
         RCConversationViewController *vc = [[RCConversationViewController alloc] init];
         
+        vc.hidesBottomBarWhenPushed = YES;
+        
         vc.conversationType = model.conversationType;
         
         vc.targetId = model.targetId;
@@ -69,6 +83,8 @@
     }
     
 }
+
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

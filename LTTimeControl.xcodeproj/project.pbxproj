@@ -45,6 +45,7 @@
 		8DB4C3FB1EBE1F8E00679E30 /* LTRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DB4C3F91EBE1F8E00679E30 /* LTRegisterViewController.xib */; };
 		8DB4C3FF1EBE26F200679E30 /* NSString+LTVerify.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C3FE1EBE26F200679E30 /* NSString+LTVerify.m */; };
 		8DB4C4071EBF97C700679E30 /* LTChatListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C4061EBF97C700679E30 /* LTChatListViewController.m */; };
+		8DB4C40A1EC0C9C600679E30 /* AppDelegate+LTRongCloud.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DB4C4091EC0C9C600679E30 /* AppDelegate+LTRongCloud.m */; };
 		8DE3DF631E647AA70007BAA5 /* LTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -122,6 +123,8 @@
 		8DB4C3FE1EBE26F200679E30 /* NSString+LTVerify.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LTVerify.m"; sourceTree = "<group>"; };
 		8DB4C4051EBF97C700679E30 /* LTChatListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTChatListViewController.h; sourceTree = "<group>"; };
 		8DB4C4061EBF97C700679E30 /* LTChatListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTChatListViewController.m; sourceTree = "<group>"; };
+		8DB4C4081EC0C9C600679E30 /* AppDelegate+LTRongCloud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AppDelegate+LTRongCloud.h"; sourceTree = "<group>"; };
+		8DB4C4091EC0C9C600679E30 /* AppDelegate+LTRongCloud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "AppDelegate+LTRongCloud.m"; sourceTree = "<group>"; };
 		8DE3DF611E647AA70007BAA5 /* LTBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LTBaseViewController.h; sourceTree = "<group>"; };
 		8DE3DF621E647AA70007BAA5 /* LTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LTBaseViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -459,6 +462,8 @@
 			children = (
 				8DB4C35C1EBE0E6900679E30 /* AppDelegate.h */,
 				8DB4C35D1EBE0E6900679E30 /* AppDelegate.m */,
+				8DB4C4081EC0C9C600679E30 /* AppDelegate+LTRongCloud.h */,
+				8DB4C4091EC0C9C600679E30 /* AppDelegate+LTRongCloud.m */,
 				8DB4C35E1EBE0E6900679E30 /* LTPrefixHeader.pch */,
 				8DB4C3601EBE0E6900679E30 /* ViewController.h */,
 				8DB4C3611EBE0E6900679E30 /* ViewController.m */,
@@ -710,6 +715,7 @@
 				8DB4C3621EBE0E6900679E30 /* AppDelegate.m in Sources */,
 				8D0B80C71E6518BB006B0315 /* LTBaseModel.m in Sources */,
 				8DB4C3FA1EBE1F8E00679E30 /* LTRegisterViewController.m in Sources */,
+				8DB4C40A1EC0C9C600679E30 /* AppDelegate+LTRongCloud.m in Sources */,
 				8DB4C3411EBE0BFE00679E30 /* LTTaskBGColorTableViewCell.m in Sources */,
 				8DB4C3441EBE0BFE00679E30 /* LTAddPlanTitleViewController.m in Sources */,
 				8D0849761E7432C000B9E05C /* Plan+CoreDataProperties.m in Sources */,
